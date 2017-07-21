@@ -7,6 +7,6 @@ This lesson follows [*Data Analysis for the Life Sciences*](https://leanpub.com/
 > ## Prerequisites
 > Learners need to:
 > * understand that computers store data and instructions (programs, scripts etc.) in files. 
-> * files are organised in directories (folders). 
+> * understand that files are organised in directories (folders). 
 > * know how to access files not in the working directory by specifying the path.
 {: .prereq}

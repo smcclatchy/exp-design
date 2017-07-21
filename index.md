@@ -2,7 +2,7 @@
 layout: lesson
 root: .
 ---
-This lesson follows [*Data Analysis for the Life Sciences*] (https://leanpub.com/dataanalysisforthelifesciences) by Rafael Irizarry and Michael Love. The focus is on practical application of statistics in data analysis.
+This lesson follows [*Data Analysis for the Life Sciences*](https://leanpub.com/dataanalysisforthelifesciences) by Rafael Irizarry and Michael Love. The focus is on practical application of statistics in data analysis.
 
 > ## Prerequisites
 >

@@ -2,7 +2,6 @@
 layout: lesson
 root: .
 ---
-This lesson follows [*Data Analysis for the Life Sciences*](https://leanpub.com/dataanalysisforthelifesciences) by [Rafael Irizarry](https://rafalab.github.io/) and [Michael Love](https://mikelove.github.io/). The focus is on practical application of statistics in data analysis using R.
 
 > ## Prerequisites
 > Learners need to:

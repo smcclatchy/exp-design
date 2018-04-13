@@ -1,0 +1,33 @@
+---
+title: Why we need better design
+teaching: 0
+exercises: 0
+questions:
+- "?"
+- "?"
+objectives:
+- ""
+- ""
+keypoints:
+- "."
+- "."
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("02-")
+```
+
+
+## Why experiments need to be designed
+
+## Costs of poor design
+### Time and money
+### Ethical considerations
+
+## Experimental design and statistics
+
+## Why good design matters
+### Random variation
+### Confounding factors

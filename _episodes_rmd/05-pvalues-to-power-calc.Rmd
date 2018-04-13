@@ -1,5 +1,5 @@
 ---
-title: "Power calculations"
+title: From p-values to power calculation
 teaching: 0
 exercises: 0
 questions:
@@ -14,11 +14,11 @@ keypoints:
 source: Rmd
 ---
 
+
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("11-")
+knitr_fig_path("05-")
 ```
-
 
 ```{r options, echo=FALSE}
 library(knitr)

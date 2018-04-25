@@ -18,3 +18,9 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("03-")
 ```
+ 
+ ##
+ ##
+ ##
+ ##
+ ##

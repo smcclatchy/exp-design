@@ -7,7 +7,9 @@ permalink: /reference/
 
 ## External references
 
-[Teaching Experimental Design](https://academic.oup.com/ilarjournal/article/55/3/457/643598)
+Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd
+
+Policy: NIH plans to enhance reproducibility. - www.ncbi.nlm.nih.gov
 
 [ILAR Journal: Design & Statistical Analysis of Animal Experiments](https://academic.oup.com/ilarjournal/issue/55/3)
 

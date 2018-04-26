@@ -7,6 +7,6 @@ FIXME
 
 ## References
 
-Fry DJ. Teaching experimental design. ILAR J. 2014;55(3):457-71. doi:
-10.1093/ilar/ilu031. Review. PubMed PMID: 25541547.
+Fry DJ. [Teaching experimental design.](https://academic.oup.com/ilarjournal/article/55/3/457/643598) ILAR J. 2014;55(3):457-71. doi:10.1093/ilar/ilu031.
+
 

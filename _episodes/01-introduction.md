@@ -18,6 +18,7 @@ source: Rmd
 
 
 
+The goal of science is to build knowledge and understanding through an iterative process of 
 most publishers and funding agencies now require
 a series of reproducibility guidelines to be
 satisfied for acceptable research.

@@ -28,6 +28,13 @@ source: Rmd
 We have used the example of the effects of two different diets on the weight of mice. Since in this illustrative example we have access to the population, we know that in fact there is a substantial (about 10%) difference between the average weights of the two populations:
 
 
+~~~
+library(downloader)
+url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/mice_pheno.csv"
+filename <- "mice_pheno.csv"
+if(!file.exists(filename)) download(url,destfile=filename)
+~~~
+{: .language-r}
 
 
 ~~~

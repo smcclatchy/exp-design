@@ -5,8 +5,10 @@ title: "Completely randomized, randomized block, and Latin square designs"
 teaching: 0
 exercises: 0
 questions:
-- "?"
-- "?"
+- "What are my experimental units?"
+- "How will treatments be assigned?"
+- "How will treatments be blinded?"
+- "How will outcomes be measured?"
 objectives:
 - ""
 - ""
@@ -17,3 +19,65 @@ source: Rmd
 ---
 
 
+
+
+~~~
+library(downloader)
+url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/mice_pheno.csv"
+filename <- "mice_pheno.csv"
+if(!file.exists(filename)) download(url,destfile=filename)
+~~~
+{: .language-r}
+
+
+~~~
+library(dplyr)
+dat <- read.csv("mice_pheno.csv") #Previously downloaded 
+
+controlPopulation <- filter(dat,Sex == "F" & Diet == "chow") %>%  
+  select(Bodyweight) %>% unlist
+
+hfPopulation <- filter(dat,Sex == "F" & Diet == "hf") %>%  
+  select(Bodyweight) %>% unlist
+
+mu_hf <- mean(hfPopulation)
+mu_control <- mean(controlPopulation)
+print(mu_hf - mu_control)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 2.375517
+~~~
+{: .output}
+
+
+
+~~~
+print((mu_hf - mu_control)/mu_control * 100) #percent increase
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 9.942157
+~~~
+{: .output}
+> ## Challenge 1
+> Use this subset of data containing 20 males and 20 females and
+> their baseline body weights to randomize to two different diets: high fat and regular chow.
+> 1). Perform a complete randomization.  
+> 2). Perform a balanced randomization. 
+> 3). Check the sex ratio and difference in body weights.
+> 4). Share the mean body weight for each group on the course etherpad.
+>
+> > ## Solution to Challenge 1
+> > This requires generation of random numbers.
+> > 1). This requires generation of random numbers.
+> > This requires generation of random numbers.
+> > This requires generation of random numbers.
+> {: .solution}
+{: .challenge}

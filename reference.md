@@ -5,11 +5,33 @@ permalink: /reference/
 
 ## Glossary
 
+{:auto_ids}
+blocking
+:   samples of similar structure grouped together from both treatment and control
+biological replicate
+:   parallel measurements of biologically distinct samples that capture random biological variation, which may itself be a subject of study or a source of noise.
+factorial design
+:   a design that permits testing of multiple variables at once
+randomization
+:    method to reduce bias and minimize the likelihood of chance altering the results of an experiment
+replicability
+:   Other scientists start with the same idea and use their own data and methods to produce the same result.
+reproducibility
+:   Other scientists use the same methods to obtain similar results and can draw the same conclusions. This might also mean that computer code and data are available so that others can redo the same analysis using the same data.
+technical replicate
+:   repeated measurements of the same sample that represent independent measures of the random noise associated with protocols or equipment.
+
+
+
+
+
 ## External references
 
-Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd
+### Reproducibility
+Collins FS, Tabak LA. [Policy: NIH plans to enhance reproducibility.](https://www.nature.com/news/policy-nih-plans-to-enhance-reproducibility-1.14586) Nature. 2014 Jan 30;505(7485):612-3.
 
-Policy: NIH plans to enhance reproducibility. - www.ncbi.nlm.nih.gov
+### Experimental design
+Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd
 
 [ILAR Journal: Design & Statistical Analysis of Animal Experiments](https://academic.oup.com/ilarjournal/issue/55/3)
 

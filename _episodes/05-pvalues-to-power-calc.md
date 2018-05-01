@@ -21,6 +21,13 @@ source: Rmd
 
 
 
+## Motivator: A retraction
+See Doug Melton's retraction of betatrophin paper in the journal Cell.
+https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/
+"When we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion"
+
+"In retrospect, he said he wished he’d performed the original experiment with more mice (“more attention to the statistical strength is a lesson that I’ve learned”), but the experiments with Kushner and his colleagues taught him the primary mistake was that the lab had miscounted the number of beta cells"
+
 ## Power Calculations 
 
 #### Introduction

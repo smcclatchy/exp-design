@@ -35,34 +35,8 @@ library(dplyr)
 
 # Read in DO850 body weight data.
 dat <- read.csv("bodyWeights.csv")  
-
-# Select first 20 male and female mice.
-controlPopulation <- filter(dat, Sex == "F" & Diet == "chow") %>%  
-  select(Bodyweight) %>% unlist
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in FUN(X[[i]], ...): object 'Bodyweight' not found
-~~~
-{: .error}
-
-
-
-~~~
-hfPopulation <- filter(dat,Sex == "F" & Diet == "hf") %>%  
-  select(Bodyweight) %>% unlist
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in FUN(X[[i]], ...): object 'Bodyweight' not found
-~~~
-{: .error}
 > ## Challenge 1
 > Use this subset of data containing 20 males and 20 females and
 > their baseline body weights to randomize to two different diets: high fat and regular chow.

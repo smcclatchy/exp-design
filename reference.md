@@ -27,6 +27,10 @@ technical replicate
 
 ## External references
 
+### Data source
+Gatti, D. M., P. Simecek, L. Somes, C. T. Jeffery, M. J. Vincent, K. Choi, X. Chen, G. A. Churchill and K. L. Svenson (2017).
+[The Effects of Sex and Diet on Physiology and Liver Gene Expression in Diversity Outbred Mice.](https://www.biorxiv.org/content/early/2017/01/05/098657.full.pdf+html) bioRxiv.
+
 ### Reproducibility
 Collins FS, Tabak LA. [Policy: NIH plans to enhance reproducibility.](https://www.nature.com/news/policy-nih-plans-to-enhance-reproducibility-1.14586) Nature. 2014 Jan 30;505(7485):612-3.
 

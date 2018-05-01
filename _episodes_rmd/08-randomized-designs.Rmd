@@ -18,7 +18,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("09-")
+knitr_fig_path("08-")
 ```
 
 ```{r, message=FALSE}
@@ -44,7 +44,7 @@ dat <- read.csv("bodyWeights.csv")
 > 4). Share the mean body weight for each group on the course etherpad.
 >
 > > ## Solution to Challenge 1
-> > This requires generation of random numbers. If diets are assigned in order, sample ID will be confounded with body weight.
+> > This requires generation of random numbers. If diets are assigned in order, sample ID will be confounded with body weight if consecutive ID numbers were handled somehow by the same person or in the same way.
 > > 1). 
 > > 2).
 > > 3).

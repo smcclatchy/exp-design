@@ -5,7 +5,7 @@ title: From p-values to power calculation
 teaching: 0
 exercises: 0
 questions:
-- "?"
+- "How many biological replicates do I need?"
 - "?"
 objectives:
 - ""
@@ -30,8 +30,8 @@ We have used the example of the effects of two different diets on the weight of 
 
 ~~~
 library(downloader)
-url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/mice_pheno.csv"
-filename <- "mice_pheno.csv"
+url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
+filename <- "bodyWeights.csv"
 if(!file.exists(filename)) download(url,destfile=filename)
 ~~~
 {: .language-r}
@@ -39,49 +39,53 @@ if(!file.exists(filename)) download(url,destfile=filename)
 
 ~~~
 library(dplyr)
-dat <- read.csv("mice_pheno.csv") #Previously downloaded 
 
-controlPopulation <- filter(dat,Sex == "F" & Diet == "chow") %>%  
-  select(Bodyweight) %>% unlist
+# Read in DO850 body weight data.
+dat <- read.csv("bodyWeights.csv") 
 
-hfPopulation <- filter(dat,Sex == "F" & Diet == "hf") %>%  
-  select(Bodyweight) %>% unlist
-
-mu_hf <- mean(hfPopulation)
-mu_control <- mean(controlPopulation)
-print(mu_hf - mu_control)
+# All code and text below is from Irizarry & Love
+# http://genomicsclass.github.io/book/pages/power_calculations.html
+# Exercises
+# http://genomicsclass.github.io/book/pages/power_calculations_exercises.html
 ~~~
 {: .language-r}
-
-
-
-~~~
-[1] 2.375517
-~~~
-{: .output}
-
-
-
-~~~
-print((mu_hf - mu_control)/mu_control * 100) #percent increase
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] 9.942157
-~~~
-{: .output}
 
 We have also seen that, in some cases, when we take a sample and perform a t-test, we don't always get a p-value smaller than 0.05. For example, here is a case where we take a sample of 5 mice and don't achieve statistical significance at the 0.05 level:
 
 
 ~~~
+# this needs updating for the DO data
+
 set.seed(1)
 N <- 5
 hf <- sample(hfPopulation,N)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in sample(hfPopulation, N): object 'hfPopulation' not found
+~~~
+{: .error}
+
+
+
+~~~
 control <- sample(controlPopulation,N)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in sample(controlPopulation, N): object 'controlPopulation' not found
+~~~
+{: .error}
+
+
+
+~~~
 t.test(hf,control)$p.value
 ~~~
 {: .language-r}
@@ -89,9 +93,9 @@ t.test(hf,control)$p.value
 
 
 ~~~
-[1] 0.1410204
+Error in t.test(hf, control): object 'hf' not found
 ~~~
-{: .output}
+{: .error}
 
 Did we make a mistake? By not rejecting the null hypothesis, are we
 saying the diet has no effect? The answer to this question is no. All
@@ -195,9 +199,9 @@ reject(12)
 
 
 ~~~
-[1] FALSE
+Error in sample(hfPopulation, N): object 'hfPopulation' not found
 ~~~
-{: .output}
+{: .error}
 
 Now we can use the `replicate` function to do this `B` times. 
 
@@ -206,6 +210,13 @@ Now we can use the `replicate` function to do this `B` times.
 rejections <- replicate(B,reject(N))
 ~~~
 {: .language-r}
+
+
+
+~~~
+Error in sample(hfPopulation, N): object 'hfPopulation' not found
+~~~
+{: .error}
 
 Our power is just the proportion of times we correctly reject. So with  $N=12$ our power is only: 
 
@@ -218,9 +229,9 @@ mean(rejections)
 
 
 ~~~
-[1] 0.2145
+Error in mean(rejections): object 'rejections' not found
 ~~~
-{: .output}
+{: .error}
 
 This explains why the t-test was not rejecting when we knew the null
 was false. With a sample size of just 12, our power is about 23%. To
@@ -246,6 +257,13 @@ power <- sapply(Ns,function(N){
 ~~~
 {: .language-r}
 
+
+
+~~~
+Error in sample(hfPopulation, N): object 'hfPopulation' not found
+~~~
+{: .error}
+
 For each of the three simulations, the above code returns the proportion of times we reject. Not surprisingly power increases with N:
 
 
@@ -254,7 +272,12 @@ plot(Ns, power, type="b")
 ~~~
 {: .language-r}
 
-<img src="../figure/05-pvalues-to-power-calc-power_versus_sample_size-1.png" title="Power plotted against sample size." alt="Power plotted against sample size." style="display: block; margin: auto;" />
+
+
+~~~
+Error in xy.coords(x, y, xlabel, ylabel, log): 'x' and 'y' lengths differ
+~~~
+{: .error}
 
 Similarly, if we change the level `alpha` at which we reject, power
 changes. The smaller I want the chance of type I error to be, the less
@@ -270,11 +293,29 @@ power <- sapply(alphas,function(alpha){
   rejections <- replicate(B,reject(N,alpha=alpha))
   mean(rejections)
 })
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in sample(hfPopulation, N): object 'hfPopulation' not found
+~~~
+{: .error}
+
+
+
+~~~
 plot(alphas, power, xlab="alpha", type="b", log="x")
 ~~~
 {: .language-r}
 
-<img src="../figure/05-pvalues-to-power-calc-power_versus_alpha-1.png" title="Power plotted against cut-off." alt="Power plotted against cut-off." style="display: block; margin: auto;" />
+
+
+~~~
+Error in xy.coords(x, y, xlabel, ylabel, log): 'x' and 'y' lengths differ
+~~~
+{: .error}
 
 Note that the x-axis in this last plot is in the log scale.
 
@@ -330,17 +371,42 @@ pvalues <- sapply(Ns_rep, calculatePvalue)
 ~~~
 {: .language-r}
 
+
+
+~~~
+Error in sample(hfPopulation, N): object 'hfPopulation' not found
+~~~
+{: .error}
+
 Now we can plot the 10 p-values we generated for each sample size:
 
 
 ~~~
 plot(Ns_rep, pvalues, log="y", xlab="sample size",
      ylab="p-values")
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in xy.coords(x, y, xlabel, ylabel, log): object 'pvalues' not found
+~~~
+{: .error}
+
+
+
+~~~
 abline(h=c(.01, .05), col="red", lwd=2)
 ~~~
 {: .language-r}
 
-<img src="../figure/05-pvalues-to-power-calc-pvals_decrease-1.png" title="p-values from random samples at varying sample size. The actual value of the p-values decreases as we increase sample size whenever the alternative hypothesis is true." alt="p-values from random samples at varying sample size. The actual value of the p-values decreases as we increase sample size whenever the alternative hypothesis is true." style="display: block; margin: auto;" />
+
+
+~~~
+Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
+~~~
+{: .error}
 
 Note that the y-axis is log scale and that the p-values show a
 decreasing trend all the way to $10^{-8}$
@@ -370,8 +436,47 @@ and the confidence interval by the control population mean:
 ~~~
 N <- 12
 hf <- sample(hfPopulation, N)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in sample(hfPopulation, N): object 'hfPopulation' not found
+~~~
+{: .error}
+
+
+
+~~~
 control <- sample(controlPopulation, N)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in sample(controlPopulation, N): object 'controlPopulation' not found
+~~~
+{: .error}
+
+
+
+~~~
 diff <- mean(hf) - mean(control)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in mean(hf): object 'hf' not found
+~~~
+{: .error}
+
+
+
+~~~
 diff / mean(control) * 100
 ~~~
 {: .language-r}
@@ -379,9 +484,9 @@ diff / mean(control) * 100
 
 
 ~~~
-[1] 1.868663
+Error in mean(control): object 'control' not found
 ~~~
-{: .output}
+{: .error}
 
 
 
@@ -393,11 +498,9 @@ t.test(hf, control)$conf.int / mean(control) * 100
 
 
 ~~~
-[1] -20.94576  24.68309
-attr(,"conf.level")
-[1] 0.95
+Error in t.test(hf, control): object 'hf' not found
 ~~~
-{: .output}
+{: .error}
 
 In addition, we can report a statistic called
 [Cohen's d](https://en.wikipedia.org/wiki/Effect_size#Cohen.27s_d),
@@ -407,6 +510,19 @@ deviation of the two groups.
 
 ~~~
 sd_pool <- sqrt(((N-1)*var(hf) + (N-1)*var(control))/(2*N - 2))
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in is.data.frame(x): object 'hf' not found
+~~~
+{: .error}
+
+
+
+~~~
 diff / sd_pool
 ~~~
 {: .language-r}
@@ -414,12 +530,46 @@ diff / sd_pool
 
 
 ~~~
-[1] 0.07140083
+Error in eval(expr, envir, enclos): object 'sd_pool' not found
 ~~~
-{: .output}
+{: .error}
 
 This tells us how many standard deviations of the data the mean of the
 high-fat diet group is from the control group. Under the
 alternative hypothesis, unlike the t-statistic which is guaranteed to
 increase, the effect size and Cohen's d will become more precise.
 
+
+> ## Challenge 1: Power and sample size calculation for two treatment comparison (Gary's suggestion)
+> 1). Specify power and size of test, variance, meaningful difference. Compute N.  
+> 2). Specify N, power, variance. Compute meaningful difference (what can I hope to get with my budget fixed?).
+>
+> > ## Solution to Challenge 1
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 2: Draw some power curves (Gary's suggestion)
+> 1). How are they affected by alpha, beta, delta, N?
+> 2). If you double the sample size how does delta change?
+> Use formulas, functions, statistical rules of thumb.
+>
+> > ## Solution to Challenge 2
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 3: Compute power by simulation (Gary's suggestion)
+> Learn how to simulate data.
+> Draw power curves from simulations. Compare to theoretical curves.
+> > ## Solution to Challenge 3
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 4 (advanced): Permutation tests (Gary's suggestion)
+> 
+> > ## Solution to Challenge 4
+> > 
+> {: .solution}
+{: .challenge}

@@ -18,3 +18,21 @@ source: Rmd
 
 
 
+
+Gary's notes: 
+
+Assign mice to diet and running wheel. Revisit randomization.
+
+How to compute sample size?
+Simulate? Other tools?
+Compare the 2x2 experiment sample size to the single factor ...
+not double. You get more for your money.
+
+Two-way ANOVA - main effects, interaction
+
+> ## Challenge 1
+>
+> > ## Solution to Challenge 1
+> > 
+> {: .solution}
+{: .challenge}

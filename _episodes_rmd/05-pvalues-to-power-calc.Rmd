@@ -3,7 +3,7 @@ title: From p-values to power calculation
 teaching: 0
 exercises: 0
 questions:
-- "?"
+- "How many biological replicates do I need?"
 - "?"
 objectives:
 - ""
@@ -33,30 +33,28 @@ We have used the example of the effects of two different diets on the weight of 
 
 ```{r, message=FALSE}
 library(downloader)
-url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/mice_pheno.csv"
-filename <- "mice_pheno.csv"
+url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
+filename <- "bodyWeights.csv"
 if(!file.exists(filename)) download(url,destfile=filename)
 ```
 
 ```{r, message=FALSE}
 library(dplyr)
-dat <- read.csv("mice_pheno.csv") #Previously downloaded 
 
-controlPopulation <- filter(dat,Sex == "F" & Diet == "chow") %>%  
-  select(Bodyweight) %>% unlist
+# Read in DO850 body weight data.
+dat <- read.csv("bodyWeights.csv") 
 
-hfPopulation <- filter(dat,Sex == "F" & Diet == "hf") %>%  
-  select(Bodyweight) %>% unlist
-
-mu_hf <- mean(hfPopulation)
-mu_control <- mean(controlPopulation)
-print(mu_hf - mu_control)
-print((mu_hf - mu_control)/mu_control * 100) #percent increase
+# All code and text below is from Irizarry & Love
+# http://genomicsclass.github.io/book/pages/power_calculations.html
+# Exercises
+# http://genomicsclass.github.io/book/pages/power_calculations_exercises.html
 ```
 
 We have also seen that, in some cases, when we take a sample and perform a t-test, we don't always get a p-value smaller than 0.05. For example, here is a case where we take a sample of 5 mice and don't achieve statistical significance at the 0.05 level:
 
 ```{r}
+# this needs updating for the DO data
+
 set.seed(1)
 N <- 5
 hf <- sample(hfPopulation,N)
@@ -311,3 +309,37 @@ high-fat diet group is from the control group. Under the
 alternative hypothesis, unlike the t-statistic which is guaranteed to
 increase, the effect size and Cohen's d will become more precise.
 
+
+> ## Challenge 1: Power and sample size calculation for two treatment comparison (Gary's suggestion)
+> 1). Specify power and size of test, variance, meaningful difference. Compute N.  
+> 2). Specify N, power, variance. Compute meaningful difference (what can I hope to get with my budget fixed?).
+>
+> > ## Solution to Challenge 1
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 2: Draw some power curves (Gary's suggestion)
+> 1). How are they affected by alpha, beta, delta, N?
+> 2). If you double the sample size how does delta change?
+> Use formulas, functions, statistical rules of thumb.
+>
+> > ## Solution to Challenge 2
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 3: Compute power by simulation (Gary's suggestion)
+> Learn how to simulate data.
+> Draw power curves from simulations. Compare to theoretical curves.
+> > ## Solution to Challenge 3
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 4 (advanced): Permutation tests (Gary's suggestion)
+> 
+> > ## Solution to Challenge 4
+> > 
+> {: .solution}
+{: .challenge}

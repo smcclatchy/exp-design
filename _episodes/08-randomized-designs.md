@@ -42,9 +42,9 @@ dat <- read.csv("bodyWeights.csv")
 > their baseline body weights to randomize to two different diets: high fat and regular chow.
 > `subset <- dat[dat$Sample[c(51:70, 475:494)],c("Sample", "Sex", "BW.3")]`
 > 1). Perform a complete randomization.  
-> 2). Perform a balanced randomization. 
-> 3). Check the sex ratio and difference in body weights.
-> 4). Share the mean body weight for each group on the course etherpad.
+> 2). Perform a balanced randomization.  
+> 3). Check the sex ratio and difference in body weights.  
+> 4). Share the mean body weight for each group on the course etherpad.  
 >
 > > ## Solution to Challenge 1
 > > This requires generation of random numbers. If diets are assigned in order, sample ID will be confounded with body weight if consecutive ID numbers were handled somehow by the same person or in the same way.

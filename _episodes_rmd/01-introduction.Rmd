@@ -19,57 +19,10 @@ source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
-The goal of science is to build knowledge and understanding through an iterative process of 
-most publishers and funding agencies now require
-a series of reproducibility guidelines to be
-satisfied for acceptable research.
-JOHN QUACKENBUSH: For example, the Nature journals
-require that manuscripts be submitted with a checklist linking
-figures to data, statistics to methodology,
-and data to accessible repositories and originating specimens
-and the assays that were conducted.
-The National Institutes of Health has reproducibility guidelines
-for funding recipients and trainees.
-These range from how you perform your statistics, to how you share your data,
-and the software that you use to do the data analysis.
-But ultimately, your data and your conclusions
-are going to influence others, and in health and biomedical research,
-that may actually include influencing the practice of clinical care.
-So we want to make sure we do things right, and we want to make sure
-that our results can be reproduced by ourselves and others.
-JOHN QUACKENBUSH: Both Curtis and I work in biomedical research.
-Most of our participants and other instructors in this course
-work in biomedical research.
-So we may draw too many examples from biomedical research.
-But what we hope you get out of this is a real idea about the principles.
-We want you to understand the principles and the tools that we can use.
-And many of these tools are very easily generalizable to other fields.
-And the principles are universal.
+Science aims to construct knowledge that is reliable and robust, and that provides a stable foundation for building new knowledge. Science self-corrects when the scientific community actively engages in examining and appraising ideas. In order to critically evaluate the evidence behind ideas, the scientific community replicates investigations independently or reproduces experimental results using identical materials and methods. Replication requires detail of experimental methods, and reproduction requires availability of original data and software.
 
-JOHN QUACKENBUSH: Curtis and I wanted to really just
-have a conversation about why reproducibility is so important.
-The scientific method requires that our work
-can be falsified or verified by others.
-CURTIS HUTTENHOWER: And I would think of reproducibility
-as exactly that process.
-If doing science means discovering something new about the universe
-it's presumably true at any point in time and in anybody's hands.
-And that doesn't just need reproducibility,
-that is reproducibility.
-JOHN QUACKENBUSH: Well earlier on, we talked
-about data analysis and reproducibility really being an end to end process.
-And it's interesting, as we've thought about doing experiments we've actually
-incorporated principles from software design
-into the design process of the experiment.
-If we develop software, we think, well, how
-is someone going to use that software?
-When we do an experiment or start to design an experiment,
-we think, well, how is someone going to use that data?
-CURTIS HUTTENHOWER: Or how might somebody try to reproduce it.
-Exactly.
-I'm going to introduce computational tools for reproducible research.
-We are going to explore three aspects.
-First, reproducibility and code.
-Then, reproducibility and data.
-And finally, reproducibility and document generation.
+In order to promote reproducibility, most publishers and funding organizations require detailed experimental protocols and access to data or software so that members of the scientific community can re-analyze the study. When designing a study, looking forward toward how the scientific community will use the resulting data is wise. This is especially important for high profile studies or those with surprising results, since these are most likely to be deeply scrutinized by the scientific community.
+
+The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation. A quote from Sir Ronald Fisher states: "To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of." In fact, the design of a study in many ways is more important than its analysis. Analysis can always be re-worked or re-done; the original study however, would be costly and difficult to repeat if done badly.
+
 

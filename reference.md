@@ -7,20 +7,29 @@ permalink: /reference/
 
 {:auto_ids}
 blocking
-:   samples of similar structure grouped together from both treatment and control
-biological replicate
-:   parallel measurements of biologically distinct samples that capture random biological variation, which may itself be a subject of study or a source of noise.
-factorial design
-:   a design that permits testing of multiple variables at once
-randomization
-:    method to reduce bias and minimize the likelihood of chance altering the results of an experiment
-replicability
-:   Other scientists start with the same idea and use their own data and methods to produce the same result.
-reproducibility
-:   Other scientists use the same methods to obtain similar results and can draw the same conclusions. This might also mean that computer code and data are available so that others can redo the same analysis using the same data.
-technical replicate
-:   repeated measurements of the same sample that represent independent measures of the random noise associated with protocols or equipment.
+:    Samples of similar structure grouped together from both treatment and control.
 
+biological replicate
+:   Parallel measurements of biologically distinct samples that capture random biological variation,
+    which may itself be a subject of study or a source of noise.
+
+factorial design
+:   A design that permits testing of multiple variables at once.
+
+randomization
+:    A method to reduce bias and minimize the likelihood of chance altering the results of an experiment.
+
+replicability
+:   Other researchers obtain corroborating results using experimental methods similar to those of the original study,
+    generating their own data independently.
+
+reproducibility
+:   Other researchers duplicate results and can draw the same conclusions as the original study did using
+    the same materials and methods (i.e. specific measurement devices, original data, software, statistical method).
+ 
+technical replicate
+:   Repeated measurements of the same sample that represent independent measures of the random noise
+    associated with protocols or equipment.
 
 
 
@@ -33,6 +42,7 @@ Gatti, D. M., P. Simecek, L. Somes, C. T. Jeffery, M. J. Vincent, K. Choi, X. Ch
 
 ### Reproducibility
 Collins FS, Tabak LA. [Policy: NIH plans to enhance reproducibility.](https://www.nature.com/news/policy-nih-plans-to-enhance-reproducibility-1.14586) Nature. 2014 Jan 30;505(7485):612-3.
+Goodman SN, Fanelli D and Ioannidis, JPA. [What does research reproducibility mean?](http://stm.sciencemag.org/content/8/341/341ps12.full) Science Trans Med. 2016 Jun 01;8(341)
 
 ### Experimental design
 Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd

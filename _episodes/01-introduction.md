@@ -22,6 +22,18 @@ Science aims to construct knowledge that is reliable and robust, and that provid
 
 In order to promote reproducibility, most publishers and funding organizations require detailed experimental protocols and access to data or software so that members of the scientific community can re-analyze the study. When designing a study, looking forward toward how the scientific community will use the resulting data is wise. This is especially important for high profile studies or those with surprising results, since these are most likely to be deeply scrutinized by the scientific community.
 
-The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation. A quote from Sir Ronald Fisher states: "To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of." In fact, the design of a study in many ways is more important than its analysis. Analysis can always be re-worked or re-done; the original study however, would be costly and difficult to repeat if done badly.
+The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation. A quote from Sir Ronald Fisher states: "To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of." In fact, the design of a study in many ways is more important than its analysis. Analysis can always be re-worked or re-done; the original study however, would be costly and difficult to repeat if done badly. In statistics there is no "magic bullet", or statistical test, that can correct every poorly designed study. The statistical test and the analysis must be determined in the planning stages of an experiment.
+
+According to [Chalmers and Glasziou](https://www.thelancet.com/journals/lancet/article/PIIS0140673609603299/fulltext?rss=yes), more than 85% of the dollars invested in research are lost annually to avoidable problems. These include choice of the wrong research questions, poorly designed studies, failure to publish relevant research, and biased or unusable research reports. Some of these problems are the direct result of a system that rewards things other than study quality and reproducibility, however, other problems are entirely preventable through thoughtful and well-informed study design. Given limited research funding it is imperative that experimental design, study quality, and reproducibility be prioritized. The National Institutes of Health proposed [a set of actions](https://www.nature.com/news/policy-nih-plans-to-enhance-reproducibility-1.14586) to address these issues, including better training in reproducibility and grant reviewing that requires appropriate experimental design. 
+
+> ## Discussion
+> Before we go any further here are some important questions to consider. Please think about these questions, then pair up with your neighbor to discuss your responses. Finally, share your responses with all in the etherpad.
+
+> 1). What makes a study reproducible?
+> 2). What are the general characteristics of a well-designed study?
+> 3). What are some of the consequences of poorly designed studies?
+>
+{: .challenge}
+
 
 

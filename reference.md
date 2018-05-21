@@ -42,7 +42,12 @@ Gatti, D. M., P. Simecek, L. Somes, C. T. Jeffery, M. J. Vincent, K. Choi, X. Ch
 
 ### Reproducibility
 Collins FS, Tabak LA. [Policy: NIH plans to enhance reproducibility.](https://www.nature.com/news/policy-nih-plans-to-enhance-reproducibility-1.14586) Nature. 2014 Jan 30;505(7485):612-3.
+
 Goodman SN, Fanelli D and Ioannidis, JPA. [What does research reproducibility mean?](http://stm.sciencemag.org/content/8/341/341ps12.full) Science Trans Med. 2016 Jun 01;8(341)
+
+National Academies of Sciences, Engineering, and Medicine. 2015. [Reproducibility Issues in Research with Animals and Animal Models: Workshop in Brief](https://www.nap.edu/read/21835/). Washington, DC: The National Academies Press. https://doi.org/10.17226/21835.
+
+Chalmers, Iain et al. 2009. [Avoidable waste in the production and reporting of research evidence](https://www.thelancet.com/journals/lancet/article/PIIS0140673609603299/fulltext?rss=yes). The Lancet 374(9683):86-89
 
 ### Experimental design
 Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd
@@ -53,8 +58,6 @@ Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd
 Using Laboratory Animals](http://www.3rs-reduction.co.uk/assets/applets/Festing_Altman.pdf)
 
 [Gary Oehlert's A First Course in Design and Analysis of Experiments](http://users.stat.umn.edu/~gary/book/fcdae.pdf)
-
-[Principles of Experimental Design by Mark Conaway](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ClinStat/dox.rm.pdf) looks like a good motivating example that jumps quickly into different study designs.
 
 [Repeated Measures Design by Mark Conaway](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ClinStat/repmeas.PDF)
 

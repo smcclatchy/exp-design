@@ -20,13 +20,21 @@ source: Rmd
 
 
 ## Why experiments need to be designed
+We design experiments to help answer questions by comparing the outcome of different treatments. We can design experiments such that bias and error in the comparison of different treatments is minimized. We control experiments so that we can make stronger inferences about the nature of the differences that we see. Specifically, we try to make inferences about causation.
 
 ## Costs of poor design
+Scientific research advances when scientists can corroborate others' results and don't waste time pursuing false leads. Too often, though, published studies can't be reproduced and the self-correcting nature of science falters. 
+
 ### Time and money
+Poor design wastes resources. Time and money are spent inefficiently.
+
 ### Ethical considerations
+In animal studies, poor design often uses too many animals and is wasteful, or uses too few to obtain meaningful insights. Poorly designed preclinical trials can lead to clinical trials involving humans with a shaky foundation of research findings.
 
 ## Experimental design and statistics
 
 ## Why good design matters
+Good experimental design seeks to balance statistical power, generalizability, validity, practicality, and cost. It should be noted that improving one of the aforementioned often denigrates one or more of the others. For example, decreasing the cost of experimentation often negatively affects statistical power and validity.
+
 ### Random variation
 ### Confounding factors

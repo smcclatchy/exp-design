@@ -9,8 +9,8 @@ objectives:
 - ""
 - ""
 keypoints:
-- " enhance reproducibility."
-- "funding agency and journal requirements for reproducibility."
+- "Funding agencies and publishers require for reproducibility in grant applications and manuscript submissions."
+- "Good study design anticipates analysis of the experiment."
 source: Rmd
 ---
 
@@ -30,8 +30,8 @@ According to [Chalmers and Glasziou](https://www.thelancet.com/journals/lancet/a
 > ## Discussion
 > Before we go any further here are some important questions to consider. Please think about these questions, then pair up with your neighbor to discuss your responses. Finally, share your responses with all in the etherpad.
 
-> 1). What makes a study reproducible?
-> 2). What are the general characteristics of a well-designed study?
+> 1). What makes a study reproducible?  
+> 2). What are the general characteristics of a well-designed study?  
 > 3). What are some of the consequences of poorly designed studies?
 >
 {: .challenge}

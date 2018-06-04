@@ -37,7 +37,7 @@ technical replicate
 ## External references
 
 ### Data source
-Gatti, D. M., P. Simecek, L. Somes, C. T. Jeffery, M. J. Vincent, K. Choi, X. Chen, G. A. Churchill and K. L. Svenson (2017).
+Gatti, DM, Simecek P, Somes L, Jeffery CT, Vincent MJ, Choi K, Chen X, Churchill GA and Svenson KL (2017).
 [The Effects of Sex and Diet on Physiology and Liver Gene Expression in Diversity Outbred Mice.](https://www.biorxiv.org/content/early/2017/01/05/098657.full.pdf+html) bioRxiv.
 
 ### Reproducibility
@@ -48,6 +48,8 @@ Goodman SN, Fanelli D and Ioannidis, JPA. [What does research reproducibility me
 National Academies of Sciences, Engineering, and Medicine. 2015. [Reproducibility Issues in Research with Animals and Animal Models: Workshop in Brief](https://www.nap.edu/read/21835/). Washington, DC: The National Academies Press. https://doi.org/10.17226/21835.
 
 Chalmers, Iain et al. 2009. [Avoidable waste in the production and reporting of research evidence](https://www.thelancet.com/journals/lancet/article/PIIS0140673609603299/fulltext?rss=yes). The Lancet 374(9683):86-89
+
+Bollen, K, Cacioppo, JT, Kaplan, R, Krosnick, J, Olds, JL. 2015. [Social, Behavioral, and Economic Sciences Perspectives on Robust and Reliable Science](https://www.nsf.gov/sbe/AC_Materials/SBE_Robust_and_Reliable_Research_Report.pdf). Arlington, VA: National Science Foundation.
 
 ### Experimental design
 Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd

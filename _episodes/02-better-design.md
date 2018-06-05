@@ -48,10 +48,21 @@ In animal studies, poor design often uses too many animals and is wasteful, or u
 Good experimental design seeks to balance statistical power, generalizability of findings, validity, practicality, and cost. It should be noted that improving one of the aforementioned often denigrates one or more of the others. For example, decreasing the cost of experimentation often negatively affects statistical power and validity.
 
 ### Random variation
+Random variation, also called "noise", centers around the mean and has consistent dispersion. Random variation or noise reflects imprecision, but not inaccuracy. Larger sample sizes reduce this imprecision. Pictured below are mass measurements for three different samples. The mean mass for measurements of each sample equals 1. 
+
+![](../fig/random-variation.png)
+
+Systematic error or bias, in contrast, does not center around the mean. Larger sample sizes don't affect or correct for systematic bias. As an example, a bathroom scale might be calibrated so that measurements are consistently too high or too low. 
+
 ### Confounding factors
 
-> ## Reflection
-> How do you balance statistical power, generalizability, validity, practicality, and cost?
-> What have you had to sacrifice?
+> ## Discussion
+> Think about the following questions and perhaps jot down some notes. Pair up with a
+> partner discuss, then share your responses on the etherpad.
+> 1). How do you balance statistical power with generalizability, validity, practicality, and cost?
+> What have you had to sacrifice in order to find a balance?  
+> 2). How can good experimental design help you to save money and time? How can it help your experiment to be reproducible?  
+> 3). What are some ethical considerations of good experimental design?
 >
 {: .challenge}
+

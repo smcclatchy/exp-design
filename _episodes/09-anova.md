@@ -46,7 +46,7 @@ The above assumption can be verified using two graphs:
 	Residual vs. Fitted (or predicted) values plot (a scatterplot of the residuals (on y-axis) vs. the fitted values)
 	Normal plot of residuals (a plot of residual values to identify trends).
 
-	The Model
+## The Model
 
 Evaluating the assumptions of the statistical test requires that a model be created.  A statistical model is a mathematical representation of the factors that can be used to predict a certain value.  For example, in our effort to predict BW.10 data, we are using the sex and diet of mice which are represented in the form of a statistical model.
 
@@ -66,15 +66,15 @@ In our data set, the <i>i</i> subscript refers to the ID in the Sample column of
 
 The response variable, <i>BW.10</i>, is a quantity that varies in a way that we hope to be able to summarize and exploit via the modeling process. Generally, it is known that the variation of the response variable is systematically related to the values of one or more other variables (such as, Sex and Diet) before the modeling process is begun, although testing the existence and nature of this dependence is part of the modeling process itself.
 
-The mathematical function consists of two main parts. These parts are known as the predictor variables (or regressors), e.g., <i>sex<sub>i</sub></i>,… , and the parameters (or regression coefficients), e.g., <i>&beta<sub>1</sub></i>,….
+The mathematical function consists of two main parts. These parts are known as the predictor variables (or regressors), e.g., <i>sex<sub>i</sub></i>,… , and the parameters (or regression coefficients), e.g., <i>&beta;<sub>1</sub></i>,….
 
 The below parameters (or regression coefficients) are constants that do not change according to sample, sex, or diet.
 
-<i>&beta<sub>0</sub></i> = mean intercept (or constant); for scientific studies the intercept is often not of interest and is only used to aid in calculation of predicted values
+<i>&beta;<sub>0</sub></i> = mean intercept (or constant); for scientific studies the intercept is often not of interest and is only used to aid in calculation of predicted values
 
-<i>&beta<sub>1</sub></i> = parameter associated with the regressor Sex
+<i>&beta;<sub>1</sub></i> = parameter associated with the regressor Sex
 
-<i>&beta<sub>2</sub></i> = parameter associated with the regressor Diet
+<i>&beta;<sub>2</sub></i> = parameter associated with the regressor Diet
 
 The parameters are the quantities that will be estimated during the modeling process. Their true values are unknown and unknowable, except in simulation experiments.
 
@@ -86,7 +86,7 @@ The relationship (or parameter) between BW.10 and Sex and Diet is the same regar
 
 The predictor (or regressor) variables are observed along with the dependent (or response) variable, BW.10.
 
-<i>&epsilon;<sub>i</sub></i></i> = error (or residual) associated with observation i
+<i>&epsilon;<sub>i</sub></i> = error (or residual) associated with observation i
 
 Like the parameters (or regression coefficients) in the mathematical function, the random errors are unknown. The error (or residual) is simply the difference between what is seen in the data set versus what is predicted by the mathematical function.
 
@@ -94,7 +94,7 @@ Like the parameters (or regression coefficients) in the mathematical function, t
 Include R example of using aov() to setup an analysis of variance to predict BW.10 using both Sex and Diet factors.  May wish to mention the use of “lme” when you need to account for both fixed and random factors, such as when a random term is required for accounting for technical replicates (or other factors).
 
 
-Residual vs. Fitted Plots
+## Residual vs. Fitted Plots
 
 A model can be assessed using the residual vs. fitted (or predicted) values plot.  Below is an example of a good (top) and bad (bottom) residual vs. fitted values plot.  Trends (such as a “V” shape) are to be avoided because they possibly indicate nonlinear data.
 
@@ -106,19 +106,19 @@ Find high-quality image of an example of a bad plot.
 A residual by predicted plot is commonly used to diagnose nonlinearity or nonconstant error variance. Additionally, it is also used to find outliers (data points that greatly deviate from all other points).
 
 
-Outliers
+## Outliers
 
 If outliers are believed to be present in the data, data transformation may be considered.  Alternatively, if outlier values are believed to be the result of real error (e.g. calculation error, data entry, etc.) then they may be removed from the dataset.  Excluding values must only be done for legitimate reasons, or else you may affect the Type 1 (false positive) error rate.
 
 Include plot of distribution of data (include R box plot code).  Highlight any outliers.  Go over how to read a box plot.  Show example of outliers if none are present in data.
 
 
-The residuals
+## The residuals
 
 Residuals are estimates of experimental error obtained by subtracting the observed responses from the predicted responses (or actual data from data set minus what is predicted by the model).  The predicted response is calculated from the chosen model, after all the unknown model parameters have been estimated from the experimental data.  Examining residuals is a key part of all statistical modeling.  Carefully looking at residuals can tell us whether our assumptions are reasonable and our choice of model is appropriate.
 
 Residuals are elements of variation unexplained by the fitted model.  Residuals should be (roughly) normal and (approximately) independently distributed with a mean of zero and some constant variance.  If error is not normal or independently distributed this would indicate that a different (nonlinear) model may be more suitable to analyze the data or that other significant factors need to be accounted for.  For example, if predicting BW.10 we only used a model with Sex, we may obtain poor residual plots because we are failing to account for a crucial factor, such as, Diet.  Show example of residual plots only using Sex (and provide the R code).
 
-2.2.1 Normal Probability Plot
+## 2.2.1 Normal Probability Plot
 
 Residual normality can be evaluated via a QQ (quantile-quantile plot).  Provide an example of a QQ plot and R code.

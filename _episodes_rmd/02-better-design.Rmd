@@ -49,14 +49,14 @@ In animal studies, poor design often uses too many animals and is wasteful, or u
 Good experimental design seeks to balance statistical power, generalizability of findings, validity, practicality, and cost. It should be noted that improving one of the aforementioned often denigrates one or more of the others. For example, decreasing the cost of experimentation often negatively affects statistical power and validity.
 
 ### Random variation
-Random variation, also called "noise", centers around the mean and has consistent dispersion. Random variation or noise reflects imprecision, but not inaccuracy. Larger sample sizes reduce this imprecision. Pictured below are mass measurements for three different samples. The mean mass for measurements of each sample equals 1. 
+Random variation, also called random error or "noise", exists in the measurement process. Ideally if something is measured many times, each measurement will give exactly the same result and will represent the true value. Random variation centers around the mean and has a consistent dispersion. It reflects imprecision, but not inaccuracy. Larger sample sizes reduce this imprecision. 
 
-![](../fig/random-variation.png)
+For example, the mass of one kilogram is defined by the International Prototype Kilogram, a cylinder composed of platinum and iridium. Copies of this prototype kilogram are distributed worldwide and are regularly compared to the prototype to ensure the standard of a kilogram. None of the copies of the prototype measure precisely the same despite careful storage and handling. The reasons for this variation in measurements is not known. 
 
 Systematic error or bias, in contrast, does not center around the mean. Larger sample sizes don't affect or correct for systematic bias. As an example, a bathroom scale might be calibrated so that measurements are consistently too high or too low. 
 
 ### Confounding factors
-
+Confounding factors, or confounders, are a third factor influencing the relationship between independent and dependent variables. For example, one design for the Salk polio vaccine trials considered vaccinating only those children whose parents consented to the vaccination, and leaving children from non-consenting parents as an unvaccinated control group. However, wealthier parents were more likely to consent to vaccinating their children, so socioeconomic status would have been introduced as a confounding factor. The effect of socioeconomic status would have confounded or mixed up the effect of the treatment.
 > ## Discussion
 > Think about the following questions and perhaps jot down some notes. Pair up with a
 > partner discuss, then share your responses on the etherpad.

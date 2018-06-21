@@ -18,3 +18,108 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("09-")
 ```
+
+
+## Data
+
+Body weight data of male (M) and female (F) mice fed a high fat (hf) and control (chow) diet measured repeatedly over 23 (BW.3 – BW.30) time points.  Many mice do not have measurements for all body weight as survival time varies across sample.  Data set includes additional information, such as litter number and coat color.
+
+Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only as single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of BW.10 data.
+
+## Technical versus Biological Replicates
+
+Technical replicates are measurements taken on the same sample.  Biological replicates are measurements taken on different samples (one per sample).  Technical replicates do not convey biological variation in the data, as the difference between technical replicates in a sample measure “technical” variation, such as, instrument settings, technician skill, and environmental effects.  Biological replicates differ from technical in that differences seen between samples tends to be mostly biological.  If, for example, different technicians worked on measuring the biological samples, it is possible that a technician effect can be accounted for in the model via evaluating a technician batch effect.
+
+When working with technical replicates, the model should reflect the presence of the technical replicates, because each replicate contributes to the overall error in the model.  Technical replicates are not independent biological replicates; thus, if technical replicates are treated as biological replicates it leads to inflation of degrees of freedom and deflation of standard error.  The adjustment of the fundamental statistics used in regression analysis will lead to inaccurate analysis results.  To account for this type of error, the subject (or sample number/ID) can be used as a random model term, or, alternatively, the technical replicates can be collapsed (averaged).  If you treat the biological subject as a random effect, then the mixed model ANOVA tests for all treatments and other effects are identical to what you get if you average the technical replicates.
+
+Possibly include an example of an experiment with technical replicates and how one can account for them in a model or average the technical replicates down to a single representative value.
+
+## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
+To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
+
+For our analysis of BW.10 data, the following assumptions should be met:
+	The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).
+	The residuals have a normal distribution.
+	The residuals have equal variance (homoscadastic).
+
+The above assumption can be verified using two graphs:
+
+	Residual vs. Fitted (or predicted) values plot (a scatterplot of the residuals (on y-axis) vs. the fitted values)
+	Normal plot of residuals (a plot of residual values to identify trends).
+
+	The Model
+
+Evaluating the assumptions of the statistical test requires that a model be created.  A statistical model is a mathematical representation of the factors that can be used to predict a certain value.  For example, in our effort to predict BW.10 data, we are using the sex and diet of mice which are represented in the form of a statistical model.
+
+The first step in analyzing data is to create an appropriate model.  Given our data set, we would like to determine if the dependent variable of body weight (BW.10) is influenced by the independent variables sex and diet.  The model for this analysis is:
+
+"BW.10i = β0 + β1(Sexi) + β2(Dieti)  + εi " 
+![](../fig/bw-sex-diet-eqn.png)
+
+where,
+<i>y</i> = <i>&alpha;</i> + <i>&beta;X</i> + <i>&epsilon;</i>
+
+<i>y<sub>i</sub></i> = the dependent (or response variable), Body Weight (BW.10), associated with sample <i>i</i>.
+
+The subscript <i>i</i> refers to the individual sample
+
+In our data set, the <i>i</i> subscript refers to the ID in the Sample column of the data set.
+
+The response variable, <i>BW.10</i>, is a quantity that varies in a way that we hope to be able to summarize and exploit via the modeling process. Generally, it is known that the variation of the response variable is systematically related to the values of one or more other variables (such as, Sex and Diet) before the modeling process is begun, although testing the existence and nature of this dependence is part of the modeling process itself.
+
+The mathematical function consists of two main parts. These parts are known as the predictor variables (or regressors), e.g., <i>sex<sub>i</sub></i>,… , and the parameters (or regression coefficients), e.g., <i>&beta<sub>1</sub></i>,….
+
+The below parameters (or regression coefficients) are constants that do not change according to sample, sex, or diet.
+
+<i>&beta<sub>0</sub></i> = mean intercept (or constant); for scientific studies the intercept is often not of interest and is only used to aid in calculation of predicted values
+
+<i>&beta<sub>1</sub></i> = parameter associated with the regressor Sex
+
+<i>&beta<sub>2</sub></i> = parameter associated with the regressor Diet
+
+The parameters are the quantities that will be estimated during the modeling process. Their true values are unknown and unknowable, except in simulation experiments.
+
+The relationship (or parameter) between BW.10 and Sex and Diet is the same regardless of which sample is evaluated.
+
+<i>sex<sub>i</sub></i> = a regressor that varies according to the ith sample’s sex
+
+<i>diet<sub>i</sub></i> = a regressor that varies according to the ith sample’s diet
+
+The predictor (or regressor) variables are observed along with the dependent (or response) variable, BW.10.
+
+<i>&epsilon;<sub>i</sub></i></i> = error (or residual) associated with observation i
+
+Like the parameters (or regression coefficients) in the mathematical function, the random errors are unknown. The error (or residual) is simply the difference between what is seen in the data set versus what is predicted by the mathematical function.
+
+
+Include R example of using aov() to setup an analysis of variance to predict BW.10 using both Sex and Diet factors.  May wish to mention the use of “lme” when you need to account for both fixed and random factors, such as when a random term is required for accounting for technical replicates (or other factors).
+
+
+Residual vs. Fitted Plots
+
+A model can be assessed using the residual vs. fitted (or predicted) values plot.  Below is an example of a good (top) and bad (bottom) residual vs. fitted values plot.  Trends (such as a “V” shape) are to be avoided because they possibly indicate nonlinear data.
+
+Include the plot for the BW.10 data.
+
+Find high-quality image of an example of a bad plot.
+
+
+A residual by predicted plot is commonly used to diagnose nonlinearity or nonconstant error variance. Additionally, it is also used to find outliers (data points that greatly deviate from all other points).
+
+
+Outliers
+
+If outliers are believed to be present in the data, data transformation may be considered.  Alternatively, if outlier values are believed to be the result of real error (e.g. calculation error, data entry, etc.) then they may be removed from the dataset.  Excluding values must only be done for legitimate reasons, or else you may affect the Type 1 (false positive) error rate.
+
+Include plot of distribution of data (include R box plot code).  Highlight any outliers.  Go over how to read a box plot.  Show example of outliers if none are present in data.
+
+
+The residuals
+
+Residuals are estimates of experimental error obtained by subtracting the observed responses from the predicted responses (or actual data from data set minus what is predicted by the model).  The predicted response is calculated from the chosen model, after all the unknown model parameters have been estimated from the experimental data.  Examining residuals is a key part of all statistical modeling.  Carefully looking at residuals can tell us whether our assumptions are reasonable and our choice of model is appropriate.
+
+Residuals are elements of variation unexplained by the fitted model.  Residuals should be (roughly) normal and (approximately) independently distributed with a mean of zero and some constant variance.  If error is not normal or independently distributed this would indicate that a different (nonlinear) model may be more suitable to analyze the data or that other significant factors need to be accounted for.  For example, if predicting BW.10 we only used a model with Sex, we may obtain poor residual plots because we are failing to account for a crucial factor, such as, Diet.  Show example of residual plots only using Sex (and provide the R code).
+
+2.2.1 Normal Probability Plot
+
+Residual normality can be evaluated via a QQ (quantile-quantile plot).  Provide an example of a QQ plot and R code.

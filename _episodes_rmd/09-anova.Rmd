@@ -13,9 +13,6 @@ keypoints:
 - "When designing an experiment, use biological replicates."
 - "Choose a single representative value (the mean, median, or mode) for technical replicates."
 - "When performing a linear regression or ANOVA, ensure that data meet the assumptions for this chosen method."
-- "Sue - check Nature POS or stats for biologics for ref."
-- "Also create graphic for model w/diet.https://rpubs.com/smcclatchy/linear-models-1"
-
 source: Rmd
 ---
 
@@ -67,6 +64,7 @@ For our analysis of BW.10 data, the following assumptions should be met:
 In the following example, we model body weight at 10 weeks as a function of diet.
 
 ![](../fig/linear-model.png)
+
 
 The above assumption can be verified using two graphs:
 

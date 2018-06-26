@@ -8,11 +8,16 @@ questions:
 - "?"
 - "?"
 objectives:
-- ""
-- ""
+- "Understand the difference between technical and biological replicates."
+- "Understand the assumptions behind linear models and ANOVA."
+- "Perform ANOVA and interpret results."
 keypoints:
-- "."
-- "."
+- "When designing an experiment, use biological replicates."
+- "Choose a single representative value (the mean, median, or mode) for technical replicates."
+- "When performing a linear regression or ANOVA, ensure that data meet the assumptions for this chosen method."
+- "Sue - check Nature POS or stats for biologics for ref."
+- "Also create graphic for model w/diet.https://rpubs.com/smcclatchy/linear-models-1"
+
 source: Rmd
 ---
 
@@ -27,11 +32,28 @@ Although this data represents a repeated measures experiment, it can also be ana
 
 ## Technical versus Biological Replicates
 
-Technical replicates are measurements taken on the same sample.  Biological replicates are measurements taken on different samples (one per sample).  Technical replicates do not convey biological variation in the data, as the difference between technical replicates in a sample measure “technical” variation, such as, instrument settings, technician skill, and environmental effects.  Biological replicates differ from technical in that differences seen between samples tends to be mostly biological.  If, for example, different technicians worked on measuring the biological samples, it is possible that a technician effect can be accounted for in the model via evaluating a technician batch effect.
+Technical replicates are measurements taken on the same sample.  Biological replicates are measurements taken on different samples (one per sample).  Technical replicates do not convey biological variation in the data, as the difference between technical replicates in a sample measure “technical” variation, such as, instrument settings, technician skill, and environmental effects.  Biological replicates differ from technical in that differences seen between samples tends to be mostly biological.  If, for example, different technicians worked on measuring the biological samples, it is possible that a technician effect can be accounted for in the model via evaluating a technician batch effect. The key to understanding replicates is to identify the source of the variation that you are attempting to measure. Are you attempting to quantify the accuracy of the measuring tool or procedure from one measurement to the next? If so, then this is a technical replicate. Are you attempting to quantify the difference between one mouse and another? If so, this is a biological replicate.
+
+As an example, if I were to weigh myself on a bathroom scale, record the measurement, then repeatedly weigh myself and record the measurement each time, the measurements might differ from one instance to the next. I could determine the variation of the bathroom scale by averaging all technical replicates and finding the difference of each measurement from this average. Manufacturing of measurement instruments like bathroom scales is never perfect, so there will be technical variation in measurements. In contrast, if I were to measure my own weight and a friend did the same, my weight and my friend's weight are independent of one another. This would be an example of a biological replicate. 
+
+![](../fig/technical-replicates.png)
+![](../fig/biological-replicates.png)
+
+
+> ## Challenge 1
+> You are attempting to get different red blood   cell counts from a mouse, and you have enough blood   to measure 3 times through the machine. How many   replicates would this be, and of what type?  
+a. 3 biological replicates  
+b. 3 technical replicates  
+c. 1 biological replicate  
+d. 1 technical replicate  
+e. b and c
+>
+> > ## Solution to Challenge 1
+> > e. One mouse means that n=1, thus 1 biological replicate. Three runs through the machine means 3 technical replicates. This would be a good way to measure variation in the instrument, but not to infer anything about mice. An n of 1 does not lead to generalizable findings. 
+> {: .solution}
+{: .challenge}
 
 When working with technical replicates, the model should reflect the presence of the technical replicates, because each replicate contributes to the overall error in the model.  Technical replicates are not independent biological replicates; thus, if technical replicates are treated as biological replicates it leads to inflation of degrees of freedom and deflation of standard error.  The adjustment of the fundamental statistics used in regression analysis will lead to inaccurate analysis results.  To account for this type of error, the subject (or sample number/ID) can be used as a random model term, or, alternatively, the technical replicates can be collapsed (averaged).  If you treat the biological subject as a random effect, then the mixed model ANOVA tests for all treatments and other effects are identical to what you get if you average the technical replicates.
-
-Possibly include an example of an experiment with technical replicates and how one can account for them in a model or average the technical replicates down to a single representative value.
 
 ## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
 To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
@@ -40,6 +62,10 @@ For our analysis of BW.10 data, the following assumptions should be met:
 	The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).
 	The residuals have a normal distribution.
 	The residuals have equal variance (homoscadastic).
+
+In the following example, we model body weight at 10 weeks as a function of diet.
+
+![](../fig/biological-replicates.png)
 
 The above assumption can be verified using two graphs:
 
@@ -52,7 +78,6 @@ Evaluating the assumptions of the statistical test requires that a model be crea
 
 The first step in analyzing data is to create an appropriate model.  Given our data set, we would like to determine if the dependent variable of body weight (BW.10) is influenced by the independent variables sex and diet.  The model for this analysis is:
 
-"BW.10i = β0 + β1(Sexi) + β2(Dieti)  + εi " 
 ![](../fig/bw-sex-diet-eqn.png)
 
 where,

@@ -51,6 +51,8 @@ Chalmers, Iain et al. 2009. [Avoidable waste in the production and reporting of 
 
 Bollen, K, Cacioppo, JT, Kaplan, R, Krosnick, J, Olds, JL. 2015. [Social, Behavioral, and Economic Sciences Perspectives on Robust and Reliable Science](https://www.nsf.gov/sbe/AC_Materials/SBE_Robust_and_Reliable_Research_Report.pdf). Arlington, VA: National Science Foundation.
 
+
+
 ### Experimental design
 Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd
 
@@ -71,7 +73,9 @@ Using Laboratory Animals](http://www.3rs-reduction.co.uk/assets/applets/Festing_
 
 [Nature Practical Guides](https://www.nature.com/collections/qghhqm/content/practical-guides)
 
-[Nature Points of Significance](https://www.nature.com/collections/qghhqm/pointsofsignificance)
+Blainey P, Krzywinski M, Altman N. [Points of significance: replication.](https://www.nature.com/articles/nmeth.3091) Nat Methods. 2014 Sep;11(9):879-80.
+
+Krzywinski M, Altman N. [Points of significance: Analysis of variance and blocking.](https://www.nature.com/articles/nmeth.3005) Nat Methods. 2014 Jul;11(7):699-700.
 
 
 

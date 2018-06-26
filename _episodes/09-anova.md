@@ -58,14 +58,14 @@ When working with technical replicates, the model should reflect the presence of
 ## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
 To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
 
-For our analysis of BW.10 data, the following assumptions should be met:
-	The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).
-	The residuals have a normal distribution.
-	The residuals have equal variance (homoscadastic).
+For our analysis of BW.10 data, the following assumptions should be met:  
+1. The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).  
+1. The residuals have a normal distribution.  
+1. The residuals have equal variance (homoscadastic).  
 
 In the following example, we model body weight at 10 weeks as a function of diet.
 
-![](../fig/biological-replicates.png)
+![](../fig/linear-model.png)
 
 The above assumption can be verified using two graphs:
 

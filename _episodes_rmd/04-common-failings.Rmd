@@ -3,7 +3,7 @@ title: Common failings
 teaching: 0
 exercises: 0
 questions:
-- "?"
+- "What are some common features of poor experimental design?"
 - "?"
 objectives:
 - ""

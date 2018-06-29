@@ -5,8 +5,8 @@ title: Why we need better design
 teaching: 0
 exercises: 0
 questions:
-- "?"
-- "?"
+- "Why does good experimental design matter?"
+- "What are some of the consequences of poor experimental design?"
 objectives:
 - ""
 - ""

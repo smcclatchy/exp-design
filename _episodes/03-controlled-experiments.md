@@ -5,8 +5,8 @@ title: Controlled experiments
 teaching: 0
 exercises: 0
 questions:
-- "?"
-- "?"
+- "What are the features of different kinds of experiments?"
+- "What are experimental units?"
 objectives:
 - ""
 - ""
@@ -18,8 +18,13 @@ source: Rmd
 
 
  
- ##
- ##
- ##
- ##
- ##
+## Kinds of experiments
+ 
+### Pilot
+### Exploratory
+ hypothesis generation 
+
+### Confirmatory
+ hypothesis testing
+ 
+## Experimental units

@@ -18,3 +18,12 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("04-")
 ```
+
+### Selective publication of positive results
+### Incorrect randomization
+### Failure to blind wherever possible
+### Psuedo-replication and incorrect identification of the animal used
+### Failure in quality control of experimental materials
+### Inadequate external validity
+### Inadequate description of methods (e.g., strain nomenclature)
+### Incorrect statistical analysis (e.g., no analysis; multiple testing without adjustment; wrong statistical model; incorrect treatment of outliers; cherry-picking the data).

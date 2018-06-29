@@ -77,7 +77,7 @@ Blainey P, Krzywinski M, Altman N. [Points of significance: replication.](https:
 
 Krzywinski M, Altman N. [Points of significance: Analysis of variance and blocking.](https://www.nature.com/articles/nmeth.3005) Nat Methods. 2014 Jul;11(7):699-700.
 
-
+Altman N, Krzywinski M. [Simple linear regression.](https://www.nature.com/articles/nmeth.3627) Nat Methods. 2015 Nov;12(11):999-1000.
 
 
 

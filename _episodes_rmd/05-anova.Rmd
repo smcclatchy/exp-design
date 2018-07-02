@@ -18,6 +18,15 @@ source("../bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
 
+## Linear Regression
+Linear regression describes how one variable changes dependent on another.
+We can use linear regression to predict the mean value of a dependent, or response variable according to the value of an independent variable, or predictor. In the following example we'll explore how body weight changes depending on diet composition. 
+
+## Data
+
+Body weight data of male (M) and female (F) mice fed a high fat (hf) and control (chow) diet measured repeatedly over 23 (BW.3 – BW.30) time points.  Many mice do not have measurements for all body weight as survival time varies across sample.  Data set includes additional information, such as litter number and coat color.
+
+Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only a single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of BW.10 data.
 
 ## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
 To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
@@ -37,11 +46,6 @@ The above assumption can be verified using two graphs:
 	Residual vs. Fitted (or predicted) values plot (a scatterplot of the residuals (on y-axis) vs. the fitted values)
 	Normal plot of residuals (a plot of residual values to identify trends).
 
-## Data
-
-Body weight data of male (M) and female (F) mice fed a high fat (hf) and control (chow) diet measured repeatedly over 23 (BW.3 – BW.30) time points.  Many mice do not have measurements for all body weight as survival time varies across sample.  Data set includes additional information, such as litter number and coat color.
-
-Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only as single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of BW.10 data.
 
 ## The Model
 
@@ -118,3 +122,10 @@ Residuals are elements of variation unexplained by the fitted model.  Residuals 
 ## 2.2.1 Normal Probability Plot
 
 Residual normality can be evaluated via a QQ (quantile-quantile plot).  Provide an example of a QQ plot and R code.
+
+## Failures
+fail to log transform data - produce bar plots that start at zero and  with error bars successively larger error bars, statistical significance shown - see Science p.1091 8 june 2018, also p. 1128
+ttest or anova assumes equal variances, assuming same here
+makes data normal, stabilizes variance
+
+another example - throwing out outliers

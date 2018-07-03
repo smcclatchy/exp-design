@@ -28,10 +28,16 @@ Body weight data of male (M) and female (F) mice fed a high fat (hf) and control
 
 Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only a single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of BW.10 data.
 
+```{r load_data}
+pheno <- read.csv(file = "bodyWeights.csv", stringsAsFactors = FALSE)
+names(pheno)
+head(pheno)
+```
+
 ## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
 To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
 
-For our analysis of BW.10 data, the following assumptions should be met:  
+For our analysis of body weight at 10 weeks and diet, the following assumptions should be met:  
 1. The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).  
 1. The residuals have a normal distribution.  
 1. The residuals have equal variance (homoscadastic).  
@@ -40,6 +46,31 @@ In the following example, we model body weight at 10 weeks as a function of diet
 
 ![](../fig/linear-model.png)
 
+The residuals (or errors) are the distance of each data point from the line describing the linear model, as shown above. If we look at the distribution of the residuals, they should be normally distributed.
+
+![](../fig/residual-histogram.png)
+
+Let's create the model and explore the residuals and fitted values.
+
+```{r linear_model}
+# Model body weight at 10 weeks as a function of diet
+model <- lm(BW.10 ~ Diet, data = pheno)
+summary(model)
+# Create a histogram of the residuals
+hist(model$residuals, breaks = 20)
+# Look at the first few values of the residuals
+head(model$residuals)
+# Look at the first few values fitted by the model
+head(model$fitted.values)
+```
+
+Note that the first several fitted values are the same. These are the predicted mean body weights for a high-fat  diet. What are the predicted values for a standard chow diet?
+
+```{r hf_fitted_values}
+table(model$fitted.values)
+```
+
+The difference between predicted values for standard chow vs. high-fat diet is approximately 2.6, which is the slope of the line describing the linear model. 
 
 The above assumption can be verified using two graphs:
 

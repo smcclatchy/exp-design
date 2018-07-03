@@ -23,6 +23,6 @@ segments(x0=0.3, y0=28.3, x1=0.8, y1=28.3,
          col=cbPalette[1], lty="longdash", lwd = 0.8)
 points(x=1, y=41, col=cbPalette[2])
 text(x=1.2, y=35, label="error or\nresidual") 
-segments(x0=1, y0=28.3, y1=41, 
+segments(x0=1, y0=28.4, y1=41, 
          col=cbPalette[2], lty="longdash", lwd = 0.8)
 dev.off()

@@ -27,10 +27,64 @@ Body weight data of male (M) and female (F) mice fed a high fat (hf) and control
 
 Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only a single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of BW.10 data.
 
+
+~~~
+pheno <- read.csv(file = "bodyWeights.csv", stringsAsFactors = FALSE)
+names(pheno)
+~~~
+{: .language-r}
+
+
+
+~~~
+ [1] "Sample"     "Sex"        "Gen"        "Litter"     "Diet"      
+ [6] "Coat.Color" "BW.3"       "BW.4"       "BW.5"       "BW.6"      
+[11] "BW.7"       "BW.8"       "BW.9"       "BW.10"      "BW.11"     
+[16] "BW.12"      "BW.13"      "BW.14"      "BW.15"      "BW.16"     
+[21] "BW.17"      "BW.18"      "BW.19"      "BW.20"      "BW.21"     
+[26] "BW.22"      "BW.23"      "BW.24"      "BW.25"      "BW.26"     
+[31] "BW.27"      "BW.28"      "BW.29"      "BW.30"     
+~~~
+{: .output}
+
+
+
+~~~
+head(pheno)
+~~~
+{: .language-r}
+
+
+
+~~~
+  Sample Sex Gen Litter Diet Coat.Color BW.3 BW.4  BW.5  BW.6  BW.7  BW.8
+1    F01   F   4      2   hf     agouti   NA   NA 17.58 22.31 25.12 26.32
+2    F02   F   4      2   hf      black   NA   NA 19.70 24.74 26.08 28.36
+3    F03   F   4      2   hf      white   NA   NA 18.53 20.82 20.07 20.61
+4    F04   F   4      2   hf     agouti   NA   NA 14.02 17.39 18.47 19.07
+5    F05   F   4      2   hf     agouti   NA   NA 18.54 23.54 22.77 25.22
+6    F06   F   4      2   hf     agouti   NA   NA 17.59 20.06 20.09 21.00
+   BW.9 BW.10 BW.11 BW.12 BW.13 BW.14 BW.15 BW.16 BW.17 BW.18 BW.19 BW.20
+1 29.38 29.45 30.22 31.94 30.61 33.87 35.17 36.45 34.63 36.42 36.78 35.46
+2 30.09 30.76 30.47 32.48 32.37 33.53 33.58 35.69 35.62 37.23 37.65 35.76
+3 20.96 22.01 21.48 22.82 22.33 22.78 21.41 23.60 23.12 23.67 24.37 24.12
+4 18.97 18.85 19.72 19.92 19.29 19.38 17.96 20.27 19.80 21.24 21.51 21.09
+5 27.54 27.52 29.24 32.22 33.76 33.31 33.07 35.25 35.06 37.46 39.35 39.38
+6 23.31 24.65 25.14 27.50 28.55 31.02 30.59 33.78 34.03 37.45 37.57 35.30
+  BW.21 BW.22 BW.23 BW.24 BW.25 BW.26 BW.27 BW.28 BW.29 BW.30
+1 36.31    NA    NA    NA    NA    NA    NA    NA    NA    NA
+2 35.63    NA    NA    NA    NA    NA    NA    NA    NA    NA
+3 24.00    NA    NA    NA    NA    NA    NA    NA    NA    NA
+4 20.55    NA    NA    NA    NA    NA    NA    NA    NA    NA
+5 39.02    NA    NA    NA    NA    NA    NA    NA    NA    NA
+6 35.76    NA    NA    NA    NA    NA    NA    NA    NA    NA
+~~~
+{: .output}
+
 ## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
 To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
 
-For our analysis of BW.10 data, the following assumptions should be met:  
+For our analysis of body weight at 10 weeks and diet, the following assumptions should be met:  
 1. The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).  
 1. The residuals have a normal distribution.  
 1. The residuals have equal variance (homoscadastic).  
@@ -39,6 +93,103 @@ In the following example, we model body weight at 10 weeks as a function of diet
 
 ![](../fig/linear-model.png)
 
+The residuals (or errors) are the distance of each data point from the line describing the linear model, as shown above. If we look at the distribution of the residuals, they should be normally distributed.
+
+![](../fig/residual-histogram.png)
+
+Let's create the model and explore the residuals and fitted values.
+
+
+~~~
+# Model body weight at 10 weeks as a function of diet
+model <- lm(BW.10 ~ Diet, data = pheno)
+summary(model)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+Call:
+lm(formula = BW.10 ~ Diet, data = pheno)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.0701  -4.2509  -0.4101   3.7741  20.4399 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  25.8909     0.2649  97.739  < 2e-16 ***
+Diethf        2.6392     0.3875   6.811 1.84e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.613 on 841 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.05228,	Adjusted R-squared:  0.05116 
+F-statistic:  46.4 on 1 and 841 DF,  p-value: 1.84e-11
+~~~
+{: .output}
+
+
+
+~~~
+# Create a histogram of the residuals
+hist(model$residuals, breaks = 20)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-05-linear_model-1.png" title="plot of chunk linear_model" alt="plot of chunk linear_model" style="display: block; margin: auto;" />
+
+~~~
+# Look at the first few values of the residuals
+head(model$residuals)
+~~~
+{: .language-r}
+
+
+
+~~~
+         1          2          3          4          5          6 
+ 0.9198985  2.2298985 -6.5201015 -9.6801015 -1.0101015 -3.8801015 
+~~~
+{: .output}
+
+
+
+~~~
+# Look at the first few values fitted by the model
+head(model$fitted.values)
+~~~
+{: .language-r}
+
+
+
+~~~
+      1       2       3       4       5       6 
+28.5301 28.5301 28.5301 28.5301 28.5301 28.5301 
+~~~
+{: .output}
+
+Note that the first several fitted values are the same. These are the predicted mean body weights for a high-fat  diet. What are the predicted values for a standard chow diet?
+
+
+~~~
+table(model$fitted.values)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+25.8908530066815 28.5301015228422 28.5301015228424 28.5301015228426 
+             449                1                1              392 
+~~~
+{: .output}
+
+The difference between predicted values for standard chow vs. high-fat diet is approximately 2.6, which is the slope of the line describing the linear model. 
 
 The above assumption can be verified using two graphs:
 

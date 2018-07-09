@@ -4,6 +4,8 @@
 # Define color-blind friendly palette.
 cbPalette <- c('#d73027','#fc8d59','#fee090',
                '#e0f3f8','#91bfdb','#4575b4')
+pheno <- read.csv(file = "../data/bodyWeights.csv", 
+                  stringsAsFactors = FALSE)
 model <- lm(BW.10 ~ Diet, data = pheno)
 resid <- model$residuals
 png(filename = "residual-histogram.png", 

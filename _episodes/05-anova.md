@@ -200,8 +200,6 @@ plot(model, which = 1)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-resid_vs_fitted-1.png" title="plot of chunk resid_vs_fitted" alt="plot of chunk resid_vs_fitted" style="display: block; margin: auto;" />
-
 Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero.  
 
 We can also use a quantile vs. quantile (Q-Q) plot to compare the residuals to a normal distribution. 
@@ -212,8 +210,6 @@ qqnorm(model$residuals)
 qqline(model$residuals)
 ~~~
 {: .language-r}
-
-<img src="../fig/rmd-05-qq_plot-1.png" title="plot of chunk qq_plot" alt="plot of chunk qq_plot" style="display: block; margin: auto;" />
 
 The Q-Q plot 
 

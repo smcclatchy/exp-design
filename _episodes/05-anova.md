@@ -88,7 +88,7 @@ For our analysis of body weight at 10 weeks and diet, the following assumptions 
 
 1. The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).  
 1. The residuals have a normal distribution.  
-1. The residuals have equal variance (homoscadastic).  
+1. The residuals have equal variance (homoscedastic).  
 
 In the following example, we model body weight at 10 weeks as a function of diet.
 
@@ -182,7 +182,7 @@ table(model$fitted.values)
 ~~~
 {: .output}
 
-The difference between predicted values for standard chow vs. high-fat diet is approximately -57, which is the slope of the line describing the linear model. 
+The difference between predicted values for standard chow vs. high-fat diet is approximately 2.6, which is the slope of the line describing the linear model. 
 
 Now create a histogram of the residuals to check for a normal distribution.
 
@@ -192,16 +192,6 @@ hist(model$residuals, breaks = 20)
 ~~~
 {: .language-r}
 
-You can also plot the residuals against the fitted values in the model.
-
-
-~~~
-plot(model, which = 1)
-~~~
-{: .language-r}
-![](../fig/resid-vs-fitted.png)
-
-Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates 2 data points that stand out as outliers, with index numbers supplied for each.   
 
 We can also use a quantile vs. quantile (Q-Q) plot to compare the residuals to a normal distribution. 
 
@@ -212,7 +202,93 @@ plot(model, which = 2)
 {: .language-r}
 ![](../fig/qq-plot.png)
 
-The Q-Q plot indicates the 2 data points that are outliers along with their index numbers. Otherwise, most of the points lie along the diagonal line, indicating that the residuals are normally distributed. 
+The Q-Q plot indicates 3 data points that are outliers along with their index numbers. Otherwise, most of the points lie along the diagonal line, indicating that the residuals are normally distributed. 
+
+You can also plot the residuals against the fitted values in the model.
+
+
+~~~
+plot(model, which = 1)
+~~~
+{: .language-r}
+![](../fig/resid-vs-fitted.png)
+
+Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates the 3 data points that stand out as outliers, with index numbers supplied for each.   
+
+## A Bad Model
+Now let's look at one that is unmistakably bad. This is a linear model of hemoglobin concentration distribution width (HDW) and bone area from a multi-system survey of mouse physiology in 8 inbred founder strains and 54 F1 hybrids of the Collaborative Cross. The study is described in [Lenarcic et al, 2012](http://www.genetics.org/content/190/2/413.full). For more information about this data set, see the [CGDpheno3 data](http://phenome.jax.org/db/q?rtn=projects/details&id=439) at Mouse Phenome Database. 
+
+Load the data from this URL. Mind the double quotes.
+
+~~~
+cc_data <- read.csv(file = "http://phenomedoc.jax.org/MPD_projdatasets/CGDpheno3.csv")
+
+# Create the model of hemoglobin concentration distribution width (HDW) and bone area.
+bad_model <- lm(formula = HDW ~ bone_area, data = cc_data)
+
+# Plot the regression line in a scatterplot.
+plot(x = cc_data$bone_area, y = cc_data$HDW)
+abline(bad_model)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-05-bad_model-1.png" title="plot of chunk bad_model" alt="plot of chunk bad_model" style="display: block; margin: auto;" />
+
+~~~
+summary(bad_model)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+Call:
+lm(formula = HDW ~ bone_area, data = cc_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.5296 -0.2630 -0.1530  0.1712  1.6964 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 1.902727   0.085920  22.145   <2e-16 ***
+bone_area   0.005231   0.016195   0.323    0.747    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.395 on 576 degrees of freedom
+  (64 observations deleted due to missingness)
+Multiple R-squared:  0.0001811,	Adjusted R-squared:  -0.001555 
+F-statistic: 0.1043 on 1 and 576 DF,  p-value: 0.7468
+~~~
+{: .output}
+
+Note the values for the F-statistic and the R-squared. Also notice that beta, the slope, is near zero, indicating no relationship between the two variables.
+
+
+~~~
+hist(x = bad_model$residuals, breaks=40)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-05-bad_model_not_normal-1.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
+
+~~~
+plot(bad_model, which=2)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-05-bad_model_not_normal-2.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
+
+~~~
+plot(bad_model, which=1)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-05-bad_model_not_normal-3.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
+
+The histogram doesn't show a normal distribution, and mean residual value doesn't appear to be near zero. In the Q-Q plot most of the data points are off-diagonal. The plot of residuals vs. fitted values appears parabolic, indicating poor model fit.
 
 ## The Model
 

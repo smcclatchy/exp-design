@@ -200,18 +200,19 @@ plot(model, which = 1)
 ~~~
 {: .language-r}
 ![](../fig/resid-vs-fitted.png)
-Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero.  
+
+Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates 2 data points that stand out as outliers, with index numbers supplied for each.   
 
 We can also use a quantile vs. quantile (Q-Q) plot to compare the residuals to a normal distribution. 
 
 
 ~~~
-qqnorm(model$residuals)
-qqline(model$residuals)
+plot(model, which = 2)
 ~~~
 {: .language-r}
 ![](../fig/qq-plot.png)
-The Q-Q plot 
+
+The Q-Q plot indicates the 2 data points that are outliers along with their index numbers. Otherwise, most of the points lie along the diagonal line, indicating that the residuals are normally distributed. 
 
 ## The Model
 

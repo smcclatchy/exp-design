@@ -103,7 +103,7 @@ Let's create the model and explore the residuals and fitted values.
 
 ~~~
 # Model body weight at 10 weeks as a function of diet
-model <- lm(BW.10 ~ Diet, data = pheno)
+model <- lm(formula = BW.10 ~ Diet, data = pheno)
 summary(model)
 ~~~
 {: .language-r}
@@ -184,6 +184,12 @@ table(model$fitted.values)
 
 The difference between predicted values for standard chow vs. high-fat diet is approximately 2.6, which is the slope of the line describing the linear model. 
 
+## The residuals
+
+Residuals are estimates of experimental error obtained by subtracting the observed responses from the predicted responses (or actual data from data set minus what is predicted by the model).  The predicted response is calculated from the chosen model, after all the unknown model parameters have been estimated from the experimental data.  Examining residuals is a key part of all statistical modeling.  Carefully looking at residuals can tell us whether our assumptions are reasonable and our choice of model is appropriate.
+
+Residuals are elements of variation unexplained by the fitted model.  Residuals should be (roughly) normal and (approximately) independently distributed with a mean of zero and some constant variance.  If error is not normal or independently distributed this would indicate that a different (nonlinear) model may be more suitable to analyze the data or that other significant factors need to be accounted for.  For example, if predicting BW.10 we only used a model with Sex, we may obtain poor residual plots because we are failing to account for a crucial factor, such as, Diet.  Show example of residual plots only using Sex (and provide the R code).
+
 Now create a histogram of the residuals to check for a normal distribution.
 
 
@@ -200,7 +206,8 @@ We can also use a quantile vs. quantile (Q-Q) plot to compare the residuals to a
 plot(model, which = 2)
 ~~~
 {: .language-r}
-![](../fig/qq-plot.png)
+
+<img src="../fig/rmd-05-qq_plot-1.png" title="plot of chunk qq_plot" alt="plot of chunk qq_plot" style="display: block; margin: auto;" />
 
 The Q-Q plot indicates 3 data points that are outliers along with their index numbers. Otherwise, most of the points lie along the diagonal line, indicating that the residuals are normally distributed. 
 
@@ -211,28 +218,82 @@ You can also plot the residuals against the fitted values in the model.
 plot(model, which = 1)
 ~~~
 {: .language-r}
-![](../fig/resid-vs-fitted.png)
+
+<img src="../fig/rmd-05-resid_vs_fitted-1.png" title="plot of chunk resid_vs_fitted" alt="plot of chunk resid_vs_fitted" style="display: block; margin: auto;" />
 
 Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates the 3 data points that stand out as outliers, with index numbers supplied for each.   
 
 ## A Bad Model
 Now let's look at one that is unmistakably bad. This is a linear model of hemoglobin concentration distribution width (HDW) and bone area from a multi-system survey of mouse physiology in 8 inbred founder strains and 54 F1 hybrids of the Collaborative Cross. The study is described in [Lenarcic et al, 2012](http://www.genetics.org/content/190/2/413.full). For more information about this data set, see the [CGDpheno3 data](http://phenome.jax.org/db/q?rtn=projects/details&id=439) at Mouse Phenome Database. 
 
-Load the data from this URL. Mind the double quotes.
+Load the data.
+
 
 ~~~
-cc_data <- read.csv(file = "http://phenomedoc.jax.org/MPD_projdatasets/CGDpheno3.csv")
+cc_data <- read.csv(file = "CGDpheno3.csv", stringsAsFactors = FALSE)
+~~~
+{: .language-r}
 
+
+
+~~~
+Warning in file(file, "rt"): cannot open file 'CGDpheno3.csv': No such file
+or directory
+~~~
+{: .error}
+
+
+
+~~~
+Error in file(file, "rt"): cannot open the connection
+~~~
+{: .error}
+
+
+
+~~~
 # Create the model of hemoglobin concentration distribution width (HDW) and bone area.
 bad_model <- lm(formula = HDW ~ bone_area, data = cc_data)
+~~~
+{: .language-r}
 
+
+
+~~~
+Error in is.data.frame(data): object 'cc_data' not found
+~~~
+{: .error}
+
+
+
+~~~
 # Plot the regression line in a scatterplot.
 plot(x = cc_data$bone_area, y = cc_data$HDW)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in plot(x = cc_data$bone_area, y = cc_data$HDW): object 'cc_data' not found
+~~~
+{: .error}
+
+
+
+~~~
 abline(bad_model)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-bad_model-1.png" title="plot of chunk bad_model" alt="plot of chunk bad_model" style="display: block; margin: auto;" />
+
+
+~~~
+Error in abline(bad_model): object 'bad_model' not found
+~~~
+{: .error}
+
+
 
 ~~~
 summary(bad_model)
@@ -242,112 +303,54 @@ summary(bad_model)
 
 
 ~~~
-
-Call:
-lm(formula = HDW ~ bone_area, data = cc_data)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--0.5296 -0.2630 -0.1530  0.1712  1.6964 
-
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 1.902727   0.085920  22.145   <2e-16 ***
-bone_area   0.005231   0.016195   0.323    0.747    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.395 on 576 degrees of freedom
-  (64 observations deleted due to missingness)
-Multiple R-squared:  0.0001811,	Adjusted R-squared:  -0.001555 
-F-statistic: 0.1043 on 1 and 576 DF,  p-value: 0.7468
+Error in summary(bad_model): object 'bad_model' not found
 ~~~
-{: .output}
+{: .error}
 
 Note the values for the F-statistic and the R-squared. Also notice that beta, the slope, is near zero, indicating no relationship between the two variables.
 
 
 ~~~
-hist(x = bad_model$residuals, breaks=40)
+hist(x = bad_model$residuals, breaks=20)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-bad_model_not_normal-1.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
+
+
+~~~
+Error in hist(x = bad_model$residuals, breaks = 20): object 'bad_model' not found
+~~~
+{: .error}
+
+
 
 ~~~
 plot(bad_model, which=2)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-bad_model_not_normal-2.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
+
+
+~~~
+Error in plot(bad_model, which = 2): object 'bad_model' not found
+~~~
+{: .error}
+
+
 
 ~~~
 plot(bad_model, which=1)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-bad_model_not_normal-3.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
+
+
+~~~
+Error in plot(bad_model, which = 1): object 'bad_model' not found
+~~~
+{: .error}
 
 The histogram doesn't show a normal distribution, and mean residual value doesn't appear to be near zero. In the Q-Q plot most of the data points are off-diagonal. The plot of residuals vs. fitted values appears parabolic, indicating poor model fit.
-
-## The Model
-
-Evaluating the assumptions of the statistical test requires that a model be created.  A statistical model is a mathematical representation of the factors that can be used to predict a certain value.  For example, in our effort to predict BW.10 data, we are using the sex and diet of mice which are represented in the form of a statistical model.
-
-The first step in analyzing data is to create an appropriate model.  Given our data set, we would like to determine if the dependent variable of body weight (BW.10) is influenced by the independent variables sex and diet.  The model for this analysis is:
-
-![](../fig/bw-sex-diet-eqn.png)
-
-where,
-<i>y</i> = <i>&alpha;</i> + <i>&beta;X</i> + <i>&epsilon;</i>
-
-<i>y<sub>i</sub></i> = the dependent (or response variable), Body Weight (BW.10), associated with sample <i>i</i>.
-
-The subscript <i>i</i> refers to the individual sample
-
-In our data set, the <i>i</i> subscript refers to the ID in the Sample column of the data set.
-
-The response variable, <i>BW.10</i>, is a quantity that varies in a way that we hope to be able to summarize and exploit via the modeling process. Generally, it is known that the variation of the response variable is systematically related to the values of one or more other variables (such as, Sex and Diet) before the modeling process is begun, although testing the existence and nature of this dependence is part of the modeling process itself.
-
-The mathematical function consists of two main parts. These parts are known as the predictor variables (or regressors), e.g., <i>sex<sub>i</sub></i>,… , and the parameters (or regression coefficients), e.g., <i>&beta;<sub>1</sub></i>,….
-
-The below parameters (or regression coefficients) are constants that do not change according to sample, sex, or diet.
-
-<i>&beta;<sub>0</sub></i> = mean intercept (or constant); for scientific studies the intercept is often not of interest and is only used to aid in calculation of predicted values
-
-<i>&beta;<sub>1</sub></i> = parameter associated with the regressor Sex
-
-<i>&beta;<sub>2</sub></i> = parameter associated with the regressor Diet
-
-The parameters are the quantities that will be estimated during the modeling process. Their true values are unknown and unknowable, except in simulation experiments.
-
-The relationship (or parameter) between BW.10 and Sex and Diet is the same regardless of which sample is evaluated.
-
-<i>sex<sub>i</sub></i> = a regressor that varies according to the ith sample’s sex
-
-<i>diet<sub>i</sub></i> = a regressor that varies according to the ith sample’s diet
-
-The predictor (or regressor) variables are observed along with the dependent (or response) variable, BW.10.
-
-<i>&epsilon;<sub>i</sub></i> = error (or residual) associated with observation i
-
-Like the parameters (or regression coefficients) in the mathematical function, the random errors are unknown. The error (or residual) is simply the difference between what is seen in the data set versus what is predicted by the mathematical function.
-
-
-Include R example of using aov() to setup an analysis of variance to predict BW.10 using both Sex and Diet factors.  May wish to mention the use of “lme” when you need to account for both fixed and random factors, such as when a random term is required for accounting for technical replicates (or other factors).
-
-
-## Residual vs. Fitted Plots
-
-A model can be assessed using the residual vs. fitted (or predicted) values plot.  Below is an example of a good (top) and bad (bottom) residual vs. fitted values plot.  Trends (such as a “V” shape) are to be avoided because they possibly indicate nonlinear data.
-
-Include the plot for the BW.10 data.
-
-Find high-quality image of an example of a bad plot.
-
-
-A residual by predicted plot is commonly used to diagnose nonlinearity or nonconstant error variance. Additionally, it is also used to find outliers (data points that greatly deviate from all other points).
-
 
 ## Outliers
 
@@ -355,20 +358,127 @@ If outliers are believed to be present in the data, data transformation may be c
 
 Include plot of distribution of data (include R box plot code).  Highlight any outliers.  Go over how to read a box plot.  Show example of outliers if none are present in data.
 
+## A Model of Body Weight, Sex, and Diet
 
-## The residuals
+Let's return to the body weight data to evaluate a model of body weight as a function of both diet and sex. Evaluating the assumptions of the statistical test requires that a model be created.  A statistical model is a mathematical representation of the factors that can be used to predict a certain value.  For example, in our effort to predict body weight at 10 weeks, we will use the sex and diet of mice which are represented in the form of a statistical model.
 
-Residuals are estimates of experimental error obtained by subtracting the observed responses from the predicted responses (or actual data from data set minus what is predicted by the model).  The predicted response is calculated from the chosen model, after all the unknown model parameters have been estimated from the experimental data.  Examining residuals is a key part of all statistical modeling.  Carefully looking at residuals can tell us whether our assumptions are reasonable and our choice of model is appropriate.
+The first step in analyzing data is to create an appropriate model.  Given our data set, we would like to determine if the dependent variable of body weight (BW.10) is influenced by the independent variables sex and diet.  The model for this analysis is:
 
-Residuals are elements of variation unexplained by the fitted model.  Residuals should be (roughly) normal and (approximately) independently distributed with a mean of zero and some constant variance.  If error is not normal or independently distributed this would indicate that a different (nonlinear) model may be more suitable to analyze the data or that other significant factors need to be accounted for.  For example, if predicting BW.10 we only used a model with Sex, we may obtain poor residual plots because we are failing to account for a crucial factor, such as, Diet.  Show example of residual plots only using Sex (and provide the R code).
+![](../fig/bw-sex-diet-eqn.png)
 
-## 2.2.1 Normal Probability Plot
+where the subscript <i>i</i> refers to the individual sample. The mathematical function consists of two main parts. These parts are known as the predictor variables (or regressors), e.g., <i>sex<sub>i</sub></i>,… , and the parameters (or regression coefficients), e.g., <i>&beta;<sub>1</sub></i>,…. Like the parameters (or regression coefficients) in the mathematical function, the random errors are unknown. The error (or residual) is simply the difference between what is seen in the data set versus what is predicted by the mathematical function.
 
-Residual normality can be evaluated via a QQ (quantile-quantile plot).  Provide an example of a QQ plot and R code.
+&nbsp;&nbsp;&nbsp;<i>BW.10<sub>i</sub></i> = the dependent (or response variable), body weight at 10 weeks, associated with sample <i>i</i>.
 
-## Failures
-fail to log transform data - produce bar plots that start at zero and  with error bars successively larger error bars, statistical significance shown - see Science p.1091 8 june 2018, also p. 1128
-ttest or anova assumes equal variances, assuming same here
-makes data normal, stabilizes variance
+&nbsp;&nbsp;&nbsp;<i>&beta;<sub>0</sub></i> = mean intercept (or constant); for scientific studies the intercept is often not of interest and is only used to aid in calculation of predicted values. In our first linear model of body weight and diet, <i>&beta;<sub>0</sub></i> (the y-intercept) equaled 25.9. It's not meaningful, however, because it predicts that a mouse on neither diet has a body weight of 25.9.
 
-another example - throwing out outliers
+&nbsp;&nbsp;&nbsp;<i>&beta;<sub>1</sub></i> = parameter associated with the regressor Sex. This number is a constant like the value of 2.6 in the first linear model that we explored.
+
+&nbsp;&nbsp;&nbsp;<i>&beta;<sub>2</sub></i> = parameter associated with the regressor Diet; also a constant.
+
+&nbsp;&nbsp;&nbsp;<i>sex<sub>i</sub></i> = a regressor that varies according to the ith sample’s sex (male or female)
+
+&nbsp;&nbsp;&nbsp;<i>diet<sub>i</sub></i> = a regressor that varies according to the ith sample’s diet (standard chow or high-fat)
+
+&nbsp;&nbsp;&nbsp;<i>&epsilon;<sub>i</sub></i> = error (or residual) associated with observation i
+
+The response variable, <i>BW.10</i>, is a quantity that varies in a way that we hope to be able to summarize and exploit via the modeling process. Generally, it is known that the variation of the response variable is systematically related to the values of one or more other variables (such as, Sex and Diet) before the modeling process is begun, although testing the existence and nature of this dependence is part of the modeling process itself.
+
+
+~~~
+# Model body weight at 10 weeks as a function of sex and diet
+model2 <- lm(formula = BW.10 ~ Sex + Diet, data = pheno)
+summary(model2)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+Call:
+lm(formula = BW.10 ~ Sex + Diet, data = pheno)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-11.1563  -2.8839  -0.2099   2.4579  18.3458 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  22.2779     0.2503  88.992   <2e-16 ***
+SexM          7.2420     0.2954  24.517   <2e-16 ***
+Diethf        2.6863     0.2960   9.075   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.288 on 840 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.4476,	Adjusted R-squared:  0.4463 
+F-statistic: 340.3 on 2 and 840 DF,  p-value: < 2.2e-16
+~~~
+{: .output}
+
+
+
+~~~
+# Look at the first few values of the residuals
+head(model2$residuals)
+~~~
+{: .language-r}
+
+
+
+~~~
+         1          2          3          4          5          6 
+ 4.4857802  5.7957802 -2.9542198 -6.1142198  2.5557802 -0.3142198 
+~~~
+{: .output}
+
+
+
+~~~
+# Look at the first few values fitted by the model
+head(model2$fitted.values)
+~~~
+{: .language-r}
+
+
+
+~~~
+       1        2        3        4        5        6 
+24.96422 24.96422 24.96422 24.96422 24.96422 24.96422 
+~~~
+{: .output}
+
+
+~~~
+hist(model2$residuals, breaks = 20)
+~~~
+{: .language-r}
+
+Check for normal distribution of the residuals with a Q-Q plot. 
+
+
+~~~
+plot(model2, which = 2)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-05-qq_plot2-1.png" title="plot of chunk qq_plot2" alt="plot of chunk qq_plot2" style="display: block; margin: auto;" />
+
+
+
+Plot the residuals against the fitted values in this second model.
+
+
+~~~
+plot(model2, which = 1)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-05-resid_vs_fitted2-1.png" title="plot of chunk resid_vs_fitted2" alt="plot of chunk resid_vs_fitted2" style="display: block; margin: auto;" />
+
+Note that there are now 4 different groups - one for each combination of sex and diet.
+
+
+Include R example of using aov() to setup an analysis of variance to predict BW.10 using both Sex and Diet factors.  May wish to mention the use of “lme” when you need to account for both fixed and random factors, such as when a random term is required for accounting for technical replicates (or other factors).

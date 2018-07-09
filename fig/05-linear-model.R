@@ -1,5 +1,9 @@
 u <- runif(length(diet), -0.075, 0.075)
 cbPalette <- c('#d73027','#fc8d59','#fee090','#e0f3f8','#91bfdb','#4575b4')
+pheno <- read.csv(file = "../data/bodyWeights.csv", 
+                  stringsAsFactors = FALSE)
+bw10 <- pheno$BW.10
+diet <- pheno$Diet
 
 png(filename = "linear-model.png", width = 610, height = 600)
 boxplot(bw10~diet, xlab="Diet", ylab="Body Weight at 10 Weeks",

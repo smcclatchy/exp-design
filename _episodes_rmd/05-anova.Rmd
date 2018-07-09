@@ -69,7 +69,7 @@ Note that the first several fitted values are the same. These are the predicted 
 table(model$fitted.values)
 ```
 
-The difference between predicted values for standard chow vs. high-fat diet is approximately 2.6, which is the slope of the line describing the linear model. 
+The difference between predicted values for standard chow vs. high-fat diet is approximately `r round(table(model$fitted.values)[4] - table(model$fitted.values)[1], digits = 1)`, which is the slope of the line describing the linear model. 
 
 Now create a histogram of the residuals to check for a normal distribution.
 
@@ -79,7 +79,7 @@ hist(model$residuals, breaks = 20)
 
 You can also plot the residuals against the fitted values in the model.
 
-```{r resid_vs_fitted, eval=FALSE}
+```{r resid_vs_fitted}
 plot(model, which = 1)
 ```
 
@@ -87,7 +87,7 @@ Note that the residuals are plotted along one of two fitted values - the one for
 
 We can also use a quantile vs. quantile (Q-Q) plot to compare the residuals to a normal distribution. 
 
-```{r qq_plot, eval=FALSE}
+```{r qq_plot}
 qqnorm(model$residuals)
 qqline(model$residuals)
 ```

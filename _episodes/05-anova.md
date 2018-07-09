@@ -23,9 +23,7 @@ We can use linear regression to predict the mean value of a dependent, or respon
 
 ## Data
 
-Body weight data of male (M) and female (F) mice fed a high fat (hf) and control (chow) diet measured repeatedly over 23 (BW.3 – BW.30) time points.  Many mice do not have measurements for all body weight as survival time varies across sample.  Data set includes additional information, such as litter number and coat color.
-
-Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only a single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of BW.10 data.
+This data set contains body weights for 846 male (M) and female (F) mice fed a high fat (hf) and control (chow) diet measured repeatedly over 23  time points (BW.3 – BW.30).  Many mice do not have measurements for all body weight as survival time varies across sample.  Data set includes additional information, such as litter number and coat color. Load the data and have a quick look.
 
 
 ~~~
@@ -81,10 +79,13 @@ head(pheno)
 ~~~
 {: .output}
 
+The data are from a repeated measures design, in which the same subject is measured over time. Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only a single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of body weights at 10 weeks (BW.10).
+
 ## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
 To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
 
-For our analysis of body weight at 10 weeks and diet, the following assumptions should be met:  
+For our analysis of body weight at 10 weeks and diet, the following assumptions should be met:
+
 1. The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).  
 1. The residuals have a normal distribution.  
 1. The residuals have equal variance (homoscadastic).  
@@ -93,7 +94,7 @@ In the following example, we model body weight at 10 weeks as a function of diet
 
 ![](../fig/linear-model.png)
 
-The residuals (or errors) are the distance of each data point from the line describing the linear model, as shown above. If we look at the distribution of the residuals, they should be normally distributed.
+The residuals (or errors) are the distance of each data point from the line describing the linear model, as shown above. If we look at a histogram of the residuals, they should be normally distributed.
 
 ![](../fig/residual-histogram.png)
 
@@ -133,14 +134,6 @@ F-statistic:  46.4 on 1 and 841 DF,  p-value: 1.84e-11
 {: .output}
 
 
-
-~~~
-# Create a histogram of the residuals
-hist(model$residuals, breaks = 20)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-05-linear_model-1.png" title="plot of chunk linear_model" alt="plot of chunk linear_model" style="display: block; margin: auto;" />
 
 ~~~
 # Look at the first few values of the residuals
@@ -191,11 +184,34 @@ table(model$fitted.values)
 
 The difference between predicted values for standard chow vs. high-fat diet is approximately 2.6, which is the slope of the line describing the linear model. 
 
-The above assumption can be verified using two graphs:
+Now create a histogram of the residuals to check for a normal distribution.
 
-	Residual vs. Fitted (or predicted) values plot (a scatterplot of the residuals (on y-axis) vs. the fitted values)
-	Normal plot of residuals (a plot of residual values to identify trends).
 
+~~~
+hist(model$residuals, breaks = 20)
+~~~
+{: .language-r}
+
+You can also plot the residuals against the fitted values in the model.
+
+
+~~~
+plot(model, which = 1)
+~~~
+{: .language-r}
+
+Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero.  
+
+We can also use a quantile vs. quantile (Q-Q) plot to compare the residuals to a normal distribution. 
+
+
+~~~
+qqnorm(model$residuals)
+qqline(model$residuals)
+~~~
+{: .language-r}
+
+The Q-Q plot 
 
 ## The Model
 

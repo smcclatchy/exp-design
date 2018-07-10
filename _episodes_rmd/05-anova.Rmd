@@ -27,7 +27,7 @@ We can use linear regression to predict the mean value of a dependent, or respon
 This data set contains body weights for 846 male (M) and female (F) mice fed a high fat (hf) and control (chow) diet measured repeatedly over 23  time points (BW.3 – BW.30).  Many mice do not have measurements for all body weight as survival time varies across sample.  Data set includes additional information, such as litter number and coat color. Load the data and have a quick look.
 
 ```{r load_data}
-pheno <- read.csv(file = "bodyWeights.csv", stringsAsFactors = FALSE)
+pheno <- read.csv(file = "../data/bodyWeights.csv", stringsAsFactors = FALSE)
 names(pheno)
 head(pheno)
 ```
@@ -106,7 +106,7 @@ Now let's look at one that is unmistakably bad. This is a linear model of hemogl
 Load the data.
 
 ```{r bad_model}
-cc_data <- read.csv(file = "CGDpheno3.csv", stringsAsFactors = FALSE)
+cc_data <- read.csv(file = "../data/CGDpheno3.csv", stringsAsFactors = FALSE)
 
 # Create the model of hemoglobin concentration distribution width (HDW) and bone area.
 bad_model <- lm(formula = HDW ~ bone_area, data = cc_data)

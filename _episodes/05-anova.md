@@ -27,7 +27,7 @@ This data set contains body weights for 846 male (M) and female (F) mice fed a h
 
 
 ~~~
-pheno <- read.csv(file = "bodyWeights.csv", stringsAsFactors = FALSE)
+pheno <- read.csv(file = "../data/bodyWeights.csv", stringsAsFactors = FALSE)
 names(pheno)
 ~~~
 {: .language-r}
@@ -230,70 +230,18 @@ Load the data.
 
 
 ~~~
-cc_data <- read.csv(file = "CGDpheno3.csv", stringsAsFactors = FALSE)
-~~~
-{: .language-r}
+cc_data <- read.csv(file = "../data/CGDpheno3.csv", stringsAsFactors = FALSE)
 
-
-
-~~~
-Warning in file(file, "rt"): cannot open file 'CGDpheno3.csv': No such file
-or directory
-~~~
-{: .error}
-
-
-
-~~~
-Error in file(file, "rt"): cannot open the connection
-~~~
-{: .error}
-
-
-
-~~~
 # Create the model of hemoglobin concentration distribution width (HDW) and bone area.
 bad_model <- lm(formula = HDW ~ bone_area, data = cc_data)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in is.data.frame(data): object 'cc_data' not found
-~~~
-{: .error}
-
-
-
-~~~
 # Plot the regression line in a scatterplot.
 plot(x = cc_data$bone_area, y = cc_data$HDW)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in plot(x = cc_data$bone_area, y = cc_data$HDW): object 'cc_data' not found
-~~~
-{: .error}
-
-
-
-~~~
 abline(bad_model)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in abline(bad_model): object 'bad_model' not found
-~~~
-{: .error}
-
-
+<img src="../fig/rmd-05-bad_model-1.png" title="plot of chunk bad_model" alt="plot of chunk bad_model" style="display: block; margin: auto;" />
 
 ~~~
 summary(bad_model)
@@ -303,9 +251,27 @@ summary(bad_model)
 
 
 ~~~
-Error in summary(bad_model): object 'bad_model' not found
+
+Call:
+lm(formula = HDW ~ bone_area, data = cc_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.5296 -0.2630 -0.1530  0.1712  1.6964 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 1.902727   0.085920  22.145   <2e-16 ***
+bone_area   0.005231   0.016195   0.323    0.747    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.395 on 576 degrees of freedom
+  (64 observations deleted due to missingness)
+Multiple R-squared:  0.0001811,	Adjusted R-squared:  -0.001555 
+F-statistic: 0.1043 on 1 and 576 DF,  p-value: 0.7468
 ~~~
-{: .error}
+{: .output}
 
 Note the values for the F-statistic and the R-squared. Also notice that beta, the slope, is near zero, indicating no relationship between the two variables.
 
@@ -315,40 +281,21 @@ hist(x = bad_model$residuals, breaks=20)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in hist(x = bad_model$residuals, breaks = 20): object 'bad_model' not found
-~~~
-{: .error}
-
-
+<img src="../fig/rmd-05-bad_model_not_normal-1.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
 
 ~~~
 plot(bad_model, which=2)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in plot(bad_model, which = 2): object 'bad_model' not found
-~~~
-{: .error}
-
-
+<img src="../fig/rmd-05-bad_model_not_normal-2.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
 
 ~~~
 plot(bad_model, which=1)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in plot(bad_model, which = 1): object 'bad_model' not found
-~~~
-{: .error}
+<img src="../fig/rmd-05-bad_model_not_normal-3.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
 
 The histogram doesn't show a normal distribution, and mean residual value doesn't appear to be near zero. In the Q-Q plot most of the data points are off-diagonal. The plot of residuals vs. fitted values appears parabolic, indicating poor model fit.
 

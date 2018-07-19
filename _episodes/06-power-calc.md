@@ -23,6 +23,8 @@ source: Rmd
 
 
 ## Motivator: A retraction
+[A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
+
 See Doug Melton's retraction of betatrophin paper in the journal Cell.
 https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/
 "When we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion"

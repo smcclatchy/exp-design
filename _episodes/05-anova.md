@@ -18,8 +18,8 @@ source: Rmd
 
 
 ## Linear Regression
-Linear regression describes how one variable changes dependent on another.
-We can use linear regression to predict the mean value of a dependent, or response variable according to the value of an independent variable, or predictor. In the following example we'll explore how body weight changes depending on diet composition. 
+Linear regression describes how one variable changes dependent on another one, or two, or more variables.
+We can use linear regression to predict the mean value of a dependent, or response variable according to the value of one or more independent variables, or predictors. In the following example we'll explore how body weight (the dependent variable) changes depending on diet composition (the independent variable). 
 
 ## Data
 
@@ -94,7 +94,7 @@ In the following example, we model body weight at 10 weeks as a function of diet
 
 ![](../fig/linear-model.png)
 
-The residuals (or errors) are the distance of each data point from the line describing the linear model, as shown above. If we look at a histogram of the residuals, they should be normally distributed.
+The residuals (or errors; an example represented by the vertical, red-dashed line in the above plot) are the distance of each data point (a light blue circle) from the (blue) line describing the linear model. If we look at a histogram of the residuals, they should be normally distributed.  A normal, or Gaussian, distribution is identified by having a mean, median, and mode that are all equal, and the data generate a curve that is symmetric at the center (or mean).
 
 ![](../fig/residual-histogram.png)
 
@@ -169,7 +169,7 @@ Note that the first several fitted values are the same. These are the predicted 
 
 
 ~~~
-table(model$fitted.values)
+table(round(model$fitted.values, digits = 4))
 ~~~
 {: .language-r}
 
@@ -177,8 +177,8 @@ table(model$fitted.values)
 
 ~~~
 
-25.8908530066815 28.5301015228422 28.5301015228424 28.5301015228426 
-             449                1                1              392 
+25.8909 28.5301 
+    449     394 
 ~~~
 {: .output}
 
@@ -186,9 +186,13 @@ The difference between predicted values for standard chow vs. high-fat diet is a
 
 ## The residuals
 
-Residuals are estimates of experimental error obtained by subtracting the observed responses from the predicted responses (or actual data from data set minus what is predicted by the model).  The predicted response is calculated from the chosen model, after all the unknown model parameters have been estimated from the experimental data.  Examining residuals is a key part of all statistical modeling.  Carefully looking at residuals can tell us whether our assumptions are reasonable and our choice of model is appropriate.
+Residuals are estimates of experimental error obtained by subtracting the observed responses from the predicted responses (or actual data from data set minus what is predicted by the model).  The predicted response (or fitted value) is the dependent variable (y-value) that is predicted by the model based on all the accounted for independent variables (x-values). 
 
-Residuals are elements of variation unexplained by the fitted model.  Residuals should be (roughly) normal and (approximately) independently distributed with a mean of zero and some constant variance.  If error is not normal or independently distributed this would indicate that a different (nonlinear) model may be more suitable to analyze the data or that other significant factors need to be accounted for.  For example, if predicting BW.10 we only used a model with Sex, we may obtain poor residual plots because we are failing to account for a crucial factor, such as, Diet.  Show example of residual plots only using Sex (and provide the R code).
+A fitted value is simply another name for a predicted value as it describes where a particular x-value fits the line of best fit. It is found by substituting a given value of x into the regression equation. A residual denoted (e) is the difference or error between an observed observation and a predicted or fit value
+
+Examining residuals is a key part of all statistical modeling.  Carefully looking at residuals can tell us whether our assumptions are reasonable and our choice of model is appropriate.
+
+Residuals are elements of variation unexplained by the model.  Residuals should be (roughly) normal and (approximately) independently distributed with a mean of zero and some constant variance.  If error is not normal or independently distributed this would indicate that a different (nonlinear) model may be more suitable to analyze the data or that other significant factors need to be accounted for.  For example, if predicting BW.10 we only used a model with Sex, we may obtain poor residual plots because we are failing to account for a crucial factor, such as, Diet.  Show example of residual plots only using Sex (and provide the R code).
 
 Now create a histogram of the residuals to check for a normal distribution.
 
@@ -224,60 +228,38 @@ plot(model, which = 1)
 Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates the 3 data points that stand out as outliers, with index numbers supplied for each.   
 
 ## A Bad Model
-Now let's look at one that is unmistakably bad. This is a linear model of hemoglobin concentration distribution width (HDW) and bone area from a multi-system survey of mouse physiology in 8 inbred founder strains and 54 F1 hybrids of the Collaborative Cross. The study is described in [Lenarcic et al, 2012](http://www.genetics.org/content/190/2/413.full). For more information about this data set, see the [CGDpheno3 data](http://phenome.jax.org/db/q?rtn=projects/details&id=439) at Mouse Phenome Database. 
+Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. 
 
-Load the data.
-
-
-~~~
-cc_data <- read.csv(file = "../data/CGDpheno3.csv", stringsAsFactors = FALSE)
-
-# Create the model of hemoglobin concentration distribution width (HDW) and bone area.
-bad_model <- lm(formula = HDW ~ bone_area, data = cc_data)
-
-# Plot the regression line in a scatterplot.
-plot(x = cc_data$bone_area, y = cc_data$HDW)
-abline(bad_model)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-05-bad_model-1.png" title="plot of chunk bad_model" alt="plot of chunk bad_model" style="display: block; margin: auto;" />
-
-~~~
-summary(bad_model)
-~~~
-{: .language-r}
-
+<img src="../fig/rmd-05-bad_data-1.png" title="plot of chunk bad_data" alt="plot of chunk bad_data" style="display: block; margin: auto;" />
 
 
 ~~~
 
 Call:
-lm(formula = HDW ~ bone_area, data = cc_data)
+lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--0.5296 -0.2630 -0.1530  0.1712  1.6964 
+-0.9848 -0.6894 -0.2627  0.3640  4.2218 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 1.902727   0.085920  22.145   <2e-16 ***
-bone_area   0.005231   0.016195   0.323    0.747    
+(Intercept)  1.06517    0.14140   7.533 1.84e-13 ***
+x           -0.07909    0.12402  -0.638    0.524    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.395 on 576 degrees of freedom
-  (64 observations deleted due to missingness)
-Multiple R-squared:  0.0001811,	Adjusted R-squared:  -0.001555 
-F-statistic: 0.1043 on 1 and 576 DF,  p-value: 0.7468
+Residual standard error: 0.9113 on 598 degrees of freedom
+Multiple R-squared:  0.0006796,	Adjusted R-squared:  -0.0009915 
+F-statistic: 0.4067 on 1 and 598 DF,  p-value: 0.5239
 ~~~
 {: .output}
 
-Note the values for the F-statistic and the R-squared. Also notice that beta, the slope, is near zero, indicating no relationship between the two variables.
+Note the values for the F-statistic and the R-squared. Also notice that the slope (Estimate column) is near zero (-0.079085), indicating no relationship between the two variables.
 
 
 ~~~
-hist(x = bad_model$residuals, breaks=20)
+hist(x = bad_model$residuals, breaks=30)
 ~~~
 {: .language-r}
 
@@ -402,6 +384,8 @@ head(model2$fitted.values)
 hist(model2$residuals, breaks = 20)
 ~~~
 {: .language-r}
+
+<img src="../fig/rmd-05-histogram2-1.png" title="plot of chunk histogram2" alt="plot of chunk histogram2" style="display: block; margin: auto;" />
 
 Check for normal distribution of the residuals with a Q-Q plot. 
 

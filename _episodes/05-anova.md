@@ -230,7 +230,9 @@ Note that the residuals are plotted along one of two fitted values - the one for
 ## A Bad Model
 Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. 
 
-<img src="../fig/rmd-05-bad_data-1.png" title="plot of chunk bad_data" alt="plot of chunk bad_data" style="display: block; margin: auto;" />
+
+
+![](../fig/bad-linear-model.png)
 
 
 ~~~
@@ -240,22 +242,22 @@ lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--0.9848 -0.6894 -0.2627  0.3640  4.2218 
+-0.9641 -0.6754 -0.2661  0.3627  5.6024 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  1.06517    0.14140   7.533 1.84e-13 ***
-x           -0.07909    0.12402  -0.638    0.524    
+(Intercept)  1.02856    0.14738   6.979 7.92e-12 ***
+x           -0.06114    0.12926  -0.473    0.636    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9113 on 598 degrees of freedom
-Multiple R-squared:  0.0006796,	Adjusted R-squared:  -0.0009915 
-F-statistic: 0.4067 on 1 and 598 DF,  p-value: 0.5239
+Residual standard error: 0.9499 on 598 degrees of freedom
+Multiple R-squared:  0.000374,	Adjusted R-squared:  -0.001298 
+F-statistic: 0.2237 on 1 and 598 DF,  p-value: 0.6364
 ~~~
 {: .output}
 
-Note the values for the F-statistic and the R-squared. Also notice that the slope (Estimate column) is near zero (-0.079085), indicating no relationship between the two variables.
+Note the values for the F-statistic and the R-squared. Also notice that the slope (Estimate column) is near zero (-0.06114), indicating no relationship between the two variables.
 
 
 ~~~

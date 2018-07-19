@@ -105,7 +105,7 @@ plot(model, which = 1)
 Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates the 3 data points that stand out as outliers, with index numbers supplied for each.   
 
 ## A Bad Model
-Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. 
+Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. Notice that the slope of the line is nearly horizontal.
 
 ```{r bad_data, echo=FALSE}
 x <- c(rep(1,540), rep(2, 60))
@@ -115,20 +115,22 @@ bad_data <- data.frame(x, y)
 
 ![](../fig/bad-linear-model.png)
 
+If we look at a summary of the linear model, we can see that the residuals aren't normally distributed.
+
 ```{r bad_model, echo=FALSE}
 bad_model <- lm(formula = y ~ x, data = bad_data)
 summary(bad_model)
 ```
 
-Note the values for the F-statistic and the R-squared. Also notice that the slope (Estimate column) is near zero (`r round(bad_model$coefficients[[2]], digits = 6)`), indicating no relationship between the two variables.
+Notice that the slope (Estimate column) is near zero (`r round(bad_model$coefficients[[2]], digits = 6)`), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
+
+The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. In the Q-Q plot most of the data points are off-diagonal.
 
 ```{r bad_model_not_normal}
 hist(x = bad_model$residuals, breaks=30)
 plot(bad_model, which=2)
 plot(bad_model, which=1)
 ```
-
-The histogram doesn't show a normal distribution, and mean residual value doesn't appear to be near zero. In the Q-Q plot most of the data points are off-diagonal. The plot of residuals vs. fitted values appears parabolic, indicating poor model fit.
 
 ## Outliers
 

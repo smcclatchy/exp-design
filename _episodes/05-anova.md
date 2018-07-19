@@ -228,11 +228,13 @@ plot(model, which = 1)
 Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates the 3 data points that stand out as outliers, with index numbers supplied for each.   
 
 ## A Bad Model
-Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. 
+Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. Notice that the slope of the line is nearly horizontal.
 
 
 
 ![](../fig/bad-linear-model.png)
+
+If we look at a summary of the linear model, we can see that the residuals aren't normally distributed.
 
 
 ~~~
@@ -242,22 +244,24 @@ lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--0.9641 -0.6754 -0.2661  0.3627  5.6024 
+-1.0537 -0.7399 -0.3242  0.3873  4.1918 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  1.02856    0.14738   6.979 7.92e-12 ***
-x           -0.06114    0.12926  -0.473    0.636    
+(Intercept)   1.2675     0.1578   8.032 5.13e-15 ***
+x            -0.2120     0.1384  -1.531    0.126    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9499 on 598 degrees of freedom
-Multiple R-squared:  0.000374,	Adjusted R-squared:  -0.001298 
-F-statistic: 0.2237 on 1 and 598 DF,  p-value: 0.6364
+Residual standard error: 1.017 on 598 degrees of freedom
+Multiple R-squared:  0.003907,	Adjusted R-squared:  0.002241 
+F-statistic: 2.345 on 1 and 598 DF,  p-value: 0.1262
 ~~~
 {: .output}
 
-Note the values for the F-statistic and the R-squared. Also notice that the slope (Estimate column) is near zero (-0.06114), indicating no relationship between the two variables.
+Notice that the slope (Estimate column) is near zero (-0.211974), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
+
+The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. In the Q-Q plot most of the data points are off-diagonal.
 
 
 ~~~
@@ -280,8 +284,6 @@ plot(bad_model, which=1)
 {: .language-r}
 
 <img src="../fig/rmd-05-bad_model_not_normal-3.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
-
-The histogram doesn't show a normal distribution, and mean residual value doesn't appear to be near zero. In the Q-Q plot most of the data points are off-diagonal. The plot of residuals vs. fitted values appears parabolic, indicating poor model fit.
 
 ## Outliers
 

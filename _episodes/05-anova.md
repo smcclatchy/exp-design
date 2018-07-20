@@ -244,22 +244,22 @@ lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--1.0207 -0.7094 -0.2825  0.4206  5.1920 
+-1.0110 -0.7248 -0.3435  0.3915  7.2480 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  1.05959    0.15108   7.014 6.31e-12 ***
-x           -0.03712    0.13250  -0.280    0.779    
+(Intercept)   1.1261     0.1615   6.975 8.14e-12 ***
+x            -0.1143     0.1416  -0.807     0.42    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9737 on 598 degrees of freedom
-Multiple R-squared:  0.0001312,	Adjusted R-squared:  -0.001541 
-F-statistic: 0.07847 on 1 and 598 DF,  p-value: 0.7795
+Residual standard error: 1.041 on 598 degrees of freedom
+Multiple R-squared:  0.001088,	Adjusted R-squared:  -0.0005821 
+F-statistic: 0.6515 on 1 and 598 DF,  p-value: 0.4199
 ~~~
 {: .output}
 
-Notice that the slope (Estimate column) is near zero (-0.037118), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
+Notice that the slope (Estimate column) is near zero (-0.114298), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
 
 The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. In the Q-Q plot most of the data points are off-diagonal.
 

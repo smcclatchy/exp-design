@@ -24,3 +24,33 @@ Kerlinger (1986) conceptualized experimental design as variance control [1]. The
  
 All experimental observations are a combination of signal, the true effect of a variable on an outcome, and noise, the random error inherent in your experimental technique. When designing and analyzing experiments, the goal is to maximize the signal-to-noise ratio so that you can draw accurate conclusions.
  
+## Example 2 (incomplete)
+
+
+~~~
+library(dplyr)
+cgdpheno3 <- read.csv(file = "../data/CGDpheno3.csv", stringsAsFactors = FALSE)
+cc_founder_phenos <- cgdpheno3 %>%
+  filter(strain %in% c("A/J", "C57BL/6J", "129S1/SvImJ", "NOD/ShiLtJ",
+                       "NZO/HlLtJ", "CAST/EiJ", "PWK/PhJ", "WSB/EiJ"))
+cc_founder_phenos %>% group_by(strain) %>% 
+  summarize(n(), mean(TG), sd(TG))
+~~~
+{: .language-r}
+
+
+
+~~~
+# A tibble: 8 x 4
+  strain      `n()` `mean(TG)` `sd(TG)`
+  <chr>       <int>      <dbl>    <dbl>
+1 129S1/SvImJ    10       88.3     15.0
+2 A/J            10      106.      31.6
+3 C57BL/6J       10       92       19.4
+4 CAST/EiJ       11      209.      69.1
+5 NOD/ShiLtJ     10      146.      39.6
+6 NZO/HlLtJ      10      210.      39.6
+7 PWK/PhJ        10      144.      42.6
+8 WSB/EiJ        17       91       17.4
+~~~
+{: .output}

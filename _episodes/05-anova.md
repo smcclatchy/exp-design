@@ -244,46 +244,26 @@ lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--1.0537 -0.7399 -0.3242  0.3873  4.1918 
+-1.0207 -0.7094 -0.2825  0.4206  5.1920 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)   1.2675     0.1578   8.032 5.13e-15 ***
-x            -0.2120     0.1384  -1.531    0.126    
+(Intercept)  1.05959    0.15108   7.014 6.31e-12 ***
+x           -0.03712    0.13250  -0.280    0.779    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.017 on 598 degrees of freedom
-Multiple R-squared:  0.003907,	Adjusted R-squared:  0.002241 
-F-statistic: 2.345 on 1 and 598 DF,  p-value: 0.1262
+Residual standard error: 0.9737 on 598 degrees of freedom
+Multiple R-squared:  0.0001312,	Adjusted R-squared:  -0.001541 
+F-statistic: 0.07847 on 1 and 598 DF,  p-value: 0.7795
 ~~~
 {: .output}
 
-Notice that the slope (Estimate column) is near zero (-0.211974), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
+Notice that the slope (Estimate column) is near zero (-0.037118), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
 
 The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. In the Q-Q plot most of the data points are off-diagonal.
 
-
-~~~
-hist(x = bad_model$residuals, breaks=30)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-05-bad_model_not_normal-1.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
-
-~~~
-plot(bad_model, which=2)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-05-bad_model_not_normal-2.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
-
-~~~
-plot(bad_model, which=1)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-05-bad_model_not_normal-3.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
+<img src="../fig/rmd-05-bad_model_not_normal-1.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" /><img src="../fig/rmd-05-bad_model_not_normal-2.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" /><img src="../fig/rmd-05-bad_model_not_normal-3.png" title="plot of chunk bad_model_not_normal" alt="plot of chunk bad_model_not_normal" style="display: block; margin: auto;" />
 
 ## Outliers
 

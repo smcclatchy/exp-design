@@ -15,7 +15,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("05-")
+knitr_fig_path("06-")
 ```
 
 ## Linear Regression
@@ -27,6 +27,7 @@ We can use linear regression to predict the mean value of a dependent, or respon
 This data set contains body weights for 846 male (M) and female (F) mice fed a high fat (hf) and control (chow) diet measured repeatedly over 23  time points (BW.3 – BW.30).  Many mice do not have measurements for all body weight as survival time varies across sample.  Data set includes additional information, such as litter number and coat color. Load the data and have a quick look.
 
 ```{r load_data}
+library(car)
 pheno <- read.csv(file = "../data/bodyWeights.csv", stringsAsFactors = FALSE)
 names(pheno)
 head(pheno)
@@ -40,7 +41,7 @@ To ensure that a statistical analysis can accurately evaluate a data set, there 
 For our analysis of body weight at 10 weeks and diet, the following assumptions should be met:
 
 1. The model is good (i.e. the relationship is linear and not, for example, quadratic or exponential).  
-1. The residuals have a normal distribution.  
+1. The residuals have a normal distribution (*the data don't necessarily need to be normally distributed, but the residuals do*).  
 1. The residuals have equal variance (homoscedastic).  
 
 In the following example, we model body weight at 10 weeks as a function of diet.
@@ -108,7 +109,7 @@ Note that the residuals are plotted along one of two fitted values - the one for
 Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. Notice that the slope of the line is nearly horizontal.
 
 ```{r bad_data, echo=FALSE}
-x <- c(rep(1,540), rep(2, 60))
+x <- c(rep(1,300), rep(2, 300))
 y <- rgamma(600, shape = 1)
 bad_data <- data.frame(x, y)
 ```
@@ -124,17 +125,33 @@ summary(bad_model)
 
 Notice that the slope (Estimate column) is near zero (`r round(bad_model$coefficients[[2]], digits = 6)`), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
 
-The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. In the Q-Q plot most of the data points are off-diagonal.
+The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. 
 
-```{r bad_model_not_normal, echo=FALSE}
+```{r bad_model_hist, echo=FALSE}
 hist(x = bad_model$residuals, breaks=30)
-plot(bad_model, which=2)
-plot(bad_model, which=1)
 ```
+
+In the Q-Q plot most of the data points are off-diagonal. If we compare the Q-Q plot for the bad model with our earlier model, we can see that most of the residuals fall well outside of the confidence interval.
+
+```{r bad_model_qqplot, echo=FALSE}
+par(mfcol = c(1, 2))
+qqPlot(model, main = "Body Weight as a Function of Diet")
+qqPlot(bad_model, main = "A Bad Model")
+```
+
+To produce Q-Q plots with confidence intervals (shown in dashed blue lines), use the `qqPlot()` function in the `car` library. The default argument for the confidence interval is `envelope=.95` for a 95% confidence interval. You can change this argument to a greater or lesser value, or you can set it to `FALSE` for no confidence interval around the diagonal.
+
+```{r bad_model_v_good, echo=FALSE}
+par(mfcol = c(1, 2))
+plot(model, which = 1)
+plot(bad_model, which = 1)
+```
+
+The good model is shown at left and the bad model at right above. Notice that the residuals for the good model are centered very close to zero and have an equal spread above and below zero. For the bad model at right, the residuals aren't centered at zero and don't appear to be equally spread above and below.
 
 ## Outliers
 
-If outliers are believed to be present in the data, data transformation may be considered.  Alternatively, if outlier values are believed to be the result of real error (e.g. calculation error, data entry, etc.) then they may be removed from the dataset.  Excluding values must only be done for legitimate reasons, or else you may affect the Type 1 (false positive) error rate.
+If outliers are present in the data, data transformation might be a consideration.  Alternatively, if outlier values are believed to be the result of real error (e.g. calculation error, data entry, etc.) then they may be removed from the dataset.  Excluding values must only be done for legitimate reasons, or else you may affect the Type 1 (false positive) error rate.
 
 Include plot of distribution of data (include R box plot code).  Highlight any outliers.  Go over how to read a box plot.  Show example of outliers if none are present in data.
 

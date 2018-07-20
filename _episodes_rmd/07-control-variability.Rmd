@@ -26,6 +26,8 @@ Kerlinger (1986) conceptualized experimental design as variance control [1]. The
 All experimental observations are a combination of signal, the true effect of a variable on an outcome, and noise, the random error inherent in your experimental technique. When designing and analyzing experiments, the goal is to maximize the signal-to-noise ratio so that you can draw accurate conclusions.
  
 ## Example 2 (incomplete)
+from http://www.3rs-reduction.co.uk/html/7__controlling_variability.html
+7. Controlling variability
 
 ```{r, example_2_table}
 library(dplyr)

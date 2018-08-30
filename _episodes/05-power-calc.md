@@ -20,8 +20,6 @@ source: Rmd
 
 
 
-
-
 [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
 
 ## Motivator: A retraction
@@ -264,7 +262,8 @@ plot(Ns, power, type="b")
 ~~~
 {: .language-r}
 
-<img src="../figure/05-power-calc-power_versus_sample_size-1.png" title="Power plotted against sample size." alt="Power plotted against sample size." style="display: block; margin: auto;" />
+<img src="../fig/rmd-05-power_versus_sample_size-1.png" title="Power plotted against sample size." alt="Power plotted against sample size." style="display: block; margin: auto;" />
+![](../fig/power-vs-sample-size.png)
 
 Similarly, if we change the level `alpha` at which we reject, power
 changes. The smaller I want the chance of type I error to be, the less
@@ -284,7 +283,9 @@ plot(alphas, power, xlab="alpha", type="b", log="x")
 ~~~
 {: .language-r}
 
-<img src="../figure/05-power-calc-power_versus_alpha-1.png" title="Power plotted against cut-off." alt="Power plotted against cut-off." style="display: block; margin: auto;" />
+<img src="../fig/rmd-05-power_versus_alpha-1.png" title="Power plotted against cut-off." alt="Power plotted against cut-off." style="display: block; margin: auto;" />
+
+![](../fig/power-versus-alpha.png)
 
 Note that the x-axis in this last plot is in the log scale.
 

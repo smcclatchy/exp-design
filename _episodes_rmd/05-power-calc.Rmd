@@ -21,11 +21,6 @@ source("../bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
 
-```{r options, echo=FALSE}
-library(knitr)
-opts_chunk$set(fig.path=paste0("figure/", sub("(.*).Rmd","\\1",basename(knitr:::knit_concord$get('infile'))), "-"))
-```
-
 [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
 
 ## Motivator: A retraction
@@ -208,6 +203,7 @@ For each of the three simulations, the above code returns the proportion of time
 ```{r power_versus_sample_size, fig.cap="Power plotted against sample size."}
 plot(Ns, power, type="b")
 ```
+![](../fig/power-vs-sample-size.png)
 
 Similarly, if we change the level `alpha` at which we reject, power
 changes. The smaller I want the chance of type I error to be, the less
@@ -224,6 +220,8 @@ power <- sapply(alphas,function(alpha){
 })
 plot(alphas, power, xlab="alpha", type="b", log="x")
 ```
+
+![](../fig/power-versus-alpha.png)
 
 Note that the x-axis in this last plot is in the log scale.
 

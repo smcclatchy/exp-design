@@ -3,10 +3,10 @@ title: Power calculation
 teaching: 0
 exercises: 0
 questions:
-- "How many biological replicates do I need?"
+- ""
 - "?"
 objectives:
-- "Understand the difference between technical and biological replicates."
+- ""
 - ""
 - ""
 keypoints:
@@ -26,10 +26,11 @@ library(knitr)
 opts_chunk$set(fig.path=paste0("figure/", sub("(.*).Rmd","\\1",basename(knitr:::knit_concord$get('infile'))), "-"))
 ```
 
-## Motivator: A retraction
 [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
 
-See Doug Melton's retraction of betatrophin paper in the journal Cell.
+## Motivator: A retraction
+
+Statistical power analysis is important in experimental design. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. See Doug Melton's retraction of betatrophin paper in the journal Cell.
 https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/
 "When we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion"
 
@@ -39,7 +40,7 @@ https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-break
 
 #### Introduction
 
-We have used the example of the effects of two different diets on the weight of mice. Since in this illustrative example we have access to the population, we know that in fact there is a substantial (about 10%) difference between the average weights of the two populations:
+We have used the example of the effects of two different diets on the weight of mice. Since in this illustrative example we have access to the population, we know that in fact there is a substantial difference (greater than 18%) between the average weights of the two male populations at 21 weeks of age.
 
 ```{r, message=FALSE}
 library(downloader)
@@ -53,6 +54,15 @@ library(dplyr)
 
 # Read in DO850 body weight data.
 dat <- read.csv("bodyWeights.csv") 
+controlPopulation <- filter(dat, Sex == "M" & Diet == "chow") %>%  
+  select(BW.21) %>% unlist
+
+hfPopulation <- filter(dat, Sex == "M" & Diet == "hf") %>%  
+  select(BW.21) %>% unlist
+
+mu_hf <- mean(hfPopulation, na.rm = TRUE)
+mu_control <- mean(controlPopulation, na.rm = TRUE)
+print(mu_hf - mu_control)
 
 # All code and text below is from Irizarry & Love
 # http://genomicsclass.github.io/book/pages/power_calculations.html
@@ -164,7 +174,7 @@ reject(12)
 Now we can use the `replicate` function to do this `B` times. 
 
 ```{r}
-rejections <- replicate(B,reject(N))
+rejections <- replicate(B, reject(N))
 ```
 
 Our power is just the proportion of times we correctly reject. So with  $N=12$ our power is only: 
@@ -353,14 +363,3 @@ increase, the effect size and Cohen's d will become more precise.
 > > 
 > {: .solution}
 {: .challenge}
-
-## Technical versus Biological Replicates
-
-Technical replicates are measurements taken on the same sample.  Biological replicates are measurements taken on different samples (one per sample).  Technical replicates do not convey biological variation in the data, as the difference between technical replicates in a sample measure “technical” variation, such as, instrument settings, technician skill, and environmental effects.  Biological replicates differ from technical in that differences seen between samples tends to be mostly biological.  If, for example, different technicians worked on measuring the biological samples, it is possible that a technician effect can be accounted for in the model via evaluating a technician batch effect. The key to understanding replicates is to identify the source of the variation that you are attempting to measure. Are you attempting to quantify the accuracy of the measuring tool or procedure from one measurement to the next? If so, then this is a technical replicate. Are you attempting to quantify the difference between one mouse and another? If so, this is a biological replicate.
-
-As an example, if I were to weigh myself on a bathroom scale, record the measurement, then repeatedly weigh myself and record the measurement each time, the measurements might differ from one instance to the next. I could determine the variation of the bathroom scale by averaging all technical replicates and finding the difference of each measurement from this average. Manufacturing of measurement instruments like bathroom scales is never perfect, so there will be technical variation in measurements. In contrast, if I were to measure my own weight and a friend did the same, my weight and my friend's weight are independent of one another. This would be an example of a biological replicate. 
-
-![](../fig/technical-replicates.png)
-![](../fig/biological-replicates.png)
-         
-When working with technical replicates, the model should reflect the presence of the technical replicates, because each replicate contributes to the overall error in the model.  Technical replicates are not independent biological replicates; thus, if technical replicates are treated as biological replicates it leads to inflation of degrees of freedom and deflation of standard error.  The adjustment of the fundamental statistics used in regression analysis will lead to inaccurate analysis results.  To account for this type of error, the subject (or sample number/ID) can be used as a random model term, or, alternatively, the technical replicates can be collapsed (averaged).  If you treat the biological subject as a random effect, then the mixed model ANOVA tests for all treatments and other effects are identical to what you get if you average the technical replicates.

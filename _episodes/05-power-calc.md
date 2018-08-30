@@ -5,10 +5,10 @@ title: Power calculation
 teaching: 0
 exercises: 0
 questions:
-- "How many biological replicates do I need?"
+- ""
 - "?"
 objectives:
-- "Understand the difference between technical and biological replicates."
+- ""
 - ""
 - ""
 keypoints:
@@ -22,10 +22,11 @@ source: Rmd
 
 
 
-## Motivator: A retraction
 [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
 
-See Doug Melton's retraction of betatrophin paper in the journal Cell.
+## Motivator: A retraction
+
+Statistical power analysis is important in experimental design. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. See Doug Melton's retraction of betatrophin paper in the journal Cell.
 https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/
 "When we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion"
 
@@ -35,7 +36,7 @@ https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-break
 
 #### Introduction
 
-We have used the example of the effects of two different diets on the weight of mice. Since in this illustrative example we have access to the population, we know that in fact there is a substantial (about 10%) difference between the average weights of the two populations:
+We have used the example of the effects of two different diets on the weight of mice. Since in this illustrative example we have access to the population, we know that in fact there is a substantial difference (greater than 18%) between the average weights of the two male populations at 21 weeks of age.
 
 
 ~~~
@@ -52,7 +53,28 @@ library(dplyr)
 
 # Read in DO850 body weight data.
 dat <- read.csv("bodyWeights.csv") 
+controlPopulation <- filter(dat, Sex == "M" & Diet == "chow") %>%  
+  select(BW.21) %>% unlist
 
+hfPopulation <- filter(dat, Sex == "M" & Diet == "hf") %>%  
+  select(BW.21) %>% unlist
+
+mu_hf <- mean(hfPopulation, na.rm = TRUE)
+mu_control <- mean(controlPopulation, na.rm = TRUE)
+print(mu_hf - mu_control)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 6.696912
+~~~
+{: .output}
+
+
+
+~~~
 # All code and text below is from Irizarry & Love
 # http://genomicsclass.github.io/book/pages/power_calculations.html
 # Exercises
@@ -69,33 +91,7 @@ We have also seen that, in some cases, when we take a sample and perform a t-tes
 set.seed(1)
 N <- 5
 hf <- sample(hfPopulation,N)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in sample(hfPopulation, N): object 'hfPopulation' not found
-~~~
-{: .error}
-
-
-
-~~~
 control <- sample(controlPopulation,N)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in sample(controlPopulation, N): object 'controlPopulation' not found
-~~~
-{: .error}
-
-
-
-~~~
 t.test(hf,control)$p.value
 ~~~
 {: .language-r}
@@ -103,9 +99,9 @@ t.test(hf,control)$p.value
 
 
 ~~~
-Error in t.test(hf, control): object 'hf' not found
+[1] 0.05431597
 ~~~
-{: .error}
+{: .output}
 
 Did we make a mistake? By not rejecting the null hypothesis, are we
 saying the diet has no effect? The answer to this question is no. All
@@ -209,24 +205,17 @@ reject(12)
 
 
 ~~~
-Error in sample(hfPopulation, N): object 'hfPopulation' not found
+[1] TRUE
 ~~~
-{: .error}
+{: .output}
 
 Now we can use the `replicate` function to do this `B` times. 
 
 
 ~~~
-rejections <- replicate(B,reject(N))
+rejections <- replicate(B, reject(N))
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in sample(hfPopulation, N): object 'hfPopulation' not found
-~~~
-{: .error}
 
 Our power is just the proportion of times we correctly reject. So with  $N=12$ our power is only: 
 
@@ -239,9 +228,9 @@ mean(rejections)
 
 
 ~~~
-Error in mean(rejections): object 'rejections' not found
+[1] 0.5935
 ~~~
-{: .error}
+{: .output}
 
 This explains why the t-test was not rejecting when we knew the null
 was false. With a sample size of just 12, our power is about 23%. To
@@ -267,13 +256,6 @@ power <- sapply(Ns,function(N){
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in sample(hfPopulation, N): object 'hfPopulation' not found
-~~~
-{: .error}
-
 For each of the three simulations, the above code returns the proportion of times we reject. Not surprisingly power increases with N:
 
 
@@ -282,12 +264,7 @@ plot(Ns, power, type="b")
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in xy.coords(x, y, xlabel, ylabel, log): 'x' and 'y' lengths differ
-~~~
-{: .error}
+<img src="../figure/05-power-calc-power_versus_sample_size-1.png" title="Power plotted against sample size." alt="Power plotted against sample size." style="display: block; margin: auto;" />
 
 Similarly, if we change the level `alpha` at which we reject, power
 changes. The smaller I want the chance of type I error to be, the less
@@ -303,29 +280,11 @@ power <- sapply(alphas,function(alpha){
   rejections <- replicate(B,reject(N,alpha=alpha))
   mean(rejections)
 })
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in sample(hfPopulation, N): object 'hfPopulation' not found
-~~~
-{: .error}
-
-
-
-~~~
 plot(alphas, power, xlab="alpha", type="b", log="x")
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in xy.coords(x, y, xlabel, ylabel, log): 'x' and 'y' lengths differ
-~~~
-{: .error}
+<img src="../figure/05-power-calc-power_versus_alpha-1.png" title="Power plotted against cut-off." alt="Power plotted against cut-off." style="display: block; margin: auto;" />
 
 Note that the x-axis in this last plot is in the log scale.
 
@@ -384,7 +343,7 @@ pvalues <- sapply(Ns_rep, calculatePvalue)
 
 
 ~~~
-Error in sample(hfPopulation, N): object 'hfPopulation' not found
+Error in sample.int(length(x), size, replace, prob): cannot take a sample larger than the population when 'replace = FALSE'
 ~~~
 {: .error}
 
@@ -446,47 +405,8 @@ and the confidence interval by the control population mean:
 ~~~
 N <- 12
 hf <- sample(hfPopulation, N)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in sample(hfPopulation, N): object 'hfPopulation' not found
-~~~
-{: .error}
-
-
-
-~~~
 control <- sample(controlPopulation, N)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in sample(controlPopulation, N): object 'controlPopulation' not found
-~~~
-{: .error}
-
-
-
-~~~
 diff <- mean(hf) - mean(control)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in mean(hf): object 'hf' not found
-~~~
-{: .error}
-
-
-
-~~~
 diff / mean(control) * 100
 ~~~
 {: .language-r}
@@ -494,9 +414,9 @@ diff / mean(control) * 100
 
 
 ~~~
-Error in mean(control): object 'control' not found
+[1] 15.99043
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -508,9 +428,11 @@ t.test(hf, control)$conf.int / mean(control) * 100
 
 
 ~~~
-Error in t.test(hf, control): object 'hf' not found
+[1] -0.2599845 32.2408348
+attr(,"conf.level")
+[1] 0.95
 ~~~
-{: .error}
+{: .output}
 
 In addition, we can report a statistic called
 [Cohen's d](https://en.wikipedia.org/wiki/Effect_size#Cohen.27s_d),
@@ -520,19 +442,6 @@ deviation of the two groups.
 
 ~~~
 sd_pool <- sqrt(((N-1)*var(hf) + (N-1)*var(control))/(2*N - 2))
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in is.data.frame(x): object 'hf' not found
-~~~
-{: .error}
-
-
-
-~~~
 diff / sd_pool
 ~~~
 {: .language-r}
@@ -540,9 +449,9 @@ diff / sd_pool
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'sd_pool' not found
+[1] 0.8331424
 ~~~
-{: .error}
+{: .output}
 
 This tells us how many standard deviations of the data the mean of the
 high-fat diet group is from the control group. Under the
@@ -583,14 +492,3 @@ increase, the effect size and Cohen's d will become more precise.
 > > 
 > {: .solution}
 {: .challenge}
-
-## Technical versus Biological Replicates
-
-Technical replicates are measurements taken on the same sample.  Biological replicates are measurements taken on different samples (one per sample).  Technical replicates do not convey biological variation in the data, as the difference between technical replicates in a sample measure “technical” variation, such as, instrument settings, technician skill, and environmental effects.  Biological replicates differ from technical in that differences seen between samples tends to be mostly biological.  If, for example, different technicians worked on measuring the biological samples, it is possible that a technician effect can be accounted for in the model via evaluating a technician batch effect. The key to understanding replicates is to identify the source of the variation that you are attempting to measure. Are you attempting to quantify the accuracy of the measuring tool or procedure from one measurement to the next? If so, then this is a technical replicate. Are you attempting to quantify the difference between one mouse and another? If so, this is a biological replicate.
-
-As an example, if I were to weigh myself on a bathroom scale, record the measurement, then repeatedly weigh myself and record the measurement each time, the measurements might differ from one instance to the next. I could determine the variation of the bathroom scale by averaging all technical replicates and finding the difference of each measurement from this average. Manufacturing of measurement instruments like bathroom scales is never perfect, so there will be technical variation in measurements. In contrast, if I were to measure my own weight and a friend did the same, my weight and my friend's weight are independent of one another. This would be an example of a biological replicate. 
-
-![](../fig/technical-replicates.png)
-![](../fig/biological-replicates.png)
-         
-When working with technical replicates, the model should reflect the presence of the technical replicates, because each replicate contributes to the overall error in the model.  Technical replicates are not independent biological replicates; thus, if technical replicates are treated as biological replicates it leads to inflation of degrees of freedom and deflation of standard error.  The adjustment of the fundamental statistics used in regression analysis will lead to inaccurate analysis results.  To account for this type of error, the subject (or sample number/ID) can be used as a random model term, or, alternatively, the technical replicates can be collapsed (averaged).  If you treat the biological subject as a random effect, then the mixed model ANOVA tests for all treatments and other effects are identical to what you get if you average the technical replicates.

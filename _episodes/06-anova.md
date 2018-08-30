@@ -5,20 +5,42 @@ title: "Linear regression and analysis of variance"
 teaching: 0
 exercises: 0
 questions:
-- "?"
+- "How do I evaluate the quality of a linear model?"
 - "?"
 objectives:
 - "Understand the assumptions behind linear models and ANOVA."
-- "Perform ANOVA and interpret results."
+- "Perform linear regression and interpret results."
+- "Evaluate model quality by examining the residuals."
+- "Know when and how to transform your data."
 keypoints:
 - "When performing a linear regression or ANOVA, ensure that data meet the assumptions for this chosen method."
+- "Examining the residuals (or errors) is a key part of linear regression."
+- "Transform your data if it appears to have many outliers or would benefit from a transformation such as logarithmic."
+
 source: Rmd
 ---
 
 
 
 ## Linear Regression
-Linear regression describes how one variable changes dependent on another one, or two, or more variables.
+Linear regression describes how one variable changes dependent on another one, or two, or more variables. For example, we can use linear regression to model human height as a function of gender.
+
+
+
+
+
+The linear model describes the line of best fit to the data, and can be expressed as an equation <i>y</i> = <i>&beta;<sub>0</sub></i> + <i>&beta;<sub>1</sub></i>x + <i>&epsilon;</i>
+
+where 
+
+&nbsp;&nbsp;&nbsp;<i>y</i> is the dependent variable, height
+&nbsp;&nbsp;&nbsp;<i>&beta;<sub>0</sub></i> is the y-axis intercept
+&nbsp;&nbsp;&nbsp;<i>&beta;<sub>1</sub></i> is the slope of the line
+&nbsp;&nbsp;&nbsp;<i>x</i> is the independent variable, gender, and
+&nbsp;&nbsp;&nbsp;<i>&epsilon;</i> is the error (also called residual)
+
+This is similar to the equation <i>y</i> = <i>m</i><i>x</i> + <i>b</i> that you might be familiar with from many years ago.
+
 We can use linear regression to predict the mean value of a dependent, or response variable according to the value of one or more independent variables, or predictors. In the following example we'll explore how body weight (the dependent variable) changes depending on diet composition (the independent variable). 
 
 ## Data
@@ -113,6 +135,13 @@ head(pheno)
 The data are from a repeated measures design, in which the same subject is measured over time. Although this data represents a repeated measures experiment, it can also be analyzed as ANOVA (Analysis of Variance) by evaluating only a single time point’s body weight measurement.  Due to the additional complexity of a repeated measures experiment over a standard ANOVA, the following statistical analysis example will focus only on the analysis of body weights at 10 weeks (BW.10).
 
 ## Statistical Analysis Assumptions (of Linear Regression / ANOVA)
+
+In the following example, we model body weight at 10 weeks as a function of diet.
+
+![](../fig/linear-model.png)
+
+The residuals (or errors one if which is shown by the vertical, red-dashed line in the plot above) are the distance of each data point (a light blue circle) from the (blue) line describing the linear model. 
+
 To ensure that a statistical analysis can accurately evaluate a data set, there are certain criteria (or assumptions) that need to be met.
 
 For our analysis of body weight at 10 weeks and diet, the following assumptions should be met:
@@ -121,13 +150,26 @@ For our analysis of body weight at 10 weeks and diet, the following assumptions 
 1. The residuals have a normal distribution (*the data don't necessarily need to be normally distributed, but the residuals do*).  
 1. The residuals have equal variance (homoscedastic).  
 
-In the following example, we model body weight at 10 weeks as a function of diet.
-
-![](../fig/linear-model.png)
-
-The residuals (or errors; an example represented by the vertical, red-dashed line in the above plot) are the distance of each data point (a light blue circle) from the (blue) line describing the linear model. If we look at a histogram of the residuals, they should be normally distributed.  A normal, or Gaussian, distribution is identified by having a mean, median, and mode that are all equal, and the data generate a curve that is symmetric at the center (or mean).
+If we look at a histogram of the residuals, they should be normally distributed.  A normal, or Gaussian, distribution is identified by having a mean, median, and mode that are all equal, and the data generate a curve that is symmetric at the center (or mean).
 
 ![](../fig/residual-histogram.png)
+
+You can also plot the residuals against the fitted values in the model to check assumption number 3, that the residuals have equal variance.
+
+
+~~~
+plot(model, which = 1)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in plot(model, which = 1): object 'model' not found
+~~~
+{: .error}
+
+Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates the 3 data points that stand out as outliers, with index numbers supplied for each.   
 
 Let's create the model and explore the residuals and fitted values.
 
@@ -215,7 +257,7 @@ table(round(model$fitted.values, digits = 4))
 
 The difference between predicted values for standard chow vs. high-fat diet is approximately 2.6, which is the slope of the line describing the linear model. 
 
-## The residuals
+## The residuals: a key part of statistical modeling
 
 Residuals are estimates of experimental error obtained by subtracting the observed responses from the predicted responses (or actual data from data set minus what is predicted by the model).  The predicted response (or fitted value) is the dependent variable (y-value) that is predicted by the model based on all the accounted for independent variables (x-values). 
 
@@ -246,17 +288,8 @@ plot(model, which = 2)
 
 The Q-Q plot indicates 3 data points that are outliers along with their index numbers. Otherwise, most of the points lie along the diagonal line, indicating that the residuals are normally distributed. 
 
-You can also plot the residuals against the fitted values in the model.
 
 
-~~~
-plot(model, which = 1)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-06-resid_vs_fitted-1.png" title="plot of chunk resid_vs_fitted" alt="plot of chunk resid_vs_fitted" style="display: block; margin: auto;" />
-
-Note that the residuals are plotted along one of two fitted values - the one for standard chow (25.9), or the predicted value for high-fat diet (28.5). There should be constant variance vertically and points should scatter symmetrically around zero. The plot indicates the 3 data points that stand out as outliers, with index numbers supplied for each.   
 
 ## A Bad Model
 Now let's look at one that is unmistakably bad. This is a linear model created from a fake dataset. Notice that the slope of the line is nearly horizontal.
@@ -275,22 +308,22 @@ lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--1.0310 -0.7097 -0.3214  0.3976  6.5964 
+-1.0005 -0.7007 -0.2880  0.3772  7.7881 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  1.16109    0.13093   8.868   <2e-16 ***
-x           -0.12360    0.08281  -1.493    0.136    
+(Intercept)  0.89999    0.13142   6.848 1.86e-11 ***
+x            0.05185    0.08312   0.624    0.533    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.014 on 598 degrees of freedom
-Multiple R-squared:  0.003711,	Adjusted R-squared:  0.002045 
-F-statistic: 2.228 on 1 and 598 DF,  p-value: 0.1361
+Residual standard error: 1.018 on 598 degrees of freedom
+Multiple R-squared:  0.0006504,	Adjusted R-squared:  -0.001021 
+F-statistic: 0.3892 on 1 and 598 DF,  p-value: 0.533
 ~~~
 {: .output}
 
-Notice that the slope (Estimate column) is near zero (-0.123596), indicating no relationship between the two variables. Also note the values for the F-statistic and the R-squared.  
+Notice that the slope (Estimate column) is near zero (0.051853), indicating no relationship between the two variables.
 
 The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. 
 

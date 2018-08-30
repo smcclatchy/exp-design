@@ -20,7 +20,6 @@ source: Rmd
 
 
 
-[A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
 
 ## Motivator: A retraction
 
@@ -259,8 +258,6 @@ For each of the three simulations, the above code returns the proportion of time
 plot(Ns, power, type="b")
 ~~~
 {: .language-r}
-
-<img src="../fig/rmd-05-power_versus_sample_size-1.png" title="Power plotted against sample size." alt="Power plotted against sample size." style="display: block; margin: auto;" />
 ![](../fig/power-vs-sample-size.png)
 
 Similarly, if we change the level `alpha` at which we reject, power
@@ -281,15 +278,15 @@ plot(alphas, power, xlab="alpha", type="b", log="x")
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-power_versus_alpha-1.png" title="Power plotted against cut-off." alt="Power plotted against cut-off." style="display: block; margin: auto;" />
-
 ![](../fig/power-versus-alpha.png)
 
 Note that the x-axis in this last plot is in the log scale.
 
-There is no "right" power or "right" alpha level, but it is important that you understand what each means.
+There is no "right" power or "right" alpha level, but it is important that you 
+understand what each means.
 
-To see this clearly, you could create a plot with curves of power versus N. Show several curves in the same plot with color representing alpha level.
+To see this clearly, you could create a plot with curves of power versus N.
+Show several curves in the same plot with color representing alpha level.
 
 #### p-values Are Arbitrary under the Alternative Hypothesis
 
@@ -349,8 +346,6 @@ abline(h=c(.01, .05), col="red", lwd=2)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-05-pvals_decrease-1.png" title="p-values from random samples at varying sample size. The actual value of the p-values decreases as we increase sample size whenever the alternative hypothesis is true." alt="p-values from random samples at varying sample size. The actual value of the p-values decreases as we increase sample size whenever the alternative hypothesis is true." style="display: block; margin: auto;" />
-
 ![](../fig/pvals-decrease.png)
 
 
@@ -383,29 +378,29 @@ and the confidence interval by the control population mean:
 N <- 12
 hf <- sample(hfPopulation, N)
 control <- sample(controlPopulation, N)
-diff <- mean(hf) - mean(control)
-diff / mean(control) * 100
+diff <- mean(hf, na.rm = TRUE) - mean(control, na.rm = TRUE)
+diff / mean(control, na.rm = TRUE) * 100
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] 15.99043
+[1] 9.359123
 ~~~
 {: .output}
 
 
 
 ~~~
-t.test(hf, control)$conf.int / mean(control) * 100
+t.test(hf, control)$conf.int / mean(control, na.rm = TRUE) * 100
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] -0.2599845 32.2408348
+[1] -1.600315 20.318560
 attr(,"conf.level")
 [1] 0.95
 ~~~
@@ -418,7 +413,7 @@ deviation of the two groups.
 
 
 ~~~
-sd_pool <- sqrt(((N-1)*var(hf) + (N-1)*var(control))/(2*N - 2))
+sd_pool <- sqrt(((N-1) * var(hf, na.rm = TRUE) + (N-1) * var(control, na.rm = TRUE))/(2*N - 2))
 diff / sd_pool
 ~~~
 {: .language-r}
@@ -426,7 +421,7 @@ diff / sd_pool
 
 
 ~~~
-[1] 0.8331424
+[1] 0.7296231
 ~~~
 {: .output}
 
@@ -468,4 +463,9 @@ increase, the effect size and Cohen's d will become more precise.
 > > ## Solution to Challenge 4
 > > 
 > {: .solution}
+{: .challenge}
+
+> ## Challenge 5: Watch [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
+> Do you empathize more with the biologist or with the statistician?
+> 
 {: .challenge}

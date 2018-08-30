@@ -21,7 +21,6 @@ source("../bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
 
-[A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
 
 ## Motivator: A retraction
 
@@ -198,7 +197,7 @@ power <- sapply(Ns, function(N){
 
 For each of the three simulations, the above code returns the proportion of times we reject. Not surprisingly power increases with N:
 
-```{r power_versus_sample_size, fig.cap="Power plotted against sample size."}
+```{r power_versus_sample_size, eval=FALSE}
 plot(Ns, power, type="b")
 ```
 ![](../fig/power-vs-sample-size.png)
@@ -209,7 +208,7 @@ power I will have. Another way of saying this is that we trade off
 between the two types of error. We can see this by writing similar code, but
 keeping $N$ fixed and considering several values of `alpha`:
 
-```{r power_versus_alpha, fig.cap="Power plotted against cut-off."}
+```{r power_versus_alpha, eval=FALSE}
 N <- 30
 alphas <- c(0.1, 0.05, 0.01, 0.001, 0.0001)
 power <- sapply(alphas, function(alpha){
@@ -223,9 +222,11 @@ plot(alphas, power, xlab="alpha", type="b", log="x")
 
 Note that the x-axis in this last plot is in the log scale.
 
-There is no "right" power or "right" alpha level, but it is important that you understand what each means.
+There is no "right" power or "right" alpha level, but it is important that you 
+understand what each means.
 
-To see this clearly, you could create a plot with curves of power versus N. Show several curves in the same plot with color representing alpha level.
+To see this clearly, you could create a plot with curves of power versus N.
+Show several curves in the same plot with color representing alpha level.
 
 #### p-values Are Arbitrary under the Alternative Hypothesis
 
@@ -271,7 +272,7 @@ pvalues <- sapply(Ns_rep, calculatePvalue)
 
 Now we can plot the 10 p-values we generated for each sample size:
 
-```{r pvals_decrease, fig.cap="p-values from random samples at varying sample size. The actual value of the p-values decreases as we increase sample size whenever the alternative hypothesis is true."}
+```{r pvals_decrease, eval=FALSE}
 plot(Ns_rep, pvalues, log="y", xlab="sample size",
      ylab="p-values")
 abline(h=c(.01, .05), col="red", lwd=2)
@@ -308,9 +309,9 @@ and the confidence interval by the control population mean:
 N <- 12
 hf <- sample(hfPopulation, N)
 control <- sample(controlPopulation, N)
-diff <- mean(hf) - mean(control)
-diff / mean(control) * 100
-t.test(hf, control)$conf.int / mean(control) * 100
+diff <- mean(hf, na.rm = TRUE) - mean(control, na.rm = TRUE)
+diff / mean(control, na.rm = TRUE) * 100
+t.test(hf, control)$conf.int / mean(control, na.rm = TRUE) * 100
 ```
 
 In addition, we can report a statistic called
@@ -319,7 +320,7 @@ which is the difference between the groups divided by the pooled standard
 deviation of the two groups. 
 
 ```{r}
-sd_pool <- sqrt(((N-1)*var(hf) + (N-1)*var(control))/(2*N - 2))
+sd_pool <- sqrt(((N-1) * var(hf, na.rm = TRUE) + (N-1) * var(control, na.rm = TRUE))/(2*N - 2))
 diff / sd_pool
 ```
 
@@ -361,4 +362,9 @@ increase, the effect size and Cohen's d will become more precise.
 > > ## Solution to Challenge 4
 > > 
 > {: .solution}
+{: .challenge}
+
+> ## Challenge 5: Watch [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
+> Do you empathize more with the biologist or with the statistician?
+> 
 {: .challenge}

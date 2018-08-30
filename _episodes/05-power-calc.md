@@ -84,13 +84,11 @@ We have also seen that, in some cases, when we take a sample and perform a t-tes
 
 
 ~~~
-# this needs updating for the DO data
-
 set.seed(1)
 N <- 5
-hf <- sample(hfPopulation,N)
-control <- sample(controlPopulation,N)
-t.test(hf,control)$p.value
+hf <- sample(hfPopulation, N)
+control <- sample(controlPopulation, N)
+t.test(hf, control)$p.value
 ~~~
 {: .language-r}
 
@@ -185,9 +183,9 @@ simulations. The simulation is as follows: we take a sample of size $N$ from bot
 
 ~~~
 reject <- function(N, alpha=0.05){
-   hf <- sample(hfPopulation,N) 
-   control <- sample(controlPopulation,N)
-   pval <- t.test(hf,control)$p.value
+   hf <- sample(hfPopulation, N) 
+   control <- sample(controlPopulation, N)
+   pval <- t.test(hf, control)$p.value
    pval < alpha
 }
 ~~~
@@ -247,7 +245,7 @@ Ns <- seq(5, 50, 5)
 So we use `apply` like this:
 
 ~~~
-power <- sapply(Ns,function(N){
+power <- sapply(Ns, function(N){
   rejections <- replicate(B, reject(N))
   mean(rejections)
   })
@@ -274,9 +272,9 @@ keeping $N$ fixed and considering several values of `alpha`:
 
 ~~~
 N <- 30
-alphas <- c(0.1,0.05,0.01,0.001,0.0001)
-power <- sapply(alphas,function(alpha){
-  rejections <- replicate(B,reject(N,alpha=alpha))
+alphas <- c(0.1, 0.05, 0.01, 0.001, 0.0001)
+power <- sapply(alphas, function(alpha){
+  rejections <- replicate(B, reject(N, alpha=alpha))
   mean(rejections)
 })
 plot(alphas, power, xlab="alpha", type="b", log="x")
@@ -314,21 +312,21 @@ First write a function that returns a p-value for a given sample size $N$:
 
 ~~~
 calculatePvalue <- function(N) {
-   hf <- sample(hfPopulation,N) 
-   control <- sample(controlPopulation,N)
-   t.test(hf,control)$p.value
+   hf <- sample(hfPopulation, N) 
+   control <- sample(controlPopulation, N)
+   t.test(hf, control)$p.value
 }
 ~~~
 {: .language-r}
 
-We have a limit here of 200 for the high-fat diet population, but we can
-see the effect well before we get to 200.
+We have a limit here of 197 for the high-fat diet population, but we can
+see the effect well before we get to 197.
 For each sample size, we will calculate a few p-values. We can do
 this by repeating each value of $N$ a few times.
 
 
 ~~~
-Ns <- seq(10,200,by=10)
+Ns <- seq(from = 10, to = length(hfPopulation), by=10)
 Ns_rep <- rep(Ns, each=10)
 ~~~
 {: .language-r}
@@ -341,42 +339,20 @@ pvalues <- sapply(Ns_rep, calculatePvalue)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in sample.int(length(x), size, replace, prob): cannot take a sample larger than the population when 'replace = FALSE'
-~~~
-{: .error}
-
 Now we can plot the 10 p-values we generated for each sample size:
 
 
 ~~~
 plot(Ns_rep, pvalues, log="y", xlab="sample size",
      ylab="p-values")
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in xy.coords(x, y, xlabel, ylabel, log): object 'pvalues' not found
-~~~
-{: .error}
-
-
-
-~~~
 abline(h=c(.01, .05), col="red", lwd=2)
 ~~~
 {: .language-r}
 
+<img src="../fig/rmd-05-pvals_decrease-1.png" title="p-values from random samples at varying sample size. The actual value of the p-values decreases as we increase sample size whenever the alternative hypothesis is true." alt="p-values from random samples at varying sample size. The actual value of the p-values decreases as we increase sample size whenever the alternative hypothesis is true." style="display: block; margin: auto;" />
 
+![](../fig/pvals-decrease.png)
 
-~~~
-Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-~~~
-{: .error}
 
 Note that the y-axis is log scale and that the p-values show a
 decreasing trend all the way to $10^{-8}$

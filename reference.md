@@ -63,6 +63,8 @@ Using Laboratory Animals](http://www.3rs-reduction.co.uk/assets/applets/Festing_
 
 [Gary Oehlert's A First Course in Design and Analysis of Experiments](http://users.stat.umn.edu/~gary/book/fcdae.pdf)
 
+[Statistics Done Wrong by Alex Reinhart](https://www.statisticsdonewrong.com/index.html)
+
 [Repeated Measures Design by Mark Conaway](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ClinStat/repmeas.PDF)
 
 [The Analysis Factor: Effect Size Statistics, Power, and Sample Size Calculations](https://www.theanalysisfactor.com/resources/by-topic/effect-size-statistics-power-and-sample-size-calculations/)

@@ -23,33 +23,39 @@ source: Rmd
 
 ## Motivator: A retraction
 
-Statistical power analysis is important in experimental design. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. See Doug Melton's retraction of betatrophin paper in the journal Cell.
-https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/
-"When we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion"
+Statistical power analysis is critical in experimental design. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. Before doing an experiment, it is important to calculate statistical power to estimate the sample size needed to detect an effect of a certain size with a specific degree of confidence. Underpowered studies are extremely common, which has led one of the most-cited scientists in medicine to claim that [most published research findings are false](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124).
 
-"In retrospect, he said he wished he’d performed the original experiment with more mice (“more attention to the statistical strength is a lesson that I’ve learned”), but the experiments with Kushner and his colleagues taught him the primary mistake was that the lab had miscounted the number of beta cells"
+Re-analyses of published works have become much more common, resulting in more paper retractions. Harvard stem cell biologist Douglas Melton [retracted a 2013 paper in Cell](https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/) that had garnered significant attention after other researchers attempted and failed to replicate his results. Dr. Melton said that “more attention to the statistical strength is a lesson that I’ve learned ... when we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion."
 
 ## Power Calculations 
 
 #### Introduction
 
-We have used the example of the effects of two different diets on the weight of mice. Since in this illustrative example we have access to the population, we know that in fact there is a substantial difference (greater than 18%) between the average weights of the two male populations at 21 weeks of age.
+We'll explore power calculations using the effects of two different diets on the body weights of mice. First we'll load the data file.
 
 
 ~~~
+# All code and text below is adapted from Irizarry & Love.
+# http://genomicsclass.github.io/book/pages/power_calculations.html
+# Exercises
+# http://genomicsclass.github.io/book/pages/power_calculations_exercises.html
+
 library(downloader)
 url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
 filename <- "bodyWeights.csv"
-if(!file.exists(filename)) download(url,destfile=filename)
+if(!file.exists(filename)) download(url, destfile=filename)
+
+# Read in DO850 body weight data.
+dat <- read.csv("bodyWeights.csv") 
 ~~~
 {: .language-r}
+
+Now we'll select body weight at 21 weeks for male mice on either a standard chow or high fat diet. We'll examine the difference in mean body weight between males on high fat and those on a chow diet.
 
 
 ~~~
 library(dplyr)
 
-# Read in DO850 body weight data.
-dat <- read.csv("bodyWeights.csv") 
 controlPopulation <- filter(dat, Sex == "M" & Diet == "chow") %>%  
   select(BW.21) %>% unlist
 
@@ -72,19 +78,25 @@ print(mu_hf - mu_control)
 
 
 ~~~
-# All code and text below is from Irizarry & Love
-# http://genomicsclass.github.io/book/pages/power_calculations.html
-# Exercises
-# http://genomicsclass.github.io/book/pages/power_calculations_exercises.html
+print((mu_hf - mu_control)/mu_control * 100) # percent increase
 ~~~
 {: .language-r}
 
-We have also seen that, in some cases, when we take a sample and perform a t-test, we don't always get a p-value smaller than 0.05. For example, here is a case where we take a sample of 5 mice and don't achieve statistical significance at the 0.05 level:
+
+
+~~~
+[1] 18.59599
+~~~
+{: .output}
+
+Since we have access to the population, we know that in fact there is a substantial difference (greater than 0 between the average weights of the two male populations at 21 weeks of age.
+
+We can see that, in some cases, when we take a sample and perform a t-test, we don't always get a p-value smaller than 0.05. For example, here is a case where we take a sample of 3 mice and don't achieve statistical significance at the 0.05 level:
 
 
 ~~~
 set.seed(1)
-N <- 5
+N <- 3
 hf <- sample(hfPopulation, N)
 control <- sample(controlPopulation, N)
 t.test(hf, control)$p.value
@@ -94,7 +106,7 @@ t.test(hf, control)$p.value
 
 
 ~~~
-[1] 0.05431597
+[1] 0.08935193
 ~~~
 {: .output}
 
@@ -200,7 +212,7 @@ reject(12)
 
 
 ~~~
-[1] TRUE
+[1] FALSE
 ~~~
 {: .output}
 
@@ -223,7 +235,7 @@ mean(rejections)
 
 
 ~~~
-[1] 0.5935
+[1] 0.594
 ~~~
 {: .output}
 
@@ -386,7 +398,7 @@ diff / mean(control, na.rm = TRUE) * 100
 
 
 ~~~
-[1] 9.359123
+[1] 11.31945
 ~~~
 {: .output}
 
@@ -400,7 +412,7 @@ t.test(hf, control)$conf.int / mean(control, na.rm = TRUE) * 100
 
 
 ~~~
-[1] -1.600315 20.318560
+[1] -3.000393 25.639300
 attr(,"conf.level")
 [1] 0.95
 ~~~
@@ -413,7 +425,7 @@ deviation of the two groups.
 
 
 ~~~
-sd_pool <- sqrt(((N-1) * var(hf, na.rm = TRUE) + (N-1) * var(control, na.rm = TRUE))/(2*N - 2))
+sd_pool <- sqrt(((N - 1) * var(hf, na.rm = TRUE) + (N - 1) * var(control, na.rm = TRUE))/(2 * N - 2))
 diff / sd_pool
 ~~~
 {: .language-r}
@@ -421,7 +433,7 @@ diff / sd_pool
 
 
 ~~~
-[1] 0.7296231
+[1] 0.7198511
 ~~~
 {: .output}
 

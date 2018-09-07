@@ -22,14 +22,17 @@ source: Rmd
 
 
 ## Motivator: A retraction
+Re-analyses of published works have become much more common, resulting in more paper retractions. Harvard stem cell biologist Douglas Melton [retracted a 2013 paper in Cell](https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/) that had garnered significant attention after other researchers attempted and failed to replicate his results. Dr. Melton said that “more attention to the statistical strength is a lesson that I’ve learned ... when we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion." Attention to sample size and power analysis in general is especially important for people who are early in their careers.
 
-Statistical power analysis is critical in experimental design. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. Before doing an experiment, it is important to calculate statistical power to estimate the sample size needed to detect an effect of a certain size with a specific degree of confidence. Underpowered studies are extremely common, which has led one of the most-cited scientists in medicine to claim that [most published research findings are false](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124).
+Statistical power analysis is critical in experimental design. Underpowered studies, such as in the previous example, don't provide accurate insight. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. 
 
-Re-analyses of published works have become much more common, resulting in more paper retractions. Harvard stem cell biologist Douglas Melton [retracted a 2013 paper in Cell](https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/) that had garnered significant attention after other researchers attempted and failed to replicate his results. Dr. Melton said that “more attention to the statistical strength is a lesson that I’ve learned ... when we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion."
+https://datasciencedojo.com/wp-content/uploads/type1and2error.gif
+![](../fig/nullAltGrid.png)
 
-## Power Calculations 
 
-#### Introduction
+Before doing an experiment, it is important to calculate statistical power to estimate the sample size needed to detect an effect of a certain size with a specific degree of confidence. Underpowered studies are extremely common, which has led one of the most-cited scientists in medicine to claim that [most published research findings are false](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124).
+
+## Introduction
 
 We'll explore power calculations using the effects of two different diets on the body weights of mice. First we'll load the data file.
 
@@ -89,6 +92,33 @@ print((mu_hf - mu_control)/mu_control * 100) # percent increase
 ~~~
 {: .output}
 
+What is the difference between body weight averages on a high fat vs. standard chow diet?
+
+~~~
+print(mu_hf - mu_control)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 6.696912
+~~~
+{: .output}
+
+What is the percentage increase in body weight of animals on high fat diet?
+
+~~~
+print((mu_hf - mu_control)/mu_control * 100) # percent increase
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 18.59599
+~~~
+{: .output}
 Since we have access to the population, we know that in fact there is a substantial difference (greater than 0 between the average weights of the two male populations at 21 weeks of age.
 
 We can see that, in some cases, when we take a sample and perform a t-test, we don't always get a p-value smaller than 0.05. For example, here is a case where we take a sample of 3 mice and don't achieve statistical significance at the 0.05 level:

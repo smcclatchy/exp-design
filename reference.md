@@ -16,14 +16,14 @@ biological replicate
 block
 :
 
-confounded
-:
+confounder
+: a difference between the treatment and control groups that is not the same as the treatment. A third variable that is associated with the explanatory (independent) and response (dependent) variables.
 
 control
-:
+: an experimental subject that does not receive the treatment
 
 controlled experiment
-: an experiment done in parallel on a treatment and a control group that differ in one way (the independent or explanatory variable).
+: an experiment done in parallel on a treatment and a control group that differ in one way (the independent or explanatory variable). Investigators determine which subjects go in the treatment group and which in the control group.
 
 experimental error
 :
@@ -38,7 +38,7 @@ fixed effects
 :
 
 observational study
-:
+: an experiment done in parallel on a treatment (or exposure) and a control group that differ in one way (the independent or explanatory variable). The subjects, not the investigators, determine whether they are in the treatment group or the control group (i.e. smokers and non-smokers).
 
 random effects
 :

@@ -20,14 +20,54 @@ source("../bin/chunk-options.R")
 knitr_fig_path("08-")
 ```
 
-A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control.
+A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
 
 ### Randomization
+In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
+
+Here is an example using a random number generator.
+
+```{r, random_number_generator}
+sample_id <- LETTERS
+random_number <- sample(100, 26)
+group <- ifelse(random_number %% 2 == 0, "control", "treatment")
+df1 <- data.frame(sample_id, random_number, group)
+df1
+table(df1$group)
+```
+
 
 ### Replication
+Replication can characterize variation or experimental error ("noise") in an experiment. Systematic error can be characterized with technical replicates, which measure the same sample multiple times and estimate the variation caused by equipment or protocols. Random biological variation can be characterized with biological replicates, which measure different biological samples in parallel. The greater the number of replications, the greater the precision (i.e., the degree to which repeated measurements under unchanged conditions show the same results) in the experiment.
 
-### Control
+### Local control
+Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization. Local control should not be confused with the control group, the group that does not receive treatment.
 
+As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units, will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
+
+#### Completely randomized design
+The completely randomized design is simple and common in controlled experiments. In a completely randomized design, each experimental unit (e.g. mouse) has an equal probability of assignment to any treatment. The following example demonstrates a completely randomized design for 4 treatment groups and 5 replicates of each treatment group, for a total of 20 experimental units.
+
+```{r, completely_random}
+exp_unit_id <- LETTERS[1:20]
+random_number <- sample(100, 20)
+
+# rank the random numbers and place in data frame with 
+# IDs and random numbers
+random_number_rank <- rank(random_number)
+df2 <- data.frame(exp_unit_id, random_number, random_number_rank)
+
+# sort by rank of random numbers
+df2 <- df2[order(random_number_rank),]
+
+# now assign the ranks to treatment groups
+treatment <- sort(rep(c("treatment1","treatment2","treatment3","control"), 5))
+df2 <- cbind(df2, treatment)
+df2
+table(df2$treatment)
+```
+
+In a completely randomized design, any difference between experimental units under the same treatment is considered experimental error. A completely randomized design is appropriate 
 ```{r, message=FALSE}
 library(downloader)
 url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"

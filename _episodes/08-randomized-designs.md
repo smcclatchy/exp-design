@@ -19,14 +19,148 @@ source: Rmd
 
 
 
-A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control.
+A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
 
 ### Randomization
+In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
+
+Here is an example using a random number generator.
+
+
+~~~
+sample_id <- LETTERS
+random_number <- sample(100, 26)
+group <- ifelse(random_number %% 2 == 0, "control", "treatment")
+df1 <- data.frame(sample_id, random_number, group)
+df1
+~~~
+{: .language-r}
+
+
+
+~~~
+   sample_id random_number     group
+1          A            94   control
+2          B            25 treatment
+3          C            54   control
+4          D             1 treatment
+5          E            28   control
+6          F            70   control
+7          G            33 treatment
+8          H            45 treatment
+9          I            62   control
+10         J            66   control
+11         K            73 treatment
+12         L            64   control
+13         M            44   control
+14         N            47 treatment
+15         O             6   control
+16         P            99 treatment
+17         Q            98   control
+18         R            46   control
+19         S            61 treatment
+20         T            56   control
+21         U            16   control
+22         V            12   control
+23         W            37 treatment
+24         X            48   control
+25         Y            32   control
+26         Z            93 treatment
+~~~
+{: .output}
+
+
+
+~~~
+table(df1$group)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+  control treatment 
+       16        10 
+~~~
+{: .output}
+
 
 ### Replication
+Replication can characterize variation or experimental error ("noise") in an experiment. Systematic error can be characterized with technical replicates, which measure the same sample multiple times and estimate the variation caused by equipment or protocols. Random biological variation can be characterized with biological replicates, which measure different biological samples in parallel. The greater the number of replications, the greater the precision (i.e., the degree to which repeated measurements under unchanged conditions show the same results) in the experiment.
 
-### Control
+### Local control
+Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization. Local control should not be confused with the control group, the group that does not receive treatment.
 
+As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units, will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
+
+#### Completely randomized design
+The completely randomized design is simple and common in controlled experiments. In a completely randomized design, each experimental unit (e.g. mouse) has an equal probability of assignment to any treatment. The following example demonstrates a completely randomized design for 4 treatment groups and 5 replicates of each treatment group, for a total of 20 experimental units.
+
+
+~~~
+exp_unit_id <- LETTERS[1:20]
+random_number <- sample(100, 20)
+
+# rank the random numbers and place in data frame with 
+# IDs and random numbers
+random_number_rank <- rank(random_number)
+df2 <- data.frame(exp_unit_id, random_number, random_number_rank)
+
+# sort by rank of random numbers
+df2 <- df2[order(random_number_rank),]
+
+# now assign the ranks to treatment groups
+treatment <- sort(rep(c("treatment1","treatment2","treatment3","control"), 5))
+df2 <- cbind(df2, treatment)
+df2
+~~~
+{: .language-r}
+
+
+
+~~~
+   exp_unit_id random_number random_number_rank  treatment
+12           L             1                  1    control
+7            G             3                  2    control
+3            C            11                  3    control
+8            H            17                  4    control
+10           J            18                  5    control
+14           N            27                  6 treatment1
+17           Q            37                  7 treatment1
+11           K            40                  8 treatment1
+5            E            43                  9 treatment1
+9            I            47                 10 treatment1
+6            F            54                 11 treatment2
+16           P            55                 12 treatment2
+18           R            64                 13 treatment2
+20           T            65                 14 treatment2
+13           M            78                 15 treatment2
+19           S            80                 16 treatment3
+1            A            83                 17 treatment3
+4            D            84                 18 treatment3
+2            B            89                 19 treatment3
+15           O            94                 20 treatment3
+~~~
+{: .output}
+
+
+
+~~~
+table(df2$treatment)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+   control treatment1 treatment2 treatment3 
+         5          5          5          5 
+~~~
+{: .output}
+
+In a completely randomized design, any difference between experimental units under the same treatment is considered experimental error. A completely randomized design is appropriate 
 
 ~~~
 library(downloader)

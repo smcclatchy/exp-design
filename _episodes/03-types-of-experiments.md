@@ -18,7 +18,7 @@ source: Rmd
 
 
  
-## Types of experiments
+## Types of controlled experiments
  
 ### Pilot
 ### Exploratory
@@ -27,6 +27,8 @@ source: Rmd
 ### Confirmatory
  hypothesis testing
  
+## Observational studies
+
 ## Experimental units
 
 ## Technical versus Biological Replicates

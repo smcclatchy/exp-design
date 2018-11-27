@@ -19,7 +19,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("03-")
 ```
  
-## Types of experiments
+## Types of controlled experiments
  
 ### Pilot
 ### Exploratory
@@ -28,6 +28,8 @@ knitr_fig_path("03-")
 ### Confirmatory
  hypothesis testing
  
+## Observational studies
+
 ## Experimental units
 
 ## Technical versus Biological Replicates

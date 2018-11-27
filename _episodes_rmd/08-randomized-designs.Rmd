@@ -1,12 +1,11 @@
 ---
-title: "Completely randomized, randomized block, and Latin square designs"
+title: "Experimental designs"
 teaching: 0
 exercises: 0
 questions:
 - "What are my experimental units?"
 - "How will treatments be assigned?"
-- "How will treatments be blinded?"
-- "How will outcomes be measured?"
+- "What are some types of experimental design?"
 objectives:
 - ""
 - ""
@@ -20,6 +19,14 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("08-")
 ```
+
+A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control.
+
+### Randomization
+
+### Replication
+
+### Control
 
 ```{r, message=FALSE}
 library(downloader)

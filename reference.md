@@ -13,8 +13,38 @@ biological replicate
 :   Parallel measurements of biologically distinct samples that capture random biological variation,
     which may itself be a subject of study or a source of noise.
 
+block
+:
+
+confounded
+:
+
+control
+:
+
+controlled experiment
+: an experiment done in parallel on a treatment and a control group that differ in one way (the independent or explanatory variable).
+
+experimental error
+:
+
+experimental unit
+:
+
 factorial design
 :   A design that permits testing of multiple variables at once.
+
+fixed effects
+:
+
+observational study
+:
+
+random effects
+:
+
+random error
+:
 
 randomization
 :    A method to reduce bias and minimize the likelihood of chance altering the results of an experiment.
@@ -26,11 +56,16 @@ replicability
 reproducibility
 :   Other researchers duplicate results and can draw the same conclusions as the original study did using
     the same materials and methods (i.e. specific measurement devices, original data, software, statistical method).
- 
+
+systematic error
+:
+
 technical replicate
 :   Repeated measurements of the same sample that represent independent measures of the random noise
     associated with protocols or equipment.
 
+treatment
+:
 
 
 

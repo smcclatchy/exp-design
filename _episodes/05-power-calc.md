@@ -26,10 +26,6 @@ Re-analyses of published works have become much more common, resulting in more p
 
 Statistical power analysis is critical in experimental design. Underpowered studies, such as in the previous example, don't provide accurate insight. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. 
 
-https://datasciencedojo.com/wp-content/uploads/type1and2error.gif
-![](../fig/nullAltGrid.png)
-
-
 Before doing an experiment, it is important to calculate statistical power to estimate the sample size needed to detect an effect of a certain size with a specific degree of confidence. Underpowered studies are extremely common, which has led one of the most-cited scientists in medicine to claim that [most published research findings are false](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124).
 
 ## Introduction
@@ -154,6 +150,7 @@ statistical power means.
 
 #### Types of Error
 
+
 Whenever we perform a statistical test, we are aware that we may make a
 mistake. This is why our p-values are not 0. Under the null, there is
 always a positive, perhaps very small, but still positive chance that we
@@ -199,7 +196,7 @@ Suppose our sample size is:
 
 
 ~~~
-N <- 12
+N <- 4
 ~~~
 {: .language-r}
 
@@ -235,7 +232,7 @@ reject <- function(N, alpha=0.05){
 Here is an example of one simulation for a sample size of 12. The call to `reject` answers the question "Did we reject?" 
 
 ~~~
-reject(12)
+reject(N)
 ~~~
 {: .language-r}
 
@@ -250,6 +247,7 @@ Now we can use the `replicate` function to do this `B` times.
 
 
 ~~~
+B <- 10
 rejections <- replicate(B, reject(N))
 ~~~
 {: .language-r}
@@ -265,21 +263,21 @@ mean(rejections)
 
 
 ~~~
-[1] 0.594
+[1] 0.2
 ~~~
 {: .output}
 
 This explains why the t-test was not rejecting when we knew the null
-was false. With a sample size of just 12, our power is about 23%. To
+was false. With a sample size of just 12, our power is about 0.2 percent. To
 guard against false positives at the 0.05 level, we had set the
 threshold at a high enough level that resulted in many type II
 errors. 
 
-Let's see how power improves with N. We will use the function `sapply`, which applies a function to each of the elements of a vector. We want to repeat the above for the following sample size:
+Let's see how power improves with N. We will use the function `sapply`, which applies a function to each of the elements of a vector. We want to repeat the above for the following sample sizes from 5 to 50 in increments of 5:
 
 
 ~~~
-Ns <- seq(5, 50, 5)
+Ns <- seq(from = 5, to = 50, by = 5)
 ~~~
 {: .language-r}
 
@@ -428,7 +426,7 @@ diff / mean(control, na.rm = TRUE) * 100
 
 
 ~~~
-[1] 11.31945
+[1] 21.77627
 ~~~
 {: .output}
 
@@ -442,7 +440,7 @@ t.test(hf, control)$conf.int / mean(control, na.rm = TRUE) * 100
 
 
 ~~~
-[1] -3.000393 25.639300
+[1]  6.110402 37.442144
 attr(,"conf.level")
 [1] 0.95
 ~~~
@@ -463,7 +461,7 @@ diff / sd_pool
 
 
 ~~~
-[1] 0.7198511
+[1] 1.236526
 ~~~
 {: .output}
 
@@ -486,6 +484,10 @@ increase, the effect size and Cohen's d will become more precise.
 > 1). How are they affected by alpha, beta, delta, N?
 > 2). If you double the sample size how does delta change?
 > Use formulas, functions, statistical rules of thumb.
+> Share your power curve with your neighbor.
+> How would you choose sample size?
+> What do you consider wasteful sample sizes when 
+> looking at these curves?
 >
 > > ## Solution to Challenge 2
 > > 

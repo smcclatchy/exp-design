@@ -33,6 +33,10 @@ random_number <- sample(100, 26)
 group <- ifelse(random_number %% 2 == 0, "control", "treatment")
 df1 <- data.frame(sample_id, random_number, group)
 df1
+```
+
+This might produce unequal numbers between treatment and control groups.
+```{r, random_assignment_table1}
 table(df1$group)
 ```
 
@@ -49,6 +53,7 @@ As an example of local control, if a rack of many mice cages is heterogeneous wi
 The completely randomized design is simple and common in controlled experiments. In a completely randomized design, each experimental unit (e.g. mouse) has an equal probability of assignment to any treatment. The following example demonstrates a completely randomized design for 4 treatment groups and 5 replicates of each treatment group, for a total of 20 experimental units.
 
 ```{r, completely_random}
+# create IDs and random numbers in vectors of equal length
 exp_unit_id <- LETTERS[1:20]
 random_number <- sample(100, 20)
 
@@ -64,10 +69,26 @@ df2 <- df2[order(random_number_rank),]
 treatment <- sort(rep(c("treatment1","treatment2","treatment3","control"), 5))
 df2 <- cbind(df2, treatment)
 df2
+```
+
+By assigning 5 experimental units to each treatment group, the numbers in each group are equal. A completely randomized design will work with unequal numbers, though.
+
+```{r, balanced_treatment_groups}
 table(df2$treatment)
 ```
 
-In a completely randomized design, any difference between experimental units under the same treatment is considered experimental error. A completely randomized design is appropriate 
+In a completely randomized design, any difference between experimental units under the same treatment is considered experimental error. A completely randomized design is appropriate only for experiments with homogeneous experimental units, where environmental effects such as light or temperature are relatively easy to control. The completely randomized design is rarely used in field studies for this reason.
+
+#### Randomized complete block design
+The randomized complete block design is a popular experimental design suited for studies where a researcher is concerned with studying the effects of a single factor on a response of interest. Furthermore, the study includes variability from another factor that is not of particular interest; often referred to as nuisance factor. The primary distinguishing feature of the randomized complete block design is that the blocks are of equal size and contain all of the treatments, to control the effects of variables that are not of interest. For example, a block may refer to an area that receives a certain amount of light, and within one area (or block) the light doesn’t differ much but across areas (blocks) they may differ greatly. Blocking reduces experimental error by eliminating known sources of variation among experimental units. 
+
+If certain operations, such as data collection, cannot be completed for the whole experiment in one day, the task should be completed for all experimental units of the same block on the same day. This way the variation among days becomes part of block variation and is, thus, excluded from the experimental error. If more than one person takes measurements in a trial, the same person should be assigned to take measurements for the entire block. This way the variation among people (i.e. technicians) would become part of block variation instead of experimental error.
+
+For example, if a rack of mouse cages (e.g., 6 rows by 5 columns) are to be used in an experiment possibly affected by light exposure, researchers may choose to use cages from several of the rows and columns so as to ensure that the effect of light exposure is minimized; the assumption being that cage position (top-to-bottom) in the rack corresponds to varying amounts of light exposure.
+
+In this example, there are three different treatments (A, B, and C). We will set the number of columns to be equal to the number of treatments (3).  The number of rows (or blocks) will be set to the number of replicates.  Since we are interested in how light exposure differs from top to bottom, we will want our blocks to convey that difference; hence blocks should correspond to rows in the rack as each row is believed to have a different amount of light exposure.  It is not necessary that there be enough replicates so as to account for all combinations of the order of treatments, and there is no need for a replicate size greater than that which accounts for all combinations.  In this example, we are using six replicates which happens to account for all possible combinations of the treatment groups.
+
+
 ```{r, message=FALSE}
 library(downloader)
 url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"

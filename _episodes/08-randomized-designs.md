@@ -174,28 +174,42 @@ For example, if a rack of mouse cages (e.g., 6 rows by 3 columns) are to be used
 
 In this example, there are three different treatments (A, B, and C). The number of rows (or blocks) will be set to the number of replicates.  Since we are interested in how light exposure differs from top to bottom, we will want our blocks to convey that difference; hence blocks should correspond to rows in the rack as each row is believed to have a different amount of light exposure.  It is not necessary that there be enough replicates so as to account for all combinations of the order of treatments, and there is no need for a replicate size greater than that which accounts for all combinations.  In this example, we are using six replicates which happens to account for all possible combinations of the treatment groups.
 
-
-~~~
-library(knitr)
-treatments <- LETTERS[1:3]
-blocks <- row_numbers
-
-rbd_df <- data.frame(blocks, row.names = seq(6))
-names(rbd_df) <- seq(5)
-kable(rbd_df)
-~~~
-{: .language-r}
+The randomized block design controls a source of random variation (a random effect) which might otherwise confound the effect of a treatment, and is of no interest. This design will have one or more treatments (fixed effects) which are of interest. The design is used to increase power by controlling variation from random effects, such as shelf height or illumination. It is also useful for breaking the experiment up into smaller, more convenient mini-experiments.
 
 #### Latin Square Design
 
 Latin square designs are unique in that they allow for (and require) two blocking factors. These designs are used to simultaneously control (or eliminate) two sources of nuisance variability while addressing the effect of (or variability caused by) one factor of interest. For a Latin square design to be created, each of the two blocking factors must have the same number of levels, and that number of levels must also be equal to the number of treatment (or factor of interest) levels.
 
 For example, a Latin square design can be used if there was a study on the effect of five treatments that was done on five different days by five different technicians.
- 
 
-The blocks in this example would be technician (column) and day (row).  The five different treatments (the factor of interest) is denoted by the letters A-E. We can remove the variation from our measured response to treatment in both directions if we consider both rows (day) and columns (technician) as factors in our design.
+![](../fig/latin-squares.png)
+
+The blocks in this example would be technician (column) and day (row).  The five different treatments (the factor of interest) are denoted by the letters A-E. We can remove the variation from our measured response to treatment in both directions if we consider both rows (day) and columns (technician) as factors in our design.
 
 The Latin Square Design gets its name from the fact that we can write it as a square with Latin letters to correspond to the treatments. The treatment factor levels are the Latin letters in the Latin square design. The number of rows and columns has to correspond to the number of treatment levels. So, if we have five treatments then we would need to have five rows and five columns in order to create a Latin square. This gives us a design where we have each of the treatments and in each row and in each column.
+
+> ## Exercise 1: True or false?
+> 1. A completely randomized design can have
+> different numbers in each treatment group.
+>
+> 2. Completely randomized designs tolerate 
+> environmental changes, such as lighting 
+> differences, over time or space.
+>
+> 3.A randomized block design ensures that the
+> environment is the same for each experimental unit.
+>
+> 4.  A randomized block design can be used when
+> experimental units are heterogeneous in age
+> or weight.
+> > ## Solution to Exercise 1
+> > 
+> > 1). 
+> > 2).
+> > 3).
+> > 4).
+> {: .solution}
+{: .challenge}
 
 #### Factorial Design
 

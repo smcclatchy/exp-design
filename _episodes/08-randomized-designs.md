@@ -103,15 +103,13 @@ The completely randomized design is simple and common in controlled experiments.
 exp_unit_id <- LETTERS[1:20]
 random_number <- sample(100, 20)
 
-# rank the random numbers and place in data frame with 
-# IDs and random numbers
-random_number_rank <- rank(random_number)
-df2 <- data.frame(exp_unit_id, random_number, random_number_rank)
+# place IDs and random numbers in data frame
+df2 <- data.frame(exp_unit_id, random_number)
 
-# sort by rank of random numbers
-df2 <- df2[order(random_number_rank),]
+# sort by  random numbers
+df2 <- df2[order(random_number),]
 
-# now assign the ranks to treatment groups
+# now assign to treatment groups
 treatment <- sort(rep(c("treatment1","treatment2","treatment3","control"), 5))
 df2 <- cbind(df2, treatment)
 df2
@@ -121,27 +119,27 @@ df2
 
 
 ~~~
-   exp_unit_id random_number random_number_rank  treatment
-12           L             1                  1    control
-7            G             3                  2    control
-3            C            11                  3    control
-8            H            17                  4    control
-10           J            18                  5    control
-14           N            27                  6 treatment1
-17           Q            37                  7 treatment1
-11           K            40                  8 treatment1
-5            E            43                  9 treatment1
-9            I            47                 10 treatment1
-6            F            54                 11 treatment2
-16           P            55                 12 treatment2
-18           R            64                 13 treatment2
-20           T            65                 14 treatment2
-13           M            78                 15 treatment2
-19           S            80                 16 treatment3
-1            A            83                 17 treatment3
-4            D            84                 18 treatment3
-2            B            89                 19 treatment3
-15           O            94                 20 treatment3
+   exp_unit_id random_number  treatment
+12           L             1    control
+7            G             3    control
+3            C            11    control
+8            H            17    control
+10           J            18    control
+14           N            27 treatment1
+17           Q            37 treatment1
+11           K            40 treatment1
+5            E            43 treatment1
+9            I            47 treatment1
+6            F            54 treatment2
+16           P            55 treatment2
+18           R            64 treatment2
+20           T            65 treatment2
+13           M            78 treatment2
+19           S            80 treatment3
+1            A            83 treatment3
+4            D            84 treatment3
+2            B            89 treatment3
+15           O            94 treatment3
 ~~~
 {: .output}
 
@@ -173,6 +171,32 @@ For example, if a rack of mouse cages (e.g., 6 rows by 5 columns) are to be used
 
 In this example, there are three different treatments (A, B, and C). We will set the number of columns to be equal to the number of treatments (3).  The number of rows (or blocks) will be set to the number of replicates.  Since we are interested in how light exposure differs from top to bottom, we will want our blocks to convey that difference; hence blocks should correspond to rows in the rack as each row is believed to have a different amount of light exposure.  It is not necessary that there be enough replicates so as to account for all combinations of the order of treatments, and there is no need for a replicate size greater than that which accounts for all combinations.  In this example, we are using six replicates which happens to account for all possible combinations of the treatment groups.
 
+
+~~~
+library(knitr)
+treatments <- LETTERS[1:3]
+blocks <- row_numbers
+
+rbd_df <- data.frame(blocks, row.names = seq(6))
+names(rbd_df) <- seq(5)
+kable(rbd_df)
+~~~
+{: .language-r}
+
+#### Latin Square Design
+
+Latin square designs are unique in that they allow for (and require) two blocking factors. These designs are used to simultaneously control (or eliminate) two sources of nuisance variability while addressing the effect of (or variability caused by) one factor of interest. For a Latin square design to be created, each of the two blocking factors must have the same number of levels, and that number of levels must also be equal to the number of treatment (or factor of interest) levels.
+
+For example, a Latin square design can be used if there was a study on the effect of five treatments that was done on five different days by five different technicians.
+ 
+
+The blocks in this example would be technician (column) and day (row).  The five different treatments (the factor of interest) is denoted by the letters A-E. We can remove the variation from our measured response to treatment in both directions if we consider both rows (day) and columns (technician) as factors in our design.
+
+The Latin Square Design gets its name from the fact that we can write it as a square with Latin letters to correspond to the treatments. The treatment factor levels are the Latin letters in the Latin square design. The number of rows and columns has to correspond to the number of treatment levels. So, if we have five treatments then we would need to have five rows and five columns in order to create a Latin square. This gives us a design where we have each of the treatments and in each row and in each column.
+
+#### Factorial Design
+
+A factorial design is often used by scientists wishing to understand the effect of two or more independent variables upon a single dependent variable.  The advantages of the factorial design are related to the fact that two or more factors may be assessed at the same time in the same population simultaneously, thus creating a more efficient trial in terms of resources including sample size compared with separate trials for assessment of each parameter.  Each factor has discrete possible values or "levels" (e.g., sex has two levels that are male and female), and whose experimental units take on all possible combinations of these levels across all such factors (e.g., an experiment with two factors sex and treatment will contain samples from all combinations of the two factors).  Factorial designs are named according to the number of factors and the levels of those factors.  For example, an experiment that evaluates the effects of sex (levels of male and female) and treatments (levels of drug and control) would be referred to as a 2 x 2 factorial design; where the first 2 refers to the number of levels of sex and the second 2 refers to the number of levels of the treatment.  If an additional factor was present (e.g., diet with # levels) another number representing the levels of that factor would be included in the name (e.g., 2 x 2 x # factorial design).  If the number of combinations of factor levels in a full factorial design is too high to be logistically feasible, a fractional factorial design may be done (not covered), in which some of the possible combinations (usually at least half) are omitted.  A factorial design has the added benefit of being able to evaluate the interaction of factors, when two (or more) factors interact with each other to affect the dependent variable.  Evaluation of this interaction effect is elucidated through various statistical analyses dependent on the data.
 
 
 ~~~

@@ -1,5 +1,5 @@
 ---
-title: Power calculation
+title: Power calculation and sample size
 teaching: 0
 exercises: 0
 questions:

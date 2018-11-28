@@ -10,7 +10,7 @@ blocking
 :    Samples of similar structure grouped together from both treatment and control.
 
 biological replicate
-:   Parallel measurements of biologically distinct samples that capture random biological variation,
+:   Measurements of biologically distinct samples taken at the same time and place. Biological replicates capture random biological variation,
     which may itself be a subject of study or a source of noise.
 
 block

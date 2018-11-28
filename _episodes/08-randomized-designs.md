@@ -69,7 +69,8 @@ df1
 ~~~
 {: .output}
 
-This might produce unequal numbers between treatment and control groups.
+This might produce unequal numbers between treatment and control groups. It isn't necessary to have equal numbers, however, sensitivity (the true positive rate, or ability detect of an effect when it truly exists) is maximized when sample numbers are equal.
+
 
 ~~~
 table(df1$group)
@@ -232,3 +233,22 @@ dat <- read.csv("bodyWeights.csv")
 > > 4).
 > {: .solution}
 {: .challenge}
+
+Gary's notes: 
+
+Assign mice to diet and running wheel. Revisit randomization.
+
+How to compute sample size?
+Simulate? Other tools?
+Compare the 2x2 experiment sample size to the single factor ...
+not double. You get more for your money.
+
+Two-way ANOVA - main effects, interaction
+
+> ## Challenge 2
+>
+> > ## Solution to Challenge 2
+> > 
+> {: .solution}
+{: .challenge}
+

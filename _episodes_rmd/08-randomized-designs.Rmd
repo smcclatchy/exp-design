@@ -10,7 +10,7 @@ objectives:
 - ""
 - ""
 keypoints:
-- "."
+- "Well-designed experiments are randomized, have adequate replicates, and feature local control of environmental variables."
 - "."
 source: Rmd
 ---
@@ -25,7 +25,7 @@ A designed experiment is a strategic attempt to answer a research question or pr
 ### Randomization
 In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
 
-Here is an example using a random number generator.
+Here is an example of randomization using a random number generator.
 
 ```{r, random_number_generator}
 sample_id <- LETTERS
@@ -119,7 +119,7 @@ The Latin Square Design gets its name from the fact that we can write it as a sq
 > or weight.
 > > ## Solution to Exercise 1
 > > 
-> > 1). 
+> > 1). True. Numbers in each treatment group can differ, though sensitivity (true positive rate) could suffer.
 > > 2).
 > > 3).
 > > 4).

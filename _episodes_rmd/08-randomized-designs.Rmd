@@ -20,6 +20,20 @@ source("../bin/chunk-options.R")
 knitr_fig_path("08-")
 ```
 
+```{r, message=FALSE}
+library(downloader)
+url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
+filename <- "bodyWeights.csv"
+if(!file.exists(filename)) download(url,destfile=filename)
+```
+
+```{r, message=FALSE}
+library(dplyr)
+
+# Read in DO850 body weight data.
+dat <- read.csv("bodyWeights.csv")  
+```
+
 A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
 
 ### Randomization
@@ -126,24 +140,7 @@ The Latin Square Design gets its name from the fact that we can write it as a sq
 > {: .solution}
 {: .challenge}
 
-#### Factorial Design
-
-A factorial design is often used by scientists wishing to understand the effect of two or more independent variables upon a single dependent variable.  The advantages of the factorial design are related to the fact that two or more factors may be assessed at the same time in the same population simultaneously, thus creating a more efficient trial in terms of resources including sample size compared with separate trials for assessment of each parameter.  Each factor has discrete possible values or "levels" (e.g., sex has two levels that are male and female), and whose experimental units take on all possible combinations of these levels across all such factors (e.g., an experiment with two factors sex and treatment will contain samples from all combinations of the two factors).  Factorial designs are named according to the number of factors and the levels of those factors.  For example, an experiment that evaluates the effects of sex (levels of male and female) and treatments (levels of drug and control) would be referred to as a 2 x 2 factorial design; where the first 2 refers to the number of levels of sex and the second 2 refers to the number of levels of the treatment.  If an additional factor was present (e.g., diet with # levels) another number representing the levels of that factor would be included in the name (e.g., 2 x 2 x # factorial design).  If the number of combinations of factor levels in a full factorial design is too high to be logistically feasible, a fractional factorial design may be done (not covered), in which some of the possible combinations (usually at least half) are omitted.  A factorial design has the added benefit of being able to evaluate the interaction of factors, when two (or more) factors interact with each other to affect the dependent variable.  Evaluation of this interaction effect is elucidated through various statistical analyses dependent on the data.
-
-```{r, message=FALSE}
-library(downloader)
-url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
-filename <- "bodyWeights.csv"
-if(!file.exists(filename)) download(url,destfile=filename)
-```
-
-```{r, message=FALSE}
-library(dplyr)
-
-# Read in DO850 body weight data.
-dat <- read.csv("bodyWeights.csv")  
-```
-> ## Challenge 1
+> ## Exercise 2: Random assignment to diet
 > Use this subset of data containing 20 males and 20 females and
 > their baseline body weights to randomize to two different diets: high fat and regular chow.
 > `subset <- dat[dat$Sample[c(51:70, 475:494)],c("Sample", "Sex", "BW.3")]`
@@ -152,7 +149,7 @@ dat <- read.csv("bodyWeights.csv")
 > 3). Check the sex ratio and difference in body weights.  
 > 4). Share the mean body weight for each group on the course etherpad.  
 >
-> > ## Solution to Challenge 1
+> > ## Solution to Exercise 2
 > > This requires generation of random numbers. If diets are assigned in order, sample ID will be confounded with body weight if consecutive ID numbers were handled somehow by the same person or in the same way.
 > > 1). 
 > > 2).
@@ -160,6 +157,10 @@ dat <- read.csv("bodyWeights.csv")
 > > 4).
 > {: .solution}
 {: .challenge}
+
+#### Factorial Design
+
+A factorial design is often used by scientists wishing to understand the effect of two or more independent variables upon a single dependent variable.  The advantages of the factorial design are related to the fact that two or more factors may be assessed at the same time in the same population simultaneously, thus creating a more efficient trial in terms of resources including sample size compared with separate trials for assessment of each parameter.  Each factor has discrete possible values or "levels" (e.g., sex has two levels that are male and female), and whose experimental units take on all possible combinations of these levels across all such factors (e.g., an experiment with two factors sex and treatment will contain samples from all combinations of the two factors).  Factorial designs are named according to the number of factors and the levels of those factors.  For example, an experiment that evaluates the effects of sex (levels of male and female) and treatments (levels of drug and control) would be referred to as a 2 x 2 factorial design; where the first 2 refers to the number of levels of sex and the second 2 refers to the number of levels of the treatment.  If an additional factor was present (e.g., diet with # levels) another number representing the levels of that factor would be included in the name (e.g., 2 x 2 x # factorial design).  If the number of combinations of factor levels in a full factorial design is too high to be logistically feasible, a fractional factorial design may be done (not covered), in which some of the possible combinations (usually at least half) are omitted.  A factorial design has the added benefit of being able to evaluate the interaction of factors, when two (or more) factors interact with each other to affect the dependent variable.  Evaluation of this interaction effect is elucidated through various statistical analyses dependent on the data.
 
 Gary's notes: 
 

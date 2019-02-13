@@ -12,19 +12,37 @@ objectives:
 - ""
 - ""
 keypoints:
-- "."
+- "Well-designed experiments are randomized, have adequate replicates, and feature local control of environmental variables."
 - "."
 source: Rmd
 ---
 
 
 
+
+~~~
+library(downloader)
+url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
+filename <- "bodyWeights.csv"
+if(!file.exists(filename)) download(url,destfile=filename)
+~~~
+{: .language-r}
+
+
+~~~
+library(dplyr)
+
+# Read in DO850 body weight data.
+dat <- read.csv("bodyWeights.csv")  
+~~~
+{: .language-r}
+
 A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
 
 ### Randomization
 In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
 
-Here is an example using a random number generator.
+Here is an example of randomization using a random number generator.
 
 
 ~~~
@@ -93,7 +111,7 @@ Replication can characterize variation or experimental error ("noise") in an exp
 ### Local control
 Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization. Local control should not be confused with the control group, the group that does not receive treatment.
 
-As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units, will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
+As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
 
 #### Completely randomized design
 The completely randomized design is simple and common in controlled experiments. In a completely randomized design, each experimental unit (e.g. mouse) has an equal probability of assignment to any treatment. The following example demonstrates a completely randomized design for 4 treatment groups and 5 replicates of each treatment group, for a total of 20 experimental units.
@@ -202,37 +220,19 @@ The Latin Square Design gets its name from the fact that we can write it as a sq
 > 4.  A randomized block design can be used when
 > experimental units are heterogeneous in age
 > or weight.
+>
+> >
 > > ## Solution to Exercise 1
 > > 
-> > 1). 
+> > 1). True. Numbers in each treatment group can differ, though sensitivity (true positive rate) could suffer.
 > > 2).
 > > 3).
 > > 4).
+> > 
 > {: .solution}
 {: .challenge}
 
-#### Factorial Design
-
-A factorial design is often used by scientists wishing to understand the effect of two or more independent variables upon a single dependent variable.  The advantages of the factorial design are related to the fact that two or more factors may be assessed at the same time in the same population simultaneously, thus creating a more efficient trial in terms of resources including sample size compared with separate trials for assessment of each parameter.  Each factor has discrete possible values or "levels" (e.g., sex has two levels that are male and female), and whose experimental units take on all possible combinations of these levels across all such factors (e.g., an experiment with two factors sex and treatment will contain samples from all combinations of the two factors).  Factorial designs are named according to the number of factors and the levels of those factors.  For example, an experiment that evaluates the effects of sex (levels of male and female) and treatments (levels of drug and control) would be referred to as a 2 x 2 factorial design; where the first 2 refers to the number of levels of sex and the second 2 refers to the number of levels of the treatment.  If an additional factor was present (e.g., diet with # levels) another number representing the levels of that factor would be included in the name (e.g., 2 x 2 x # factorial design).  If the number of combinations of factor levels in a full factorial design is too high to be logistically feasible, a fractional factorial design may be done (not covered), in which some of the possible combinations (usually at least half) are omitted.  A factorial design has the added benefit of being able to evaluate the interaction of factors, when two (or more) factors interact with each other to affect the dependent variable.  Evaluation of this interaction effect is elucidated through various statistical analyses dependent on the data.
-
-
-~~~
-library(downloader)
-url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
-filename <- "bodyWeights.csv"
-if(!file.exists(filename)) download(url,destfile=filename)
-~~~
-{: .language-r}
-
-
-~~~
-library(dplyr)
-
-# Read in DO850 body weight data.
-dat <- read.csv("bodyWeights.csv")  
-~~~
-{: .language-r}
-> ## Challenge 1
+> ## Exercise 2: Random assignment to diet
 > Use this subset of data containing 20 males and 20 females and
 > their baseline body weights to randomize to two different diets: high fat and regular chow.
 > `subset <- dat[dat$Sample[c(51:70, 475:494)],c("Sample", "Sex", "BW.3")]`
@@ -241,28 +241,33 @@ dat <- read.csv("bodyWeights.csv")
 > 3). Check the sex ratio and difference in body weights.  
 > 4). Share the mean body weight for each group on the course etherpad.  
 >
-> > ## Solution to Challenge 1
+> >
+> > ## Solution to Exercise 2
 > > This requires generation of random numbers. If diets are assigned in order, sample ID will be confounded with body weight if consecutive ID numbers were handled somehow by the same person or in the same way.
 > > 1). 
 > > 2).
 > > 3).
 > > 4).
+> >
 > {: .solution}
 {: .challenge}
 
-Gary's notes: 
+#### Factorial Design
 
-Assign mice to diet and running wheel. Revisit randomization.
-
-How to compute sample size?
-Simulate? Other tools?
-Compare the 2x2 experiment sample size to the single factor ...
-not double. You get more for your money.
-
-Two-way ANOVA - main effects, interaction
+A factorial design is often used by scientists wishing to understand the effect of two or more independent variables upon a single dependent variable.  The advantages of the factorial design are related to the fact that two or more factors may be assessed at the same time in the same population simultaneously, thus creating a more efficient trial in terms of resources including sample size compared with separate trials for assessment of each parameter.  Each factor has discrete possible values or "levels" (e.g., sex has two levels that are male and female), and whose experimental units take on all possible combinations of these levels across all such factors (e.g., an experiment with two factors sex and treatment will contain samples from all combinations of the two factors).  Factorial designs are named according to the number of factors and the levels of those factors.  For example, an experiment that evaluates the effects of sex (levels of male and female) and treatments (levels of drug and control) would be referred to as a 2 x 2 factorial design; where the first 2 refers to the number of levels of sex and the second 2 refers to the number of levels of the treatment.  If an additional factor was present (e.g., diet with # levels) another number representing the levels of that factor would be included in the name (e.g., 2 x 2 x # factorial design).  If the number of combinations of factor levels in a full factorial design is too high to be logistically feasible, a fractional factorial design may be done (not covered), in which some of the possible combinations (usually at least half) are omitted.  A factorial design has the added benefit of being able to evaluate the interaction of factors, when two (or more) factors interact with each other to affect the dependent variable.  Evaluation of this interaction effect is elucidated through various statistical analyses dependent on the data.
 
 > ## Challenge 2
+> Gary's suggestion: Assign mice to diet and running
+> wheel. Revisit randomization.
+> How to compute sample size?
+> Simulate? 
+> Other tools?
+> Compare the 2x2 experiment sample size to the
+> single factor ... not double.
+> You get more for your money.
+> Two-way ANOVA - main effects, interaction
 >
+> >
 > > ## Solution to Challenge 2
 > > 
 > {: .solution}

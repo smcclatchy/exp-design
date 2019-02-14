@@ -37,7 +37,7 @@ dat <- read.csv("bodyWeights.csv")
 A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
 
 ### Randomization
-In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
+In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units (the unit or subject tested upon) so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
 
 Here is an example of randomization using a random number generator.
 
@@ -49,15 +49,44 @@ df1 <- data.frame(sample_id, random_number, group)
 df1
 ```
 
-This might produce unequal numbers between treatment and control groups. It isn't necessary to have equal numbers, however, sensitivity (the true positive rate, or ability detect of an effect when it truly exists) is maximized when sample numbers are equal.
+This might produce unequal numbers between treatment and control groups. It isn’t necessary to have equal numbers, however, sensitivity (the true positive rate, or ability to detect an effect when it truly exists) is maximized when sample numbers are equal.
 
 ```{r, random_assignment_table1}
 table(df1$group)
 ```
 
-
 ### Replication
-Replication can characterize variation or experimental error ("noise") in an experiment. Systematic error can be characterized with technical replicates, which measure the same sample multiple times and estimate the variation caused by equipment or protocols. Random biological variation can be characterized with biological replicates, which measure different biological samples in parallel. The greater the number of replications, the greater the precision (i.e., the degree to which repeated measurements under unchanged conditions show the same results) in the experiment.
+Replication can characterize variation or experimental error ("noise") in an experiment. Systematic error can be characterized with technical replicates, which measure the same sample multiple times and estimate the variation caused by equipment or protocols. Random biological variation can be characterized with biological replicates, which measure different biological samples in parallel. The greater the number of replications, the greater the precision (i.e., the degree to which repeated measurements under unchanged conditions show the same results) in the experiment.  
+
+Experimental error can be classified into three general types: systematic, biological, and random.  Systematic and biological are consistent error types; if you repeat an experiment, you’ll get the same error. Random is not a consistent source of error, it is unpredictable and has no pattern.  
+
+- Systematic error can be characterized with technical replicates, which measure the same sample multiple times and estimates the variation caused by equipment or protocols.   
+- Biological error can be characterized with biological replicates, which measure different biological samples in parallel to estimate the variation caused by the unique biology of the samples.   
+- Random error cannot be explained by replication because it is not a consistent source of error.  
+
+The greater the number of replications, the greater the precision (the closeness of two or more measurements to each other).  Having a large enough sample size to ensure high precision is necessary to ensure reproducible results.    
+
+Replication could use a question that could help check that individuals know the difference between types of errors.
+
+> ## Exercise 1: Which kind of error?
+> A study used to determine the effect of a drug on weight loss 
+> could have the following sources of experimental error. 
+> Classify the following sources as either biological or 
+> systematic error.
+> 1). A scale is broken and provides inconsistent readings  
+> 2). A scale is calibrated wrong and consistently measures mice 1g heavier  
+> 3). A mouse has unusually high weight compared to its experimental group (i.e., it is an outlier)  
+>
+> >
+> > ## Solution to Exercise 1
+> > 
+> > 1). 
+> > 2).  
+> > 3).  
+> > 
+> {: .solution}
+{: .challenge}
+
 
 ### Local control
 Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization. Local control should not be confused with the control group, the group that does not receive treatment.
@@ -70,7 +99,7 @@ The completely randomized design is simple and common in controlled experiments.
 ```{r, completely_random}
 # create IDs and random numbers in vectors of equal length
 exp_unit_id <- LETTERS[1:20]
-random_number <- sample(100, 20)
+random_number <- sample(x = 100, size = 20)
 
 # place IDs and random numbers in data frame
 df2 <- data.frame(exp_unit_id, random_number)
@@ -79,7 +108,7 @@ df2 <- data.frame(exp_unit_id, random_number)
 df2 <- df2[order(random_number),]
 
 # now assign to treatment groups
-treatment <- sort(rep(c("treatment1","treatment2","treatment3","control"), 5))
+treatment <- sort(rep(x = c("treatment1","treatment2","treatment3","control"), times = 5))
 df2 <- cbind(df2, treatment)
 df2
 ```
@@ -90,10 +119,10 @@ By assigning 5 experimental units to each treatment group, the numbers in each g
 table(df2$treatment)
 ```
 
-In a completely randomized design, any difference between experimental units under the same treatment is considered experimental error. A completely randomized design is appropriate only for experiments with homogeneous experimental units, where environmental effects such as light or temperature are relatively easy to control. The completely randomized design is rarely used in field studies for this reason.
+In a completely randomized design, any difference between experimental units under the same treatment is considered (biological, systematic, and/or random) experimental error. A completely randomized design is appropriate only for experiments with homogeneous experimental units (e.g., mice should be of same sex, strain, age, etc.) where environmental effects, such as light or temperature, are relatively easy to control. 
 
 #### Randomized complete block design
-The randomized complete block design is a popular experimental design suited for studies where a researcher is concerned with studying the effects of a single factor on a response of interest. Furthermore, the study includes variability from another factor that is not of particular interest; often referred to as nuisance factor. The primary distinguishing feature of the randomized complete block design is that the blocks are of equal size and contain all of the treatments, to control the effects of variables that are not of interest. For example, a block may refer to an area that receives a certain amount of light, and within one area (or block) the light doesn’t differ much but across areas (blocks) they may differ greatly. Blocking reduces experimental error by eliminating known sources of variation among experimental units. 
+The randomized complete block design is a popular experimental design suited for studies where a researcher is concerned with studying the effects of a single factor on a response of interest. Furthermore, the study includes variability from another factor that is not of particular interest; often referred to as nuisance factor. The primary distinguishing feature of the randomized complete block design is that the blocks are of equal size and contain all of the treatments, to control the effects of variables that are not of interest. For example, a block may refer to an area that receives a certain amount of light, and within one area (or block) the light doesn’t differ much but across areas (blocks) they may differ greatly. Blocking reduces (biological and systematic) experimental error by eliminating known sources of variation among experimental units.
 
 If certain operations, such as data collection, cannot be completed for the whole experiment in one day, the task should be completed for all experimental units of the same block on the same day. This way the variation among days becomes part of block variation and is, thus, excluded from the experimental error. If more than one person takes measurements in a trial, the same person should be assigned to take measurements for the entire block. This way the variation among people (i.e. technicians) would become part of block variation instead of experimental error.
 
@@ -117,43 +146,40 @@ The blocks in this example would be technician (column) and day (row).  The five
 
 The Latin Square Design gets its name from the fact that we can write it as a square with Latin letters to correspond to the treatments. The treatment factor levels are the Latin letters in the Latin square design. The number of rows and columns has to correspond to the number of treatment levels. So, if we have five treatments then we would need to have five rows and five columns in order to create a Latin square. This gives us a design where we have each of the treatments and in each row and in each column.
 
-> ## Exercise 1: True or false?
+> ## Exercise 2: True or false?
 > 1. A completely randomized design can have
-> different numbers in each treatment group.
->
+> different numbers in each treatment group.  
 > 2. Completely randomized designs tolerate 
 > environmental changes, such as lighting 
-> differences, over time or space.
->
-> 3.A randomized block design ensures that the
-> environment is the same for each experimental unit.
->
-> 4.  A randomized block design can be used when
+> differences, over time or space.  
+> 3. A randomized block design ensures that the
+> environment is the same for each experimental unit.  
+> 4. A randomized block design can be used when
 > experimental units are heterogeneous in age
 > or weight.
 >
 > >
-> > ## Solution to Exercise 1
+> > ## Solution to Exercise 2
 > > 
-> > 1). True. Numbers in each treatment group can differ, though sensitivity (true positive rate) could suffer.
-> > 2).
-> > 3).
-> > 4).
+> > 1). True. Numbers in each treatment group can differ, though sensitivity (true positive rate) could suffer.  
+> > 2).  
+> > 3).  
+> > 4).  
 > > 
 > {: .solution}
 {: .challenge}
 
-> ## Exercise 2: Random assignment to diet
+> ## Exercise 3: Random assignment to diet
 > Use this subset of data containing 20 males and 20 females and
 > their baseline body weights to randomize to two different diets: high fat and regular chow.
-> `subset <- dat[dat$Sample[c(51:70, 475:494)],c("Sample", "Sex", "BW.3")]`
+> `subset <- dat[dat$Sample[c(51:70, 475:494)],c("Sample", "Sex", "BW.3")]`  
 > 1). Perform a complete randomization.  
 > 2). Perform a balanced randomization.  
 > 3). Check the sex ratio and difference in body weights.  
 > 4). Share the mean body weight for each group on the course etherpad.  
 >
 > >
-> > ## Solution to Exercise 2
+> > ## Solution to Exercise 3
 > > This requires generation of random numbers. If diets are assigned in order, sample ID will be confounded with body weight if consecutive ID numbers were handled somehow by the same person or in the same way.
 > > 1). 
 > > 2).
@@ -166,21 +192,3 @@ The Latin Square Design gets its name from the fact that we can write it as a sq
 #### Factorial Design
 
 A factorial design is often used by scientists wishing to understand the effect of two or more independent variables upon a single dependent variable.  The advantages of the factorial design are related to the fact that two or more factors may be assessed at the same time in the same population simultaneously, thus creating a more efficient trial in terms of resources including sample size compared with separate trials for assessment of each parameter.  Each factor has discrete possible values or "levels" (e.g., sex has two levels that are male and female), and whose experimental units take on all possible combinations of these levels across all such factors (e.g., an experiment with two factors sex and treatment will contain samples from all combinations of the two factors).  Factorial designs are named according to the number of factors and the levels of those factors.  For example, an experiment that evaluates the effects of sex (levels of male and female) and treatments (levels of drug and control) would be referred to as a 2 x 2 factorial design; where the first 2 refers to the number of levels of sex and the second 2 refers to the number of levels of the treatment.  If an additional factor was present (e.g., diet with # levels) another number representing the levels of that factor would be included in the name (e.g., 2 x 2 x # factorial design).  If the number of combinations of factor levels in a full factorial design is too high to be logistically feasible, a fractional factorial design may be done (not covered), in which some of the possible combinations (usually at least half) are omitted.  A factorial design has the added benefit of being able to evaluate the interaction of factors, when two (or more) factors interact with each other to affect the dependent variable.  Evaluation of this interaction effect is elucidated through various statistical analyses dependent on the data.
-
-> ## Challenge 2
-> Gary's suggestion: Assign mice to diet and running
-> wheel. Revisit randomization.
-> How to compute sample size?
-> Simulate? 
-> Other tools?
-> Compare the 2x2 experiment sample size to the
-> single factor ... not double.
-> You get more for your money.
-> Two-way ANOVA - main effects, interaction
->
-> >
-> > ## Solution to Challenge 2
-> > 
-> {: .solution}
-{: .challenge}
-

@@ -10,20 +10,23 @@ blocking
 :    Samples of similar structure grouped together from both treatment and control.
 
 biological replicate
-:   Measurements of biologically distinct samples taken at the same time and place. Biological replicates capture random biological variation,
-    which may itself be a subject of study or a source of noise.
+:   Measurement(s) from biologically distinct samples (preferably taken at the same time) that convey the random biological variation that exists within a population.  Biological replicates should not be confused with technical replicates.
 
 block
 :
 
+blocking
+: used to reduce unexplained variability by grouping together samples of similar structure from both treatment and control. For example,
+a new drug is tested on both male and female subjects. Sex of the patient is a blocking factor that accounts for treatment variability between males and females.
+
 confounder
-: a difference between the treatment and control groups that is not the same as the treatment. A third variable that is associated with the explanatory (independent) and response (dependent) variables.
+: An unaccounted for variable that exerts either a small or large effect on a dependent (response) variable.  Such variables increase variance and bias in the study.
 
 control
-: an experimental subject that does not receive the treatment
+: An experimental subject that does not receive the treatment, and that is used as a baseline to evaluate the effect of the treatment on another group of subjects.
 
 controlled experiment
-: an experiment done in parallel on a treatment and a control group that differ in one way (the independent or explanatory variable). Investigators determine which subjects go in the treatment group and which in the control group.
+: an experiment done in parallel on a treatment and a control group that differ in one way (the independent or explanatory variable). Investigators determine which subjects go in the treatment group and which in the control group. For contrast, see observational experiment.
 
 experimental error
 :
@@ -37,8 +40,8 @@ factorial design
 fixed effects
 :
 
-observational study
-: an experiment done in parallel on a treatment (or exposure) and a control group that differ in one way (the independent or explanatory variable). The subjects, not the investigators, determine whether they are in the treatment group or the control group (i.e. smokers and non-smokers).
+observational experiment
+: an experiment done in parallel on a treatment (or exposure) and a control group that differ in one way (the independent or explanatory variable). The subjects, not the investigators, determine whether they are in the treatment group or the control group (i.e. smokers and non-smokers). For contrast, see controlled experiment.
 
 random effects
 :
@@ -62,11 +65,19 @@ systematic error
 
 technical replicate
 :   Repeated measurements of the same sample that represent independent measures of the random noise
-    associated with protocols or equipment.
+    associated with protocols or equipment. For contrast, see biological replicate.
 
 treatment
 :
 
+variability
+:
+
+variance
+:
+
+variation
+:
 
 
 ## External references

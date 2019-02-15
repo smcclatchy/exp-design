@@ -57,12 +57,12 @@ e. b and c
 {: .challenge}
 
 > ## Challenge 2
-> If I want to know about mean blood glucose, should I   
-a. measure 1 mouse 9 times
-b. 3 mice 3 times each
-c. 9 mice 1 time each
-
+> If I want to know about mean blood glucose, should I     
+> a. measure 1 mouse 9 times  
+> b. 3 mice 3 times each  
+> c. 9 mice 1 time each  
 >
+> > 
 > > ## Solution to Challenge 2
 > > c. 9 mice 1 time each so that you get a sense of the sample mean, the most precise estimate
 > {: .solution}

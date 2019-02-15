@@ -31,6 +31,38 @@ from http://www.3rs-reduction.co.uk/html/7__controlling_variability.html
 
 ~~~
 library(dplyr)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+Attaching package: 'dplyr'
+~~~
+{: .output}
+
+
+
+~~~
+The following objects are masked from 'package:stats':
+
+    filter, lag
+~~~
+{: .output}
+
+
+
+~~~
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+~~~
+{: .output}
+
+
+
+~~~
 cgdpheno3 <- read.csv(file = "../data/CGDpheno3.csv", stringsAsFactors = FALSE)
 cc_founder_phenos <- cgdpheno3 %>%
   filter(strain %in% c("A/J", "C57BL/6J", "129S1/SvImJ", "NOD/ShiLtJ",

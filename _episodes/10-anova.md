@@ -50,6 +50,36 @@ This data set contains body weights for 846 male (M) and female (F) mice fed a h
 
 ~~~
 library(car)
+~~~
+{: .language-r}
+
+
+
+~~~
+Loading required package: carData
+~~~
+{: .output}
+
+
+
+~~~
+
+Attaching package: 'car'
+~~~
+{: .output}
+
+
+
+~~~
+The following object is masked from 'package:dplyr':
+
+    recode
+~~~
+{: .output}
+
+
+
+~~~
 pheno <- read.csv(file = "../data/bodyWeights.csv", stringsAsFactors = FALSE)
 names(pheno)
 ~~~
@@ -278,22 +308,22 @@ lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--1.0730 -0.7493 -0.3175  0.4365  7.1842 
+-0.9545 -0.6632 -0.2961  0.3367  7.1041 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  1.05336    0.13712   7.682 6.43e-14 ***
-x            0.01037    0.08672   0.120    0.905    
+(Intercept)  0.97648    0.12475   7.828 2.27e-14 ***
+x           -0.02089    0.07890  -0.265    0.791    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.062 on 598 degrees of freedom
-Multiple R-squared:  2.392e-05,	Adjusted R-squared:  -0.001648 
-F-statistic: 0.01431 on 1 and 598 DF,  p-value: 0.9048
+Residual standard error: 0.9663 on 598 degrees of freedom
+Multiple R-squared:  0.0001172,	Adjusted R-squared:  -0.001555 
+F-statistic: 0.07008 on 1 and 598 DF,  p-value: 0.7913
 ~~~
 {: .output}
 
-Notice that the slope (Estimate column) is near zero (0.010373), indicating no relationship between the two variables.
+Notice that the slope (Estimate column) is near zero (-0.020886), indicating no relationship between the two variables.
 
 The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. 
 

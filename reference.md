@@ -71,13 +71,10 @@ treatment
 :
 
 variability
-:
+: the extent to which a distribution is spread out or squeezed in; also known as dispersion or spread
 
 variance
-:
-
-variation
-:
+: a measure of statistical variability or dispersion
 
 
 ## External references

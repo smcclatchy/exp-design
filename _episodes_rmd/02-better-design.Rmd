@@ -23,6 +23,12 @@ knitr_fig_path("02-")
 
 
 ## Why experiments need to be designed
+Experimental design has three basic purposes:  
+
+1. to provide answers to questions by testing causal hypotheses 
+1. to control effects of extraneous variables (i.e. those variables not under study).   
+1. to reduce variability within treatment groups, making differences in treatment outcomes easier to detect.
+
 We design experiments to help answer questions by comparing the outcome of different treatments. We can design experiments such that bias and error in the comparison of different treatments is minimized. We control experiments so that we can make stronger inferences about the nature of the differences that we see. Specifically, we try to make inferences about causation.  
 
 The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation.
@@ -56,7 +62,8 @@ For example, the mass of one kilogram is defined by the International Prototype 
 Systematic error or bias, in contrast, does not center around the mean. Larger sample sizes don't affect or correct for systematic bias. As an example, a bathroom scale might be calibrated so that measurements are consistently too high or too low. 
 
 ### Confounding factors
-Confounding factors, or confounders, are a third factor influencing the relationship between independent and dependent variables. For example, one design for the Salk polio vaccine trials considered vaccinating only those children whose parents consented to the vaccination, and leaving children from non-consenting parents as an unvaccinated control group. However, wealthier parents were more likely to consent to vaccinating their children, so socioeconomic status would have been introduced as a confounding factor. The effect of socioeconomic status would have confounded or mixed up the effect of the treatment.
+Confounding factors, or confounders, are a third factor influencing the relationship between independent and dependent variables. For example, one design for the Salk polio vaccine trials considered vaccinating only those children whose parents consented to the vaccination, and leaving children from non-consenting parents as an unvaccinated control group. However, wealthier parents were more likely to consent to vaccinating their children, so socioeconomic status would have been introduced as a confounding factor. The effect of socioeconomic status would have confounded or mixed up the effect of the treatment.  
+
 > ## Discussion
 > Think about the following questions and perhaps jot down some notes. Pair up with a
 > partner discuss, then share your responses on the etherpad.

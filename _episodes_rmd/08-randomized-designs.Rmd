@@ -72,17 +72,17 @@ Replication could use a question that could help check that individuals know the
 > A study used to determine the effect of a drug on weight loss 
 > could have the following sources of experimental error. 
 > Classify the following sources as either biological or 
-> systematic error.
-> 1). A scale is broken and provides inconsistent readings  
-> 2). A scale is calibrated wrong and consistently measures mice 1g heavier  
-> 3). A mouse has unusually high weight compared to its experimental group (i.e., it is an outlier)  
+> systematic error.  
+> 1). A scale is broken and provides inconsistent readings.  
+> 2). A scale is calibrated wrongly and consistently measures mice 1 gram heavier.   
+> 3). A mouse has an unusually high weight compared to its experimental group (i.e., it is an outlier).  
 >
 > >
 > > ## Solution to Exercise 1
 > > 
-> > 1). 
-> > 2).  
-> > 3).  
+> > 1). systematic  
+> > 2). systematic  
+> > 3). biological  
 > > 
 > {: .solution}
 {: .challenge}

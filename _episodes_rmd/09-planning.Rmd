@@ -1,16 +1,13 @@
 ---
-title: "Planning"
+title: "Planning an experiment"
 teaching: 0
 exercises: 0
 questions:
 - "?"
 - "?"
 objectives:
-- ""
-- ""
 keypoints:
-- "."
-- "."
+- 
 source: Rmd
 ---
 
@@ -18,6 +15,8 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("14-")
 ```
+
+The statistical test and the analysis must be determined in the planning stages of an experiment.
 
 ### State the research problem or question
 Clearly identify the research problem or question that the experiment will address.

@@ -7,11 +7,12 @@ questions:
 - "How will treatments be assigned?"
 - "What are some types of experimental design?"
 objectives:
-- ""
-- ""
+- "Identify different sources of error to increase accuracy and minimize sources of error"
+- "Select an appropriate experimental design for a specific study"
 keypoints:
+- "Good experimental design minimizes error in a study."
 - "Well-designed experiments are randomized, have adequate replicates, and feature local control of environmental variables."
-- "."
+- "There are three types of error in experiments: systematic, biological, and random."
 source: Rmd
 ---
 

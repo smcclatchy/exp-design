@@ -27,7 +27,7 @@ source: Rmd
 ### Confirmatory
  hypothesis testing
  
-## Observational studies
+## Observational experiments
 
 ## Experimental units
 

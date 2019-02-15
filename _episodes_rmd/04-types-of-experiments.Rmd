@@ -28,7 +28,7 @@ knitr_fig_path("04-")
 ### Confirmatory
  hypothesis testing
  
-## Observational studies
+## Observational experiments
 
 ## Experimental units
 

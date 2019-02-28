@@ -43,12 +43,14 @@ A designed experiment is a strategic attempt to answer a research question or pr
 ### Randomization
 In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units (the unit or subject tested upon) so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
 
-Here is an example of randomization using a random number generator.
+Here is an example of randomization using a random number generator. If the random number is even, the sample is assigned to the control group. If odd, the sample is assigned to the treatment group.
 
 
 ~~~
 sample_id <- LETTERS
-random_number <- sample(100, 26)
+random_number <- sample(x = 100, size = 26)
+
+# %% is the modulo operator, which returns the remainder from division
 group <- ifelse(random_number %% 2 == 0, "control", "treatment")
 df1 <- data.frame(sample_id, random_number, group)
 df1
@@ -59,32 +61,32 @@ df1
 
 ~~~
    sample_id random_number     group
-1          A            62   control
-2          B            46   control
-3          C            72   control
-4          D            98   control
-5          E            73 treatment
-6          F            12   control
-7          G            25 treatment
-8          H            71 treatment
-9          I            53 treatment
-10         J            66   control
-11         K            13 treatment
-12         L            55 treatment
-13         M            68   control
-14         N            87 treatment
-15         O            18   control
-16         P            84   control
-17         Q            99 treatment
-18         R             4   control
-19         S            86   control
-20         T            30   control
-21         U            14   control
-22         V            41 treatment
-23         W            26   control
-24         X            42   control
-25         Y            43 treatment
-26         Z            31 treatment
+1          A            43 treatment
+2          B            41 treatment
+3          C            14   control
+4          D            55 treatment
+5          E            77 treatment
+6          F            22   control
+7          G            59 treatment
+8          H            16   control
+9          I            51 treatment
+10         J            50   control
+11         K            49 treatment
+12         L            63 treatment
+13         M            40   control
+14         N            23 treatment
+15         O             2   control
+16         P            65 treatment
+17         Q             4   control
+18         R            90   control
+19         S            26   control
+20         T            99 treatment
+21         U            88   control
+22         V            75 treatment
+23         W            94   control
+24         X            92   control
+25         Y            38   control
+26         Z            52   control
 ~~~
 {: .output}
 
@@ -101,14 +103,74 @@ table(df1$group)
 ~~~
 
   control treatment 
-       15        11 
+       14        12 
 ~~~
 {: .output}
 
-### Replication
-Replication can characterize variation or experimental error ("noise") in an experiment. Systematic error can be characterized with technical replicates, which measure the same sample multiple times and estimate the variation caused by equipment or protocols. Random biological variation can be characterized with biological replicates, which measure different biological samples in parallel. The greater the number of replications, the greater the precision (i.e., the degree to which repeated measurements under unchanged conditions show the same results) in the experiment.  
+To randomly assign samples to groups with equal numbers, you can do the following.
 
-Experimental error can be classified into three general types: systematic, biological, and random.  Systematic and biological are consistent error types; if you repeat an experiment, you’ll get the same error. Random is not a consistent source of error, it is unpredictable and has no pattern.  
+
+~~~
+# place IDs and random numbers in data frame
+df1_equal <- data.frame(sample_id, random_number)
+
+# sort by random numbers (not by sample IDs)
+df1_equal <- df1_equal[order(random_number),]
+
+# now assign to treatment or control groups
+treatment <- sort(rep(x = c("control", "treatment"), times = 13))
+df1_equal <- cbind(df1_equal, treatment)
+df1_equal
+~~~
+{: .language-r}
+
+
+
+~~~
+   sample_id random_number treatment
+15         O             2   control
+17         Q             4   control
+3          C            14   control
+8          H            16   control
+6          F            22   control
+14         N            23   control
+19         S            26   control
+25         Y            38   control
+13         M            40   control
+2          B            41   control
+1          A            43   control
+11         K            49   control
+10         J            50   control
+9          I            51 treatment
+26         Z            52 treatment
+4          D            55 treatment
+7          G            59 treatment
+12         L            63 treatment
+16         P            65 treatment
+22         V            75 treatment
+5          E            77 treatment
+21         U            88 treatment
+18         R            90 treatment
+24         X            92 treatment
+23         W            94 treatment
+20         T            99 treatment
+~~~
+{: .output}
+
+> ## Discussion: Why not assign treatment and control groups to samples in alphabetical order? Did we really need a random number generator to obtain randomized equal groups?
+>
+> >
+> > ## Solution 
+> > 
+> > 1). Scenario: One technician processed samples A through M, and a different technician processed samples N through Z.
+> > 2). Another scenario: Samples A through M were processed on a Monday, and samples N through Z on a Tuesday.
+> > 3). Yet another scenario: Samples A through M were from one strain, and samples N through Z from a different strain.
+> > 
+> {: .solution}
+{: .challenge}
+
+### Replication
+Replication can characterize variation or experimental error ("noise") in an experiment. Experimental error can be classified into three general types: systematic, biological, and random.  Systematic and biological are consistent error types; if you repeat an experiment, you’ll get the same error. Random error is inconsistent - it is unpredictable and has no pattern.  
 
 - Systematic error can be characterized with technical replicates, which measure the same sample multiple times and estimates the variation caused by equipment or protocols.   
 - Biological error can be characterized with biological replicates, which measure different biological samples in parallel to estimate the variation caused by the unique biology of the samples.   
@@ -121,11 +183,12 @@ Replication could use a question that could help check that individuals know the
 > ## Exercise 1: Which kind of error?
 > A study used to determine the effect of a drug on weight loss 
 > could have the following sources of experimental error. 
-> Classify the following sources as either biological or 
-> systematic error.  
+> Classify the following sources as either biological, 
+> systematic, or random error.  
 > 1). A scale is broken and provides inconsistent readings.  
 > 2). A scale is calibrated wrongly and consistently measures mice 1 gram heavier.   
-> 3). A mouse has an unusually high weight compared to its experimental group (i.e., it is an outlier).  
+> 3). A mouse has an unusually high weight compared to its experimental group (i.e., it is an outlier). 
+> 4). Strong atmospheric low pressure and accompanying storms affect instrument readings. 
 >
 > >
 > > ## Solution to Exercise 1
@@ -133,6 +196,7 @@ Replication could use a question that could help check that individuals know the
 > > 1). systematic  
 > > 2). systematic  
 > > 3). biological  
+> > 4). random  
 > > 
 > {: .solution}
 {: .challenge}
@@ -169,26 +233,26 @@ df2
 
 ~~~
    exp_unit_id random_number  treatment
-20           T             2    control
-19           S            15    control
-14           N            28    control
-13           M            32    control
-10           J            46    control
-8            H            48 treatment1
-16           P            61 treatment1
-2            B            65 treatment1
-15           O            67 treatment1
-12           L            69 treatment1
-7            G            71 treatment2
-3            C            74 treatment2
-9            I            76 treatment2
-5            E            82 treatment2
-17           Q            86 treatment2
-6            F            88 treatment3
-11           K            92 treatment3
-1            A            93 treatment3
-18           R            96 treatment3
-4            D            98 treatment3
+15           O             4    control
+10           J             8    control
+13           M            12    control
+2            B            16    control
+18           R            17    control
+6            F            19 treatment1
+9            I            20 treatment1
+20           T            28 treatment1
+11           K            30 treatment1
+16           P            32 treatment1
+4            D            44 treatment2
+12           L            51 treatment2
+1            A            52 treatment2
+5            E            57 treatment2
+19           S            58 treatment2
+3            C            60 treatment3
+8            H            64 treatment3
+7            G            65 treatment3
+17           Q            84 treatment3
+14           N            92 treatment3
 ~~~
 {: .output}
 

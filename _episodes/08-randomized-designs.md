@@ -61,32 +61,32 @@ df1
 
 ~~~
    sample_id random_number     group
-1          A            43 treatment
-2          B            41 treatment
-3          C            14   control
-4          D            55 treatment
-5          E            77 treatment
-6          F            22   control
-7          G            59 treatment
-8          H            16   control
-9          I            51 treatment
-10         J            50   control
-11         K            49 treatment
-12         L            63 treatment
-13         M            40   control
-14         N            23 treatment
-15         O             2   control
-16         P            65 treatment
-17         Q             4   control
-18         R            90   control
-19         S            26   control
-20         T            99 treatment
-21         U            88   control
-22         V            75 treatment
-23         W            94   control
-24         X            92   control
-25         Y            38   control
-26         Z            52   control
+1          A            69 treatment
+2          B            14   control
+3          C            78   control
+4          D            15 treatment
+5          E            61 treatment
+6          F            20   control
+7          G            92   control
+8          H            72   control
+9          I            95 treatment
+10         J            52   control
+11         K            17 treatment
+12         L            98   control
+13         M            56   control
+14         N            75 treatment
+15         O            33 treatment
+16         P            97 treatment
+17         Q            99 treatment
+18         R            82   control
+19         S            81 treatment
+20         T            29 treatment
+21         U            31 treatment
+22         V            47 treatment
+23         W            60   control
+24         X            89 treatment
+25         Y            68   control
+26         Z            39 treatment
 ~~~
 {: .output}
 
@@ -103,7 +103,7 @@ table(df1$group)
 ~~~
 
   control treatment 
-       14        12 
+       11        15 
 ~~~
 {: .output}
 
@@ -120,6 +120,7 @@ df1_equal <- df1_equal[order(random_number),]
 # now assign to treatment or control groups
 treatment <- sort(rep(x = c("control", "treatment"), times = 13))
 df1_equal <- cbind(df1_equal, treatment)
+row.names(df1_equal) <- 1:26
 df1_equal
 ~~~
 {: .language-r}
@@ -128,43 +129,47 @@ df1_equal
 
 ~~~
    sample_id random_number treatment
-15         O             2   control
-17         Q             4   control
-3          C            14   control
-8          H            16   control
-6          F            22   control
-14         N            23   control
-19         S            26   control
-25         Y            38   control
-13         M            40   control
-2          B            41   control
-1          A            43   control
-11         K            49   control
-10         J            50   control
-9          I            51 treatment
-26         Z            52 treatment
-4          D            55 treatment
-7          G            59 treatment
-12         L            63 treatment
-16         P            65 treatment
-22         V            75 treatment
-5          E            77 treatment
-21         U            88 treatment
-18         R            90 treatment
-24         X            92 treatment
-23         W            94 treatment
-20         T            99 treatment
+1          B            14   control
+2          D            15   control
+3          K            17   control
+4          F            20   control
+5          T            29   control
+6          U            31   control
+7          O            33   control
+8          Z            39   control
+9          V            47   control
+10         J            52   control
+11         M            56   control
+12         W            60   control
+13         E            61   control
+14         Y            68 treatment
+15         A            69 treatment
+16         H            72 treatment
+17         N            75 treatment
+18         C            78 treatment
+19         S            81 treatment
+20         R            82 treatment
+21         X            89 treatment
+22         G            92 treatment
+23         I            95 treatment
+24         P            97 treatment
+25         L            98 treatment
+26         Q            99 treatment
 ~~~
 {: .output}
 
-> ## Discussion: Why not assign treatment and control groups to samples in alphabetical order? Did we really need a random number generator to obtain randomized equal groups?
+> ## Discussion
+> Why not assign treatment and control groups to samples in alphabetical order?  
+> Did we really need a random number generator to obtain randomized equal groups?
 >
 > >
 > > ## Solution 
 > > 
-> > 1). Scenario: One technician processed samples A through M, and a different technician processed samples N through Z.
-> > 2). Another scenario: Samples A through M were processed on a Monday, and samples N through Z on a Tuesday.
-> > 3). Yet another scenario: Samples A through M were from one strain, and samples N through Z from a different strain.
+> > 1). Scenario: One technician processed samples A through M, and a different technician processed samples N through Z.  
+> > 2). Another scenario: Samples A through M were processed on a Monday, and samples N through Z on a Tuesday.  
+> > 3). Yet another scenario: Samples A through M were from one strain, and samples N through Z from a different strain.    
+> > 4). Yet another scenario: Samples with consecutive ids were all sibling groups. For example, samples A, B and C were all siblings, and all assigned to the same treatment.  
+> > All of these cases would have introduced an effect (from the technician, the day of the week, the strain, or sibling relationships) that would confound the results and lead to misinterpretation.
 > > 
 > {: .solution}
 {: .challenge}
@@ -187,25 +192,24 @@ Replication could use a question that could help check that individuals know the
 > systematic, or random error.  
 > 1). A scale is broken and provides inconsistent readings.  
 > 2). A scale is calibrated wrongly and consistently measures mice 1 gram heavier.   
-> 3). A mouse has an unusually high weight compared to its experimental group (i.e., it is an outlier). 
-> 4). Strong atmospheric low pressure and accompanying storms affect instrument readings. 
+> 3). A mouse has an unusually high weight compared to its experimental group (i.e., it is an outlier).  
+> 4). Strong atmospheric low pressure and accompanying storms affect instrument readings, animal behavior, and indoor relative humidity.  
 >
 > >
 > > ## Solution to Exercise 1
 > > 
-> > 1). systematic  
+> > 1). random, because the scale is broken and provides any kind of random reading it comes up with (inconsistent reading)  
 > > 2). systematic  
 > > 3). biological  
-> > 4). random  
+> > 4). random or systematic; you argue which and explain why
 > > 
 > {: .solution}
 {: .challenge}
 
+These three sources of error can be mitigated by good experimental design. Systematic and biological error can be mitigated through adequate numbers of technical and biological replicates, respectively. Random error can also be mitigated by experimental design, however, replicates are not effective. By definition random error is unpredictable or unknowable. For example, an atmospheric low pressure system or a strong storm could affect equipment measurements, animal behavior, and indoor relative humidity, which introduces random error. We could assume that all random error will balance itself out, and that if we use a completely randomized design each sample will be equally subject to random error. A more precise way to mitigate random error is through blocking. Here are some ways to do that, presented by increasing level of complexity. 
 
 ### Local control
-Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization. Local control should not be confused with the control group, the group that does not receive treatment.
-
-As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
+Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization (random error). Local control should not be confused with the control group, the group that does not receive treatment.
 
 #### Completely randomized design
 The completely randomized design is simple and common in controlled experiments. In a completely randomized design, each experimental unit (e.g. mouse) has an equal probability of assignment to any treatment. The following example demonstrates a completely randomized design for 4 treatment groups and 5 replicates of each treatment group, for a total of 20 experimental units.
@@ -233,26 +237,26 @@ df2
 
 ~~~
    exp_unit_id random_number  treatment
-15           O             4    control
-10           J             8    control
-13           M            12    control
-2            B            16    control
-18           R            17    control
-6            F            19 treatment1
-9            I            20 treatment1
-20           T            28 treatment1
-11           K            30 treatment1
-16           P            32 treatment1
-4            D            44 treatment2
-12           L            51 treatment2
-1            A            52 treatment2
-5            E            57 treatment2
-19           S            58 treatment2
-3            C            60 treatment3
-8            H            64 treatment3
-7            G            65 treatment3
-17           Q            84 treatment3
-14           N            92 treatment3
+18           R             6    control
+20           T             7    control
+13           M            19    control
+12           L            22    control
+2            B            26    control
+4            D            30 treatment1
+3            C            42 treatment1
+5            E            43 treatment1
+14           N            44 treatment1
+1            A            52 treatment1
+11           K            55 treatment2
+9            I            61 treatment2
+16           P            74 treatment2
+17           Q            76 treatment2
+10           J            82 treatment2
+6            F            87 treatment3
+15           O            88 treatment3
+7            G            93 treatment3
+19           S            94 treatment3
+8            H           100 treatment3
 ~~~
 {: .output}
 
@@ -276,6 +280,8 @@ table(df2$treatment)
 In a completely randomized design, any difference between experimental units under the same treatment is considered (biological, systematic, and/or random) experimental error. A completely randomized design is appropriate only for experiments with homogeneous experimental units (e.g., mice should be of same sex, strain, age, etc.) where environmental effects, such as light or temperature, are relatively easy to control. 
 
 #### Randomized complete block design
+As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
+
 The randomized complete block design is a popular experimental design suited for studies where a researcher is concerned with studying the effects of a single factor on a response of interest. Furthermore, the study includes variability from another factor that is not of particular interest; often referred to as nuisance factor. The primary distinguishing feature of the randomized complete block design is that the blocks are of equal size and contain all of the treatments, to control the effects of variables that are not of interest. For example, a block may refer to an area that receives a certain amount of light, and within one area (or block) the light doesn’t differ much but across areas (blocks) they may differ greatly. Blocking reduces (biological and systematic) experimental error by eliminating known sources of variation among experimental units.
 
 If certain operations, such as data collection, cannot be completed for the whole experiment in one day, the task should be completed for all experimental units of the same block on the same day. This way the variation among days becomes part of block variation and is, thus, excluded from the experimental error. If more than one person takes measurements in a trial, the same person should be assigned to take measurements for the entire block. This way the variation among people (i.e. technicians) would become part of block variation instead of experimental error.

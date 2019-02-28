@@ -6,7 +6,7 @@ teaching: 0
 exercises: 0
 questions:
 - "What are the features of different kinds of experiments?"
-- "What are experimental units?"
+- "What are my experimental units?"
 objectives:
 - ""
 - ""
@@ -31,19 +31,11 @@ source: Rmd
 
 ## Experimental units
 
-## Technical versus Biological Replicates
-
-Technical replicates are measurements taken on the same sample.  Biological replicates are measurements taken on different samples (one per sample).  Technical replicates do not convey biological variation in the data, as the difference between technical replicates in a sample measure “technical” variation, such as, instrument settings, technician skill, and environmental effects.  Biological replicates differ from technical in that differences seen between samples tends to be mostly biological.  If, for example, different technicians worked on measuring the biological samples, it is possible that a technician effect can be accounted for in the model via evaluating a technician batch effect. The key to understanding replicates is to identify the source of the variation that you are attempting to measure. Are you attempting to quantify the accuracy of the measuring tool or procedure from one measurement to the next? If so, then this is a technical replicate. Are you attempting to quantify the difference between one mouse and another? If so, this is a biological replicate.
-
-As an example, if I were to weigh myself on a bathroom scale, record the measurement, then repeatedly weigh myself and record the measurement each time, the measurements might differ from one instance to the next. I could determine the variation of the bathroom scale by averaging all technical replicates and finding the difference of each measurement from this average. Manufacturing of measurement instruments like bathroom scales is never perfect, so there will be technical variation in measurements. In contrast, if I were to measure my own weight and a friend did the same, my weight and my friend's weight are independent of one another. This would be an example of a biological replicate. 
-
-![](../fig/technical-replicates.png)
-
-![](../fig/biological-replicates.png)
+### Technical versus Biological Replicates
 
 
 > ## Challenge 1
-> You are attempting to get different red blood   cell counts from a mouse, and you have enough blood   to measure 3 times through the machine. How many   replicates would this be, and of what type?  
+> You are attempting to get different red blood cell counts from a mouse, and you have enough blood   to measure 3 times through the machine. How many   replicates would this be, and of what type?  
 a. 3 biological replicates  
 b. 3 technical replicates  
 c. 1 biological replicate  

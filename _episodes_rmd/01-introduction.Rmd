@@ -1,10 +1,11 @@
 ---
 title: Introduction
-teaching: 0
-exercises: 0
+teaching: 5
+exercises: 10
 questions:
-- "?"
-- "?"
+- "What is reproducibility?"
+- "What is replicability?"
+- "Why are replicability and reproducibility important?"
 objectives:
 - ""
 - ""
@@ -22,7 +23,7 @@ knitr_fig_path("01-")
 
 Science aims to construct knowledge that is reliable and robust, and that provides a stable foundation for building new knowledge. Science self-corrects when the scientific community actively engages in examining and appraising ideas. In order to critically evaluate the evidence behind ideas, the scientific community might reproduce experimental results using the same materials and methods as in the original investigation. If the same data and the same analyses produce the same results, the original results are considered reproducible. 
 
-> Reproducibility is a minimum necessary condition for a finding to be believable and informative.
+> *Reproducibility is a minimum necessary condition for a finding to be believable and informative*.
 > — National Science Foundation Subcommittee on Replicability in Science
 {: .quotation}
 

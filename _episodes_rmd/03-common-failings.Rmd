@@ -1,7 +1,7 @@
 ---
 title: Common failings
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 15
 questions:
 - "What are some common features of poor experimental design?"
 - "?"
@@ -46,3 +46,27 @@ For example, a study that only investigates the effect of activity level (active
 ### Inadequate external validity
 ### Inadequate description of methods (e.g., strain nomenclature)
 ### Incorrect statistical analysis (e.g., no analysis; multiple testing without adjustment; wrong statistical model; incorrect treatment of outliers; cherry-picking the data).
+
+## Some notable retractions
+Re-analyses of published works have become much more common, resulting in more paper retractions. [Retraction Watch](https://retractionwatch.com/) catalogs retractions in the scientific literature. Retractions can happen in the most high profile journals and from some of the most esteemed investigators. Often the reasons for retraction are lack of reproducibility. Here are a few examples, along with excerpts from author retraction statements.
+
+Huang, W et al. [DDX5 and its associated lncRNA Rmrp modulate T H 17 cell effector functions.](https://www.nature.com/articles/nature16193) Nature 528.7583 (2015): 517.
+
+An excerpt from the last author's retraction notice:
+> *"In follow-up experiments to this Article, we have been unable to replicate key aspects of the original results. Most importantly, an RNA-dependent physical association of RORγt and DDX5 cannot be reproduced and is not substantiated upon further analysis of the original data. The authors therefore wish to retract the Article. We deeply regret this error and apologize to our scientific colleagues."*
+
+2009 Nobel Laureate Jack W. Szostak retracted a 2016 paper in Nature Chemistry that explored the origins of life on earth, after discovering the main conclusions were not correct. A member of Szostak’s lab, Tivoli Olsen, could not reproduce the 2016 findings. Szostak told Retraction Watch:  
+> *"In retrospect, we were totally blinded by our belief [in our findings]...we were not as careful or rigorous as we should have been (and as Tivoli was) in interpreting these experiments...The only saving grace is that we are the ones who discovered and corrected our own errors, and figured out what was going on.*"
+    
+Harvard stem cell biologist Douglas Melton retracted a 2013 paper in Cell that had garnered significant attention after other researchers attempted and failed to replicate his results. Dr. Melton told Retraction Watch that *“more attention to the statistical strength is a lesson that I’ve learned ... When we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion upon Angptl-8/betatrophin overexpression and reported these results in a Correspondence (Cell, 2014, 159, 467–468). We have subsequently repeated a series of blinded experiments with the Kushner lab and have now determined conclusively that our conclusion that Angptl-8/betatrophin causes specific β-cell replication is wrong and cannot be supported (PLoS One, 2016, 11, e0159276). Therefore, the most appropriate course of action is to retract the paper. We regret and apologize for this mistake.”* 
+
+> ## Discussion: Harsh consequences
+> In the examples above, what might the others have done to avoid an embarrassing and difficult retraction? Which of the features of poor experimental likely caused the retractions?
+>
+> >
+> > ## Solution 
+> > 
+> >  
+> > 
+> {: .solution}
+{: .challenge}

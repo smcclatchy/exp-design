@@ -71,17 +71,22 @@ df1_equal <- df1_equal[order(random_number),]
 # now assign to treatment or control groups
 treatment <- sort(rep(x = c("control", "treatment"), times = 13))
 df1_equal <- cbind(df1_equal, treatment)
+row.names(df1_equal) <- 1:26
 df1_equal
 ```
 
-> ## Discussion: Why not assign treatment and control groups to samples in alphabetical order? Did we really need a random number generator to obtain randomized equal groups?
+> ## Discussion
+> Why not assign treatment and control groups to samples in alphabetical order?  
+> Did we really need a random number generator to obtain randomized equal groups?
 >
 > >
 > > ## Solution 
 > > 
-> > 1). Scenario: One technician processed samples A through M, and a different technician processed samples N through Z.
-> > 2). Another scenario: Samples A through M were processed on a Monday, and samples N through Z on a Tuesday.
-> > 3). Yet another scenario: Samples A through M were from one strain, and samples N through Z from a different strain.
+> > 1). Scenario: One technician processed samples A through M, and a different technician processed samples N through Z.  
+> > 2). Another scenario: Samples A through M were processed on a Monday, and samples N through Z on a Tuesday.  
+> > 3). Yet another scenario: Samples A through M were from one strain, and samples N through Z from a different strain.    
+> > 4). Yet another scenario: Samples with consecutive ids were all sibling groups. For example, samples A, B and C were all siblings, and all assigned to the same treatment.  
+> > All of these cases would have introduced an effect (from the technician, the day of the week, the strain, or sibling relationships) that would confound the results and lead to misinterpretation.
 > > 
 > {: .solution}
 {: .challenge}
@@ -104,25 +109,24 @@ Replication could use a question that could help check that individuals know the
 > systematic, or random error.  
 > 1). A scale is broken and provides inconsistent readings.  
 > 2). A scale is calibrated wrongly and consistently measures mice 1 gram heavier.   
-> 3). A mouse has an unusually high weight compared to its experimental group (i.e., it is an outlier). 
-> 4). Strong atmospheric low pressure and accompanying storms affect instrument readings. 
+> 3). A mouse has an unusually high weight compared to its experimental group (i.e., it is an outlier).  
+> 4). Strong atmospheric low pressure and accompanying storms affect instrument readings, animal behavior, and indoor relative humidity.  
 >
 > >
 > > ## Solution to Exercise 1
 > > 
-> > 1). systematic  
+> > 1). random, because the scale is broken and provides any kind of random reading it comes up with (inconsistent reading)  
 > > 2). systematic  
 > > 3). biological  
-> > 4). random  
+> > 4). random or systematic; you argue which and explain why
 > > 
 > {: .solution}
 {: .challenge}
 
+These three sources of error can be mitigated by good experimental design. Systematic and biological error can be mitigated through adequate numbers of technical and biological replicates, respectively. Random error can also be mitigated by experimental design, however, replicates are not effective. By definition random error is unpredictable or unknowable. For example, an atmospheric low pressure system or a strong storm could affect equipment measurements, animal behavior, and indoor relative humidity, which introduces random error. We could assume that all random error will balance itself out, and that if we use a completely randomized design each sample will be equally subject to random error. A more precise way to mitigate random error is through blocking. Here are some ways to do that, presented by increasing level of complexity. 
 
 ### Local control
-Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization. Local control should not be confused with the control group, the group that does not receive treatment.
-
-As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
+Local control refers to refinements in experimental design to control the impact of factors not addressed by replication or randomization (random error). Local control should not be confused with the control group, the group that does not receive treatment.
 
 #### Completely randomized design
 The completely randomized design is simple and common in controlled experiments. In a completely randomized design, each experimental unit (e.g. mouse) has an equal probability of assignment to any treatment. The following example demonstrates a completely randomized design for 4 treatment groups and 5 replicates of each treatment group, for a total of 20 experimental units.
@@ -153,6 +157,8 @@ table(df2$treatment)
 In a completely randomized design, any difference between experimental units under the same treatment is considered (biological, systematic, and/or random) experimental error. A completely randomized design is appropriate only for experiments with homogeneous experimental units (e.g., mice should be of same sex, strain, age, etc.) where environmental effects, such as light or temperature, are relatively easy to control. 
 
 #### Randomized complete block design
+As an example of local control, if a rack of many mice cages is heterogeneous with respect to light exposure, then the rack of cages can be divided into smaller blocks such that cages within each block tend to be more homogeneous (have equal light exposure). This kind of homogeneity of cages (experimental units) ensures an unbiased comparison of treatment means (each block would receive all treatments instead of each block receiving only one or several), as otherwise it would be difficult to attribute the mean difference between treatments solely to differences between treatments when cage light exposures differences also persist. This type of local control to achieve homogeneity of experimental units will not only increase the accuracy of the experiment, but also help in arriving at valid conclusions.
+
 The randomized complete block design is a popular experimental design suited for studies where a researcher is concerned with studying the effects of a single factor on a response of interest. Furthermore, the study includes variability from another factor that is not of particular interest; often referred to as nuisance factor. The primary distinguishing feature of the randomized complete block design is that the blocks are of equal size and contain all of the treatments, to control the effects of variables that are not of interest. For example, a block may refer to an area that receives a certain amount of light, and within one area (or block) the light doesn’t differ much but across areas (blocks) they may differ greatly. Blocking reduces (biological and systematic) experimental error by eliminating known sources of variation among experimental units.
 
 If certain operations, such as data collection, cannot be completed for the whole experiment in one day, the task should be completed for all experimental units of the same block on the same day. This way the variation among days becomes part of block variation and is, thus, excluded from the experimental error. If more than one person takes measurements in a trial, the same person should be assigned to take measurements for the entire block. This way the variation among people (i.e. technicians) would become part of block variation instead of experimental error.

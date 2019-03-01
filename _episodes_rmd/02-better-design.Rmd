@@ -33,8 +33,8 @@ We design experiments to help answer questions by comparing the outcome of diffe
 
 The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation.
 
-> To consult the statistician after an experiment is finished is often merely to ask him to
-> conduct a post mortem examination. He can perhaps say what the experiment died of.
+> *To consult the statistician after an experiment is finished is often merely to ask him to
+> conduct a post mortem examination. He can perhaps say what the experiment died of.*
 > — Sir Ronald Fisher
 {: .quotation}
 
@@ -62,7 +62,7 @@ For example, the mass of one kilogram is defined by the International Prototype 
 Systematic error or bias, in contrast, does not center around the mean. Larger sample sizes don't affect or correct for systematic bias. As an example, a bathroom scale might be calibrated so that measurements are consistently too high or too low. 
 
 ### Confounding factors
-Confounding factors, or confounders, are a third factor influencing the relationship between independent and dependent variables. For example, one design for the Salk polio vaccine trials considered vaccinating only those children whose parents consented to the vaccination, and leaving children from non-consenting parents as an unvaccinated control group. However, wealthier parents were more likely to consent to vaccinating their children, so socioeconomic status would have been introduced as a confounding factor. The effect of socioeconomic status would have confounded or mixed up the effect of the treatment.  
+Confounding factors, or confounders, are a third factor influencing the relationship between independent and dependent variables. For example, one design for the Salk polio vaccine trials considered vaccinating only those children whose parents consented to the vaccination, and leaving children from non-consenting parents as an unvaccinated control group. However, wealthier parents were more likely to consent to vaccinating their children, so socioeconomic status would have been introduced as a confounding factor. The effect of socioeconomic status would have confounded or "mixed up" the effect of the treatment (the vaccination).  
 
 > ## Discussion
 > Think about the following questions and perhaps jot down some notes. Pair up with a

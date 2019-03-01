@@ -33,7 +33,7 @@ Many publishers and funding organizations require access to data or software in 
 
 > ## Discussion
 > Before we go any further here are some important questions to consider. Please think about these questions, then pair up with your neighbor to discuss your responses. Finally, share your responses with all in the etherpad.
-
+>
 > 1). What makes a study reproducible?  
 > 2). What are the general characteristics of a well-designed study?  
 >

@@ -61,32 +61,32 @@ df1
 
 ~~~
    sample_id random_number     group
-1          A            69 treatment
-2          B            14   control
-3          C            78   control
-4          D            15 treatment
-5          E            61 treatment
-6          F            20   control
-7          G            92   control
-8          H            72   control
-9          I            95 treatment
-10         J            52   control
-11         K            17 treatment
-12         L            98   control
-13         M            56   control
-14         N            75 treatment
-15         O            33 treatment
-16         P            97 treatment
-17         Q            99 treatment
-18         R            82   control
-19         S            81 treatment
-20         T            29 treatment
-21         U            31 treatment
-22         V            47 treatment
-23         W            60   control
-24         X            89 treatment
-25         Y            68   control
-26         Z            39 treatment
+1          A             2   control
+2          B            16   control
+3          C            55 treatment
+4          D            31 treatment
+5          E            70   control
+6          F            63 treatment
+7          G            86   control
+8          H            36   control
+9          I            27 treatment
+10         J            81 treatment
+11         K            94   control
+12         L            96   control
+13         M            93 treatment
+14         N            23 treatment
+15         O            43 treatment
+16         P            25 treatment
+17         Q            48   control
+18         R            37 treatment
+19         S            12   control
+20         T            47 treatment
+21         U             8   control
+22         V             3 treatment
+23         W            90   control
+24         X            21 treatment
+25         Y            80   control
+26         Z            84   control
 ~~~
 {: .output}
 
@@ -103,7 +103,7 @@ table(df1$group)
 ~~~
 
   control treatment 
-       11        15 
+       13        13 
 ~~~
 {: .output}
 
@@ -129,32 +129,32 @@ df1_equal
 
 ~~~
    sample_id random_number treatment
-1          B            14   control
-2          D            15   control
-3          K            17   control
-4          F            20   control
-5          T            29   control
-6          U            31   control
-7          O            33   control
-8          Z            39   control
-9          V            47   control
-10         J            52   control
-11         M            56   control
-12         W            60   control
-13         E            61   control
-14         Y            68 treatment
-15         A            69 treatment
-16         H            72 treatment
-17         N            75 treatment
-18         C            78 treatment
-19         S            81 treatment
-20         R            82 treatment
-21         X            89 treatment
-22         G            92 treatment
-23         I            95 treatment
-24         P            97 treatment
-25         L            98 treatment
-26         Q            99 treatment
+1          A             2   control
+2          V             3   control
+3          U             8   control
+4          S            12   control
+5          B            16   control
+6          X            21   control
+7          N            23   control
+8          P            25   control
+9          I            27   control
+10         D            31   control
+11         H            36   control
+12         R            37   control
+13         O            43   control
+14         T            47 treatment
+15         Q            48 treatment
+16         C            55 treatment
+17         F            63 treatment
+18         E            70 treatment
+19         Y            80 treatment
+20         J            81 treatment
+21         Z            84 treatment
+22         G            86 treatment
+23         W            90 treatment
+24         M            93 treatment
+25         K            94 treatment
+26         L            96 treatment
 ~~~
 {: .output}
 
@@ -237,26 +237,26 @@ df2
 
 ~~~
    exp_unit_id random_number  treatment
-18           R             6    control
-20           T             7    control
-13           M            19    control
-12           L            22    control
-2            B            26    control
-4            D            30 treatment1
-3            C            42 treatment1
-5            E            43 treatment1
-14           N            44 treatment1
-1            A            52 treatment1
-11           K            55 treatment2
-9            I            61 treatment2
-16           P            74 treatment2
-17           Q            76 treatment2
-10           J            82 treatment2
-6            F            87 treatment3
-15           O            88 treatment3
-7            G            93 treatment3
-19           S            94 treatment3
-8            H           100 treatment3
+20           T             1    control
+10           J             2    control
+12           L            10    control
+17           Q            15    control
+1            A            20    control
+13           M            21 treatment1
+6            F            27 treatment1
+16           P            44 treatment1
+4            D            53 treatment1
+18           R            61 treatment1
+19           S            62 treatment2
+14           N            72 treatment2
+3            C            76 treatment2
+9            I            81 treatment2
+11           K            86 treatment2
+7            G            88 treatment3
+8            H            92 treatment3
+2            B            94 treatment3
+5            E            96 treatment3
+15           O            99 treatment3
 ~~~
 {: .output}
 

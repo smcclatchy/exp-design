@@ -10,7 +10,6 @@ questions:
 - "What are the assumptions of linear regression, and how can you test for them?""
 - "What are residuals and why are they important?""
 - "When should outliers be removed from a study?"
-
 objectives:
 - "Understand the assumptions behind linear models and ANOVA."
 - "Perform linear regression and interpret results."
@@ -20,7 +19,6 @@ keypoints:
 - "When performing a linear regression or ANOVA, ensure that data meet the assumptions for this chosen method."
 - "Examining the residuals (or errors) is a key part of linear regression."
 - "Transform your data if it appears to have many outliers or would benefit from a transformation such as logarithmic."
-
 source: Rmd
 ---
 

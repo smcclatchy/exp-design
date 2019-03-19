@@ -16,7 +16,6 @@ keypoints:
 - "Good study design is efficient and can lead to meaningful results."
 - "Good study design anticipates analysis of the experiment."
 - "Poor study design can lead to waste and insignificant results."
-
 source: Rmd
 ---
 

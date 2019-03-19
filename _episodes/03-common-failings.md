@@ -8,8 +8,8 @@ questions:
 - "What are some common features of poor experimental design?"
 - "?"
 objectives:
-- ""
-- ""
+- "Differentiate between technical and biological replicates."
+- "Describe what could happen to an experiment if technical replicates are used in place of biological replicates."
 keypoints:
 - "When designing an experiment, use biological replicates."
 - "Choose a single representative value (the mean, median, or mode) for technical replicates."
@@ -34,12 +34,9 @@ As an example, if I were to weigh myself on a bathroom scale, record the measure
 
 ![](../fig/biological-replicates.png)
 
-When working with technical replicates, the model should reflect the presence of the technical replicates, because each replicate contributes to the overall error in the model.  Technical replicates are not independent biological replicates; thus, if technical replicates are treated as biological replicates it leads to inflation of degrees of freedom and deflation of standard error.  The adjustment of the fundamental statistics used in regression analysis will lead to inaccurate analysis results.  To account for this type of error, the subject (or sample number/ID) can be used as a random model term, or, alternatively, the technical replicates can be collapsed (averaged).  If you treat the biological subject as a random effect, then the mixed model ANOVA tests for all treatments and other effects are identical to what you get if you average the technical replicates.
+##### Proper use of Technical Replicates
 
-### Confounders
-A confounder is a variable not unaccounted for, yet one that exerts either a small or large effect on a dependent (response) variable.  Such variables increase variance and bias in the study.
-
-For example, a study that only investigates the effect of activity level (active versus sedentary) on weight of mice is excluding several factors that are known to effect weight.  These missing factors (such as, age and sex) are confounding variables.  Age and sex both have an effect on weight that is unaccounted for by the study; thus, the variation attributed to activity level cannot be accurately measured because of the lack of accounting for the variance known to be associated with the missing (confounding) variables.
+When working with technical replicates, the model should reflect the presence of the technical replicates because each replicate contributes to the overall error in the model. Technical replicates are not independent biological replicates; thus, if technical replicates are treated as biological replicates it leads to inflation of degrees of freedom and deflation of standard error. Such a mistake will lead to an adjustment of the fundamental statistics used in regression analysis and lead to inaccurate analysis results. To account for this type of error, the subject (or sample number/ID) can be used as a random model term, or, alternatively, the technical replicates can be collapsed (averaged). If you treat the biological subject as a random effect, then the mixed model tests for all treatments and other effects are identical to what you get if you average the technical replicates.
 
 ### Failure in quality control of experimental materials
 ### Inadequate external validity

@@ -2,11 +2,13 @@
 title: Power calculation and sample size
 teaching: 0
 exercises: 0
+
 questions:
-- ""
-- "?"
+- "What role does the p-value (alpha) have in determining sample size for a study?"
+- "What is type 2 error, and how does it correspond to the p-value and power of a test?"
+- "What factors should be considered when estimating sample size for a study?"
 objectives:
-- ""
+- "Calculate a sample size or power for a study that will be analyzed using a one fixed factor linear regression model."
 - ""
 - ""
 keypoints:
@@ -18,7 +20,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("09-")
+knitr_fig_path("07-")
 ```
 
 

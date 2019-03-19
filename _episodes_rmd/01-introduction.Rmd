@@ -7,8 +7,8 @@ questions:
 - "What is replicability?"
 - "Why are replicability and reproducibility important?"
 objectives:
-- ""
-- ""
+- "To differentiate between replicability and reproducibility."
+- "To describe the role of replicability and reproducibility in science."
 keypoints:
 - "Reproducibility expects the same results using the same data and methods from an original study."
 - "Replicability corroborates the results of an experiment using the same methods as the original."

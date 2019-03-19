@@ -6,8 +6,10 @@ questions:
 - "Why does good experimental design matter?"
 - "What are some of the consequences of poor experimental design?"
 objectives:
-- ""
-- ""
+- "To give examples of the positive effects of well designed experiments."
+- "To give examples of the negative effects of poorly designed experiments."
+- "To explain the concept of random variation and how it is central to experimental design."
+- "Define confounding factors are and their impact on a study."
 keypoints:
 - "Good study design is efficient and can lead to meaningful results."
 - "Good study design anticipates analysis of the experiment."

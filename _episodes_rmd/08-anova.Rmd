@@ -4,7 +4,11 @@ teaching: 0
 exercises: 0
 questions:
 - "How do I evaluate the quality of a linear model?"
-- "?"
+- "What are the components that make up a one fixed factor linear regression model?""
+- "What are the assumptions of linear regression, and how can you test for them?""
+- "What are residuals and why are they important?""
+- "When should outliers be removed from a study?"
+
 objectives:
 - "Understand the assumptions behind linear models and ANOVA."
 - "Perform linear regression and interpret results."
@@ -20,7 +24,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("10-")
+knitr_fig_path("08-")
 ```
 
 ## Linear Regression

@@ -4,9 +4,9 @@ teaching: 0
 exercises: 0
 questions:
 - "How do I evaluate the quality of a linear model?"
-- "What are the components that make up a one fixed factor linear regression model?""
-- "What are the assumptions of linear regression, and how can you test for them?""
-- "What are residuals and why are they important?""
+- "What are the components that make up a one fixed factor linear regression model?"
+- "What are the assumptions of linear regression, and how can you test for them?"
+- "What are residuals and why are they important?"
 - "When should outliers be removed from a study?"
 objectives:
 - "Understand the assumptions behind linear models and ANOVA."

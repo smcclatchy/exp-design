@@ -40,9 +40,11 @@ An analysis can always be re-worked or re-done. The original study however, woul
 
 We can visualize the foundational steps in experimentation as design, data gathering, and interpretation.
 
-![Sound design can lead to sound interpretation as one possibility](../fig/sound-design.png)
+![Sound design can lead to sound interpretation](../fig/sound-design.png)
 
-![Flawed design can only lead to flawed interpretation](../fig/flawed-design.png)
+If we start with a sound experimental design, we can end up with sound interpretations as one alternative, or with flawed ones as another. If we start with a flawed design, however, we can only end up with flawed interpretations. We could consult a statistician for help, and he or she could perhaps tell us what the experiment died of. There would be no way of fixing the problem short of re-designing and re-doing the experiment.
+
+![Flawed design equals flawed interpretation](../fig/flawed-design.png)
 
 The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation.
 The statistical test and the analysis must be determined in the planning stages of an experiment.

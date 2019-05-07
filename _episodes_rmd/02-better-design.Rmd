@@ -32,14 +32,21 @@ Experimental design has three basic purposes:
 
 We design experiments to help answer questions by comparing the outcome of different treatments. We can design experiments such that bias and error in the comparison of different treatments is minimized. We control experiments so that we can make stronger inferences about the nature of the differences that we see. Specifically, we try to make inferences about causation.  
 
-The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation.
-
 > *To consult the statistician after an experiment is finished is often merely to ask him to
 > conduct a post mortem examination. He can perhaps say what the experiment died of.*
 > — Sir Ronald Fisher
 {: .quotation}
 
-Analysis can always be re-worked or re-done; the original study however, would be costly and difficult to repeat if done badly. In statistics there is no "magic bullet", or statistical test, that can correct every poorly designed study. The statistical test and the analysis must be determined in the planning stages of an experiment.
+An analysis can always be re-worked or re-done. The original study however, would be costly and difficult to repeat if done badly. In statistics there is no "magic bullet", or statistical test, that can correct every poorly designed study. 
+
+We can visualize the foundational steps in experimentation as design, data gathering, and interpretation.
+
+![Sound design can lead to sound interpretation, but not necessarily](../fig/sound-design.png)
+
+![Flawed design can only lead to flawed interpretation](../fig/flawed-design.png)
+
+The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation.
+The statistical test and the analysis must be determined in the planning stages of an experiment.
 
 ## Costs of poor design
 Scientific research advances when scientists can corroborate others' results instead of pursuing false leads. Too often, though, published studies can't be reproduced or replicated, and the self-correcting nature of science falters. Some of these problems are entirely preventable through thoughtful and well-informed study design. 

@@ -40,7 +40,7 @@ An analysis can always be re-worked or re-done. The original study however, woul
 
 We can visualize the foundational steps in experimentation as design, data gathering, and interpretation.
 
-![Sound design can lead to sound interpretation, but not necessarily](../fig/sound-design.png)
+![Sound design can lead to sound interpretation as one possibility](../fig/sound-design.png)
 
 ![Flawed design can only lead to flawed interpretation](../fig/flawed-design.png)
 

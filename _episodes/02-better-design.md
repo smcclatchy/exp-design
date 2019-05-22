@@ -25,9 +25,9 @@ source: Rmd
 ## Why experiments need to be designed
 Experimental design has three basic purposes:  
 
-1. to provide answers to questions by testing causal hypotheses 
-1. to control effects of extraneous variables (i.e. those variables not under study).   
+1. to control effects of extraneous variables (those variables not under study).   
 1. to reduce variability within treatment groups, making differences in treatment outcomes easier to detect.
+1. to provide answers to questions by testing causal hypotheses.
 
 We design experiments to help answer questions by comparing the outcome of different treatments. We can design experiments such that bias and error in the comparison of different treatments is minimized. We control experiments so that we can make stronger inferences about the nature of the differences that we see. Specifically, we try to make inferences about causation.  
 
@@ -40,14 +40,13 @@ An analysis can always be re-worked or re-done. The original study however, woul
 
 We can visualize the foundational steps in experimentation as design, data gathering, and interpretation.
 
-![Sound design can lead to sound interpretation](../fig/sound-design.png)
+![Sound design makes sound interpretation possibile.](../fig/sound-design.png)
 
 If we start with a sound experimental design, we can end up with sound interpretations as one alternative, or with flawed ones as another. If we start with a flawed design, however, we can only end up with flawed interpretations. We could consult a statistician for help, and he or she could perhaps tell us what the experiment died of. There would be no way of fixing the problem short of re-designing and re-doing the experiment.
 
-![Flawed design equals flawed interpretation](../fig/flawed-design.png)
+![Flawed design equals flawed interpretation.](../fig/flawed-design.png)
 
-The design of a study suggests its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation.
-The statistical test and the analysis must be determined in the planning stages of an experiment.
+The design of a study governs its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation. It's important to forecast possible outcomes from an experiment, and to consider how each outcome will be interpreted. The statistical test and the analysis must be determined in the planning stages of an experiment. Thoughtful planning and design gives us the greatest chance to produce meaningful and robust evidence.
 
 ## Costs of poor design
 Scientific research advances when scientists can corroborate others' results instead of pursuing false leads. Too often, though, published studies can't be reproduced or replicated, and the self-correcting nature of science falters. Some of these problems are entirely preventable through thoughtful and well-informed study design. 
@@ -57,8 +56,6 @@ According to [Chalmers and Glasziou](https://www.thelancet.com/journals/lancet/a
 
 ### Ethical considerations
 In animal studies, poor design often uses too many animals and is wasteful, or uses too few animals to obtain meaningful results. Poorly designed preclinical trials can lead to clinical trials involving humans with a shaky foundation of research findings. This is related to statistical power and inadequate sample sizes.
-
-## Experimental design and statistics
 
 ## Why good design matters
 Good experimental design seeks to balance statistical power, generalizability of findings, validity, practicality, and cost. It should be noted that improving one of the aforementioned often denigrates one or more of the others. For example, decreasing the cost of experimentation often negatively affects statistical power and validity.

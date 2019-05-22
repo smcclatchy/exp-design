@@ -6,7 +6,7 @@ teaching: 20
 exercises: 15
 questions:
 - "What are some common features of poor experimental design?"
-- "?"
+- "What are some consequences of poor experimental design?"
 objectives:
 - "Differentiate between technical and biological replicates."
 - "Describe what could happen to an experiment if technical replicates are used in place of biological replicates."
@@ -19,9 +19,17 @@ source: Rmd
 
 
 ### Selective publication of positive results
+Publication bias favors studies producing positive results over those that do not, regardless of the quality or design of the study. In clinical trials, one estimate finds that studies with statistically significant results are published at three times the rate of those with null results (Dickersin et al, 1987). As a consequence, much of published clinical research consists of false positives. This can have real impact on people's lives, given that published literature serves in medical decision-making. In one meta-analysis, 94% of published literature from clinical trials in antidepressants reported positive results (Turner et al, 2008). Medical decisions based on selective publication of positive results may lead to suboptimal outcomes for patients. 
+
 ### Incorrect randomization
+A well-designed experiment avoids confounding from known and unknown influences. Randomization creates comparable groups, which are alike in all characteristics except for the treatment under study. Randomization eliminates selection bias, balances the groups, and forms the basis for statistical tests. Poor randomization introduces confounding variables and frustrates attempts to quantify the effect of a treatment. If treatment groups differ with respect to factors other than the treatment under study, the results will be biased. In a clinical trial, for example, if younger participants were assigned the treatment and older participants were in the control group, there would be no way to determine whether the treatment had an effect or if the participants' age had an effect. In a study involving mice, if all the males were treated by one technician and all the females by another, it would be difficult to disambiguate the effect of the treatment from the effect of sex or the effect of the technician.
+
 ### Failure to blind wherever possible
-### Psuedo-replication and incorrect identification of the animal used
+Blinding ensures that neither the investigator nor the staff know what treatment a specific subject has received. Since investigators and staff have a stake in the outcome of experiments, a robust design ensures that the treatment is hidden and outcomes can't be influenced. Double-blind trials blind both the investigator and the participants to the treatment, so that no one knows who is and is not receiving it. Double-blind clinical trials can help with the placebo effect. Failure to blind leads to unreliable results.
+
+### Pseudoreplication
+Pseudoreplication occurs when researchers artificially inflate the number of replicates by repeatedly taking measurements from the same subject or sample. For example, repeatedly measuring the blood pressure of participants in a hypertension study will yield very similar results for each individual, because the measurements are dependent on one another, specifically on the overall health, genetics, and baseline blood pressure of each participant. Because measurements from the same participant are not independent, they might lead to what appears to be statistically significant differences, but
+
 #### Technical versus Biological Replicates
 
 Technical replicates are measurements taken on the same sample.  Biological replicates are measurements taken on different samples (one per sample).  Technical replicates do not convey biological variation in the data, as the difference between technical replicates in a sample measure “technical” variation, such as, instrument settings, technician skill, and environmental effects.  Biological replicates differ from technical in that differences seen between samples tends to be mostly biological.  If, for example, different technicians worked on measuring the biological samples, it is possible that a technician effect can be accounted for in the model via evaluating a technician batch effect. The key to understanding replicates is to identify the source of the variation that you are attempting to measure. Are you attempting to quantify the accuracy of the measuring tool or procedure from one measurement to the next? If so, then this is a technical replicate. Are you attempting to quantify the difference between one mouse and another? If so, this is a biological replicate.

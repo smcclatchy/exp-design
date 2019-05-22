@@ -28,6 +28,9 @@ control
 controlled experiment
 : an experiment done in parallel on a treatment and a control group that differ in one way (the independent or explanatory variable). Investigators determine which subjects go in the treatment group and which in the control group. For contrast, see observational experiment.
 
+deviation
+:
+
 experimental error
 :
 
@@ -97,12 +100,18 @@ Bollen, K, Cacioppo, JT, Kaplan, R, Krosnick, J, Olds, JL. 2015. [Social, Behavi
 
 
 ### Experimental design
-Fisher RA. , The Design of Experiments , 19606th edEdinburghOliver & Boyd
+Altman N, Krzywinski M. [Simple linear regression.](https://www.nature.com/articles/nmeth.3627) Nat Methods. 2015 Nov;12(11):999-1000.
+
+Blainey P, Krzywinski M, Altman N. [Points of significance: replication.](https://www.nature.com/articles/nmeth.3091) Nat Methods. 2014 Sep;11(9):879-80.
 
 [ILAR Journal: Design & Statistical Analysis of Animal Experiments](https://academic.oup.com/ilarjournal/issue/55/3)
 
+Dickersin K, Chan SS, Chalmersx TC, Sacks HS, Smith Jr H. Publication bias and clinical trials. Controlled clinical trials. 1987 Dec 1;8(4):343-53.
+
 [Festing & Altman's Guidelines for the Design and Statistical Analysis of Experiments
 Using Laboratory Animals](http://www.3rs-reduction.co.uk/assets/applets/Festing_Altman.pdf)
+
+Fisher RA. The design of experiments.
 
 [Gary Oehlert's A First Course in Design and Analysis of Experiments](http://users.stat.umn.edu/~gary/book/fcdae.pdf)
 
@@ -118,11 +127,9 @@ Using Laboratory Animals](http://www.3rs-reduction.co.uk/assets/applets/Festing_
 
 [Nature Practical Guides](https://www.nature.com/collections/qghhqm/content/practical-guides)
 
-Blainey P, Krzywinski M, Altman N. [Points of significance: replication.](https://www.nature.com/articles/nmeth.3091) Nat Methods. 2014 Sep;11(9):879-80.
-
 Krzywinski M, Altman N. [Points of significance: Analysis of variance and blocking.](https://www.nature.com/articles/nmeth.3005) Nat Methods. 2014 Jul;11(7):699-700.
 
-Altman N, Krzywinski M. [Simple linear regression.](https://www.nature.com/articles/nmeth.3627) Nat Methods. 2015 Nov;12(11):999-1000.
+Turner EH, Matthews AM, Linardatos E, Tell RA, Rosenthal R. [Selective publication of antidepressant trials and its influence on apparent efficacy.](https://www.nejm.org/doi/pdf/10.1056/nejmsa065779) New England Journal of Medicine. 2008 Jan 17;358(3):252-60.
 
 
 

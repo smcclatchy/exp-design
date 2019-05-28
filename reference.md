@@ -97,6 +97,9 @@ Chalmers, Iain et al. 2009. [Avoidable waste in the production and reporting of 
 
 Bollen, K, Cacioppo, JT, Kaplan, R, Krosnick, J, Olds, JL. 2015. [Social, Behavioral, and Economic Sciences Perspectives on Robust and Reliable Science](https://www.nsf.gov/sbe/AC_Materials/SBE_Robust_and_Reliable_Research_Report.pdf). Arlington, VA: National Science Foundation.
 
+Nuzzo, R. [How scientists fool themselves – and how they can stop](https://www.nature.com/news/how-scientists-fool-themselves-and-how-they-can-stop-1.18517). Nature 526(7572) 182–185 (08 October 2015)
+
+Yong, E. [Replication studies: Bad copy](https://www.nature.com/news/replication-studies-bad-copy-1.10634). Nature 485, 298–300. (17 May 2012)
 
 
 ### Experimental design
@@ -107,6 +110,8 @@ Blainey P, Krzywinski M, Altman N. [Points of significance: replication.](https:
 [ILAR Journal: Design & Statistical Analysis of Animal Experiments](https://academic.oup.com/ilarjournal/issue/55/3)
 
 Dickersin K, Chan SS, Chalmersx TC, Sacks HS, Smith Jr H. Publication bias and clinical trials. Controlled clinical trials. 1987 Dec 1;8(4):343-53.
+
+Error prone. Nature  487  406 EP -  (2012) https://doi.org/10.1038/487406a
 
 [Festing & Altman's Guidelines for the Design and Statistical Analysis of Experiments
 Using Laboratory Animals](http://www.3rs-reduction.co.uk/assets/applets/Festing_Altman.pdf)
@@ -129,7 +134,26 @@ Fisher RA. The design of experiments.
 
 Krzywinski M, Altman N. [Points of significance: Analysis of variance and blocking.](https://www.nature.com/articles/nmeth.3005) Nat Methods. 2014 Jul;11(7):699-700.
 
+[Why animal research needs to improve](https://www.nature.com/news/2011/110928/full/477511a.html) 28 September 2011 | Nature 477, 511 (2011) | doi:10.1038/477511a
+
+Optimal experimental design
+B. Smucker and M. Krzywinski and N. Altman
+Nature Methods  15  559--560  (2018)
+https://doi.org/10.1038/s41592-018-0083-2
+Customize the experiment for the setting instead of adjusting the setting to fit a classical design.
+
 Turner EH, Matthews AM, Linardatos E, Tell RA, Rosenthal R. [Selective publication of antidepressant trials and its influence on apparent efficacy.](https://www.nejm.org/doi/pdf/10.1056/nejmsa065779) New England Journal of Medicine. 2008 Jan 17;358(3):252-60.
 
+### Statistics
+Face up to false positives
+D. MacArthur
+Nature  487  427 EP -  (2012)
+https://doi.org/10.1038/487427a
 
+Nuzzo, R. [Scientific method: Statistical errors](https://www.nature.com/news/scientific-method-statistical-errors-1.14700).     Nature 506, 150–152. (13 February 2014)
+
+Know when your numbers are significant
+D. L. Vaux
+Nature  492  180 EP -  (2012)
+https://doi.org/10.1038/492180a
 

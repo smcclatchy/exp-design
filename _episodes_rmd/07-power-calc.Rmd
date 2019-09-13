@@ -389,3 +389,5 @@ increase, the effect size and Cohen's d will become more precise.
 > Do you empathize more with the biologist or with the statistician?
 > 
 {: .challenge}
+
+![](https://imgs.xkcd.com/comics/significant.png)

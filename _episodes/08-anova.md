@@ -310,22 +310,22 @@ lm(formula = y ~ x, data = bad_data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--0.9545 -0.6632 -0.2961  0.3367  7.1041 
+-0.9655 -0.6571 -0.2960  0.3739  4.3349 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  0.97648    0.12475   7.828 2.27e-14 ***
-x           -0.02089    0.07890  -0.265    0.791    
+(Intercept)  0.79187    0.11707   6.764 3.19e-11 ***
+x            0.08748    0.07404   1.182    0.238    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9663 on 598 degrees of freedom
-Multiple R-squared:  0.0001172,	Adjusted R-squared:  -0.001555 
-F-statistic: 0.07008 on 1 and 598 DF,  p-value: 0.7913
+Residual standard error: 0.9068 on 598 degrees of freedom
+Multiple R-squared:  0.002329,	Adjusted R-squared:  0.0006609 
+F-statistic: 1.396 on 1 and 598 DF,  p-value: 0.2378
 ~~~
 {: .output}
 
-Notice that the slope (Estimate column) is near zero (-0.020886), indicating no relationship between the two variables.
+Notice that the slope (Estimate column) is near zero (0.087482), indicating no relationship between the two variables.
 
 The histogram for the residuals doesn't show a normal distribution, which is one of the three important assumptions for linear models. 
 

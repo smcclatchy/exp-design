@@ -134,7 +134,7 @@ t.test(hf, control)$p.value
 
 
 ~~~
-[1] 0.08935193
+[1] 0.006750713
 ~~~
 {: .output}
 
@@ -265,12 +265,12 @@ mean(rejections)
 
 
 ~~~
-[1] 0.2
+[1] 0.1
 ~~~
 {: .output}
 
 This explains why the t-test was not rejecting when we knew the null
-was false. With a sample size of just 12, our power is about 0.2 percent. To
+was false. With a sample size of just 12, our power is about 0.1 percent. To
 guard against false positives at the 0.05 level, we had set the
 threshold at a high enough level that resulted in many type II
 errors. 
@@ -428,7 +428,7 @@ diff / mean(control, na.rm = TRUE) * 100
 
 
 ~~~
-[1] 21.77627
+[1] 24.24669
 ~~~
 {: .output}
 
@@ -442,7 +442,7 @@ t.test(hf, control)$conf.int / mean(control, na.rm = TRUE) * 100
 
 
 ~~~
-[1]  6.110402 37.442144
+[1]  5.940412 42.552963
 attr(,"conf.level")
 [1] 0.95
 ~~~
@@ -463,7 +463,7 @@ diff / sd_pool
 
 
 ~~~
-[1] 1.236526
+[1] 1.145321
 ~~~
 {: .output}
 
@@ -515,3 +515,5 @@ increase, the effect size and Cohen's d will become more precise.
 > Do you empathize more with the biologist or with the statistician?
 > 
 {: .challenge}
+
+![](https://imgs.xkcd.com/comics/significant.png)

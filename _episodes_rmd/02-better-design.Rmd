@@ -75,11 +75,18 @@ In another example, a study that only investigates the effect of activity level 
 
 > ## Discussion
 > Think about the following questions and perhaps jot down some notes. Pair up with a
-> partner discuss, then share your responses on the etherpad.
+> partner discuss, then share your responses on the etherpad.  
 > 1). How do you balance statistical power with generalizability, validity, practicality, and cost?
 > What have you had to sacrifice in order to find a balance?  
 > 2). How can good experimental design help you to save money and time? How can it help your experiment to be reproducible?  
 > 3). What are some ethical considerations of good experimental design?
 >
+{: .challenge}
+
+> ## Discussion
+> Watch [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4).  
+> 1). Why do the two find it difficult to communicate with one another?  
+> 2). Which of the two do you empathize or identify with the most?  
+> 
 {: .challenge}
 

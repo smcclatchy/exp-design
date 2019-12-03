@@ -5,22 +5,45 @@ title: Types of experiments
 teaching: 0
 exercises: 0
 questions:
-- "What are the features of different kinds of experiments?"
+- "How are hypotheses generated or tested?"
 - "What are my experimental units?"
 objectives:
-- ""
-- ""
+- "Differentiate between studies conducted to generate and test hypotheses"
+- "Explain how exploratory and pilot studies can inform experimental research"
 keypoints:
-- "."
-- "."
+- "There are multiple kinds of biological experiments, which may involve generating hypotheses, testing the feasibility of research procedures, and testing hypotheses."
+- "Pilot studies test the feasibility and efficiency of research procedures on a small scale, with few animals."
+- "Experimental studies are characterized by randomization, replication, and control."
+- "Exploratory studies are observational or correlational studies which identify patterns that inform hypotheses."
 source: Rmd
 ---
 
 
  
+Before we go any further, we should clarify what we mean by “experiment,” and how we’ll be using the term in the rest of the course. Fry (2014) notes that “a hypothesis is formulated in the basis of observation or theory and tested by experiment” (p. 460). There are two important clauses in this sentence, each referring to a different kind of methodological approach. Let’s unpack this.
+
+### A hypothesis is formulated on the basis of observation and theory 
+
+Some procedures may be regarded as experimental in the sense that they involve investigating a matter that is to some extent unknown but do not have the purpose of testing a hypothesis. Examples are the recording of growth curves and organ weights in a novel strain as well as many observational or correlation studies. In what might be termed “exploratory experiments,” the primary objective is to generate information on which to build a hypothesis or look for patterns, and some definitions of the scientific method include this as a stage in the process. In “pilot experiments,” the intention is to provide preliminary information that can improve the conduct, quality, and efficiency of subsequent hypothesis-testing experiments, typically using small numbers of experimental units. (Fry, 2014, p. 460, reprinted with permission)
+
+### A hypothesis is tested by experiment
+
+Exploratory experiments and pilot studies are intended to study the relationships between variables, or test the feasibility of a research method and/or intervention. These studies do not necessarily employ the strict procedures and multiple study arms seen in a randomized controlled trial. Instead, exploratory experiments and pilot studies are meant to generate new questions and hypotheses that can then be tested under more prescribed experimental conditions on a larger scale (Thabane et al, 2010).
+
+Biological experiments are typically comparative in nature and test the “null hypothesis,” which postulates no difference between sets of biological material treated the same except for the matter in question, and that testing involves accepting or rejecting the null hypothesis with a certain level of confidence. 
+The outcome of the experiment provides evidence about the hypothesis tested, and the amount of confidence that can be placed in the correctness of the hypothesis is dependent on the strength of that evidence and the quality of the experimentation and not on whether the results meet any arbitrary cut-off level of significance or have been published in a high-impact journal. (Fry, p. 460, reprinted with permission)
+
+Include some examples of experiments here? Are there good examples from JAX about exploratory or pilot studies that informed subsequent experimental designs?
+Here’s an example of an exploratory metagenomics study that led to the identification of the proteorhodopsin gene, which led to new questions about bacterial evolution: http://philsci-archive.pitt.edu/3985/1/EE_proteorhodopsin_preprint.pdf  This article has a nice table comparing theory-driven and exploratory experiments, though we may not want to go down that path.
+Another resource (a definition in the Encyclopedia of Systems Biology), with references: https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-9863-7_60
+
+The remainder of this course will address the features of experimental design, including experimental units, randomization, replication, and control.
+
 ## Types of controlled experiments
  
 ### Pilot
+[(Thabane et al, 2010)](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/1471-2288-10-1)
+
 ### Exploratory
  hypothesis generation 
 
@@ -28,6 +51,24 @@ source: Rmd
  hypothesis testing
  
 ## Observational experiments
+
+> ## Discussion
+> Identify the type of experiment in each of the following.
+> After identifying the type of experiment, describe a next possible step. 
+> What hypotheses might the experiment generate or test?
+> Which types of experiments have you performed?
+1. example 1  
+2. example 2  
+3. example 3  
+>
+> > ## Solution 
+> {: .solution}
+{: .challenge}
+
+> ## Discussion
+> If you have mainly done exploratory or pilot studies, how have or how might those studies inform experimental designs? 
+> If you have worked on experimental studies, how has that research been based on prior exploratory or pilot work?
+> Reflect on key differences you see in study features.
 
 ## Experimental units
 

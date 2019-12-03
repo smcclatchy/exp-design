@@ -120,6 +120,10 @@ Using Laboratory Animals](http://www.3rs-reduction.co.uk/assets/applets/Festing_
 
 Fisher RA. The design of experiments.
 
+Derek J. Fry, [Teaching Experimental Design, ILAR Journal, Volume 55, Issue 3, 2014, Pages 457–471,](https://doi.org/10.1093/ilar/ilu031)
+
+Johnson PD, Besselsen DG. [Practical aspects of experimental design in animal research.](http://www.bbf.uns.edu.ar/files/disenoexperimental.pdf) ILAR journal. 2002 Jan 1;43(4):202-6.
+
 [Gary Oehlert's A First Course in Design and Analysis of Experiments](http://users.stat.umn.edu/~gary/book/fcdae.pdf)
 
 [Statistics Done Wrong by Alex Reinhart](https://www.statisticsdonewrong.com/index.html)
@@ -143,6 +147,8 @@ B. Smucker and M. Krzywinski and N. Altman
 Nature Methods  15  559--560  (2018)
 https://doi.org/10.1038/s41592-018-0083-2
 Customize the experiment for the setting instead of adjusting the setting to fit a classical design.
+
+Thabane L, Ma J, Chu R, Cheng J, Ismaila A, Rios LP, Robson R, Thabane M, Giangregorio L, Goldsmith CH. [A tutorial on pilot studies: the what, why and how.](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/1471-2288-10-1) BMC medical research methodology. 2010 Dec;10(1):1.
 
 Turner EH, Matthews AM, Linardatos E, Tell RA, Rosenthal R. [Selective publication of antidepressant trials and its influence on apparent efficacy.](https://www.nejm.org/doi/pdf/10.1056/nejmsa065779) New England Journal of Medicine. 2008 Jan 17;358(3):252-60.
 

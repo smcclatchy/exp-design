@@ -47,11 +47,6 @@ As an example, if I were to weigh myself on a bathroom scale, record the measure
 
 When working with technical replicates, the model should reflect the presence of the technical replicates because each replicate contributes to the overall error in the model. Technical replicates are not independent biological replicates; thus, if technical replicates are treated as biological replicates it leads to inflation of degrees of freedom and deflation of standard error. Such a mistake will lead to an adjustment of the fundamental statistics used in regression analysis and lead to inaccurate analysis results. To account for this type of error, the subject (or sample number/ID) can be used as a random model term, or, alternatively, the technical replicates can be collapsed (averaged). If you treat the biological subject as a random effect, then the mixed model tests for all treatments and other effects are identical to what you get if you average the technical replicates.
 
-### Failure in quality control of experimental materials
-### Inadequate external validity
-### Inadequate description of methods (e.g., strain nomenclature)
-### Incorrect statistical analysis (e.g., no analysis; multiple testing without adjustment; wrong statistical model; incorrect treatment of outliers; cherry-picking the data).
-
 ## Some notable retractions
 Re-analyses of published works have become much more common, resulting in more paper retractions. [Retraction Watch](https://retractionwatch.com/) catalogs retractions in the scientific literature. Retractions can happen in the most high profile journals and from some of the most esteemed investigators. Often the reasons for retraction are lack of reproducibility. Here are a few examples, along with excerpts from author retraction statements.
 

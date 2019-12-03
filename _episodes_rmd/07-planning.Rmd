@@ -23,7 +23,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("06-")
+knitr_fig_path("07-")
 ```
 
 The statistical test and the analysis must be determined in the planning stages of an experiment.

@@ -93,6 +93,8 @@ Goodman SN, Fanelli D and Ioannidis, JPA. [What does research reproducibility me
 
 National Academies of Sciences, Engineering, and Medicine. 2015. [Reproducibility Issues in Research with Animals and Animal Models: Workshop in Brief](https://www.nap.edu/read/21835/). Washington, DC: The National Academies Press. https://doi.org/10.17226/21835.
 
+National Academies of Sciences, Engineering, and Medicine. 2019. [Reproducibility and Replicability in Science](https://www.nap.edu/catalog/25303/reproducibility-and-replicability-in-science).  Washington, DC: The National Academies Press. https://doi.org/10.17226/25303.
+
 Chalmers, Iain et al. 2009. [Avoidable waste in the production and reporting of research evidence](https://www.thelancet.com/journals/lancet/article/PIIS0140673609603299/fulltext?rss=yes). The Lancet 374(9683):86-89
 
 Bollen, K, Cacioppo, JT, Kaplan, R, Krosnick, J, Olds, JL. 2015. [Social, Behavioral, and Economic Sciences Perspectives on Robust and Reliable Science](https://www.nsf.gov/sbe/AC_Materials/SBE_Robust_and_Reliable_Research_Report.pdf). Arlington, VA: National Science Foundation.

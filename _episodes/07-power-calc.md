@@ -512,7 +512,7 @@ increase, the effect size and Cohen's d will become more precise.
 {: .challenge}
 
 > ## Challenge 5: Watch [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4)
-> Do you empathize more with the biologist or with the statistician?
+> Do you empathize more now with the biologist or with the statistician?
 > 
 {: .challenge}
 

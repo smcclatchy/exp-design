@@ -91,6 +91,8 @@ Collins FS, Tabak LA. [Policy: NIH plans to enhance reproducibility.](https://ww
 
 Goodman SN, Fanelli D and Ioannidis, JPA. [What does research reproducibility mean?](http://stm.sciencemag.org/content/8/341/341ps12.full) Science Trans Med. 2016 Jun 01;8(341)
 
+Hess KR. [Statistical design considerations in animal studies published recently in cancer research.](https://cancerres.aacrjournals.org/content/canres/71/2/625.full.pdf) Cancer research. 2011 Jan 15;71(2):625-.
+
 National Academies of Sciences, Engineering, and Medicine. 2015. [Reproducibility Issues in Research with Animals and Animal Models: Workshop in Brief](https://www.nap.edu/read/21835/). Washington, DC: The National Academies Press. https://doi.org/10.17226/21835.
 
 National Academies of Sciences, Engineering, and Medicine. 2019. [Reproducibility and Replicability in Science](https://www.nap.edu/catalog/25303/reproducibility-and-replicability-in-science).  Washington, DC: The National Academies Press. https://doi.org/10.17226/25303.

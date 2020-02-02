@@ -126,6 +126,10 @@ Derek J. Fry, [Teaching Experimental Design, ILAR Journal, Volume 55, Issue 3, 2
 
 Johnson PD, Besselsen DG. [Practical aspects of experimental design in animal research.](http://www.bbf.uns.edu.ar/files/disenoexperimental.pdf) ILAR journal. 2002 Jan 1;43(4):202-6.
 
+Kilkenny C, Parsons N, Kadyszewski MF, Cuthill IC, Fry D, Hutton J, Altman DG. Survey of the quality of experimental design, statistical analysis and reporting of research using animals. PloS one. 2009;4(11).
+
+Kilkenny C, Browne WJ, Cuthill IC, Emerson M, Altman DG. Improving bioscience research reporting: the ARRIVE guidelines for reporting animal research. PLoS biology. 2010 Jun;8(6).
+
 [Gary Oehlert's A First Course in Design and Analysis of Experiments](http://users.stat.umn.edu/~gary/book/fcdae.pdf)
 
 [Statistics Done Wrong by Alex Reinhart](https://www.statisticsdonewrong.com/index.html)

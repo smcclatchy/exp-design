@@ -35,7 +35,28 @@ library(dplyr)
 dat <- read.csv("bodyWeights.csv")  
 ```
 
-A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
+A designed experiment is a strategic attempt to answer a research question or problem. Experiments give us a way to compare effects of two or more treatments of interest. When well-designed, experiments minimize any bias in this comparison. When we control experiments, that control gives us the ability to make stronger inferences about the differences we see in the experiment. Specifically, experiments allow us to make inferences about causation. Sample research questions that follow from these questions are given below.
+
+- Does <drug> affect condition X in humans?
+- Does <diet> affect phenotype Y in mice?
+  
+The research question suggests how an experiment might be carried out to find an answer. In the questions above, the treatments are either a drug or a diet. The experimental units are those things to which we apply treatments. 
+
+> ## Discussion
+> What are the experimental units in each of the research questions above?  
+> 
+> >
+> > ## Solution 
+> > 
+> > 1). Research question: Does <drug> affect condition X in humans?  Experimental unit: Individual person on drug or placebo
+> > 2). Research question: Does <diet> affect phenotype Y in mice? Experimental unit: Cage of mice on treatment or control diet
+> > 
+> {: .solution}
+{: .challenge}
+
+Defining the experimental unit is not necessarily straightforward. To define the experimental unit, consider that an experimental unit should be able to receive any treatment. In the second example, all mice in a cage must receive either the treatment or the control diet. In this case the cage is the experimental unit. Each individual mouse is a measurement unit since we would measure the response of each individual mouse to the diet. We don't measure how the entire cage of mice responds to the diet as a whole, though. Individual mice are the measurement units, while the cage is an experimental unit since all mice in the cage receive the same treatment.
+
+Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
 
 ### Randomization
 In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units (the unit or subject tested upon) so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.

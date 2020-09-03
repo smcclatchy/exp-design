@@ -1,0 +1,37 @@
+---
+title: "Factorial designs"
+teaching: 0
+exercises: 0
+questions:
+- ""
+objectives:
+- "Describe a factorial design"
+keypoints:
+- "."
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("06-")
+```
+
+```{r, message=FALSE}
+library(downloader)
+url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
+filename <- "bodyWeights.csv"
+if(!file.exists(filename)) download(url,destfile=filename)
+```
+
+```{r, message=FALSE}
+library(dplyr)
+
+# Read in DO850 body weight data.
+dat <- read.csv("bodyWeights.csv")  
+```
+
+## Factorial Design
+
+Researchers control the independent variables whose effects are under investigation. Treatments such as diet, drug, or temperature are known as factors. Factors are measured in levels that describe the type (categorical) or amount (continuous) of the factor. For example, the factor *diet* has levels low-, medium-, and high-protein. The continuous variable *temperature* could have levels high, medium, and low describing the amount ranging from 0 to 38 degrees Celsius where 0-12 is low, 13-25 is medium, and 26-38 high. The goal of experimental design is to determine the effect and interaction of the factors on the dependent (response) variable (e.g., body mass). An experiment that considers all combinations of all factors is a factorial design. For example, a 3 × 3 design has two factors, each with three levels. The experiment investigates all 9 combinations of factor levels - low-protein diet in low, medium and high temperature conditions, medium-protein diet at each temperature level, and so on.
+
+The advantages of the factorial design are that two or more factors can be assessed simultaneously in the same population, efficiently using resources (e.g. sample size) when compared to individual studies of each factor. A factorial design can also assess the interaction of factors and their combined influence on the response variable. 

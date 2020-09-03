@@ -20,7 +20,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("06-")
+knitr_fig_path("07-")
 ```
 
 Statistical power analysis is critical in experimental design. Before doing an experiment, it is important to calculate statistical power to estimate the sample size needed to detect an effect of a certain size with a specific degree of confidence. Underpowered studies are extremely common, which has led one of the most-cited scientists in medicine to claim that [most published research findings are false](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124).

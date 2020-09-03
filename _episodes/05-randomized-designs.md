@@ -23,6 +23,19 @@ source: Rmd
 
 ~~~
 library(downloader)
+~~~
+{: .language-r}
+
+
+
+~~~
+Warning: package 'downloader' was built under R version 4.0.2
+~~~
+{: .error}
+
+
+
+~~~
 url <- "https://raw.githubusercontent.com/smcclatchy/dals-inference/gh-pages/data/bodyWeights.csv"
 filename <- "bodyWeights.csv"
 if(!file.exists(filename)) download(url,destfile=filename)
@@ -38,7 +51,28 @@ dat <- read.csv("bodyWeights.csv")
 ~~~
 {: .language-r}
 
-A designed experiment is a strategic attempt to answer a research question or problem. Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
+A designed experiment is a strategic attempt to answer a research question or problem. Experiments give us a way to compare effects of two or more treatments of interest. When well-designed, experiments minimize any bias in this comparison. When we control experiments, that control gives us the ability to make stronger inferences about the differences we see in the experiment. Specifically, experiments allow us to make inferences about causation. Sample research questions that follow from these questions are given below.
+
+- Does <drug> affect condition X in humans?
+- Does <diet> affect phenotype Y in mice?
+  
+The research question suggests how an experiment might be carried out to find an answer. In the questions above, the treatments are either a drug or a diet. The experimental units are those things to which we apply treatments. 
+
+> ## Discussion
+> What are the experimental units in each of the research questions above?  
+> 
+> >
+> > ## Solution 
+> > 
+> > 1). Research question: Does <drug> affect condition X in humans?  Experimental unit: Individual person on drug or placebo
+> > 2). Research question: Does <diet> affect phenotype Y in mice? Experimental unit: Cage of mice on treatment or control diet
+> > 
+> {: .solution}
+{: .challenge}
+
+Defining the experimental unit is not necessarily straightforward. To define the experimental unit, consider that an experimental unit should be able to receive any treatment. In the second example, all mice in a cage must receive either the treatment or the control diet. In this case the cage is the experimental unit. Each individual mouse is a measurement unit since we would measure the response of each individual mouse to the diet. We don't measure how the entire cage of mice responds to the diet as a whole, though. Individual mice are the measurement units, while the cage is an experimental unit since all mice in the cage receive the same treatment.
+
+Well-designed experiments are characterized by three features: randomization, replication, and control. These features help to minimize the impact of experimental error and factors not under study.
 
 ### Randomization
 In a randomized experiment, the investigators randomly assign subjects to treatment and control groups in order to minimize bias and moderate experimental error. A random number table or generator can be used to assign random numbers to experimental units (the unit or subject tested upon) so that any experimental unit has equal chances of being assigned to treatment or control. The random number then determines to which group an experimental unit belongs. For example, odd-numbered experimental units could go in the treatment group, and even-numbered experimental units in the control group.
@@ -61,32 +95,32 @@ df1
 
 ~~~
    sample_id random_number     group
-1          A            70   control
-2          B            16   control
-3          C            26   control
-4          D            43 treatment
-5          E            32   control
+1          A             8   control
+2          B            91 treatment
+3          C            47 treatment
+4          D            46   control
+5          E            69 treatment
 6          F            71 treatment
-7          G            52   control
-8          H            31 treatment
-9          I            36   control
-10         J            98   control
-11         K            85 treatment
-12         L            12   control
-13         M            35 treatment
-14         N            81 treatment
-15         O            40   control
-16         P            23 treatment
-17         Q            14   control
-18         R            86   control
-19         S            91 treatment
-20         T            48   control
-21         U            47 treatment
-22         V             8   control
-23         W            99 treatment
-24         X             2   control
-25         Y           100   control
-26         Z            51 treatment
+7          G            76   control
+8          H            89 treatment
+9          I            23 treatment
+10         J            43 treatment
+11         K            88   control
+12         L            20   control
+13         M            39 treatment
+14         N            98   control
+15         O            86   control
+16         P            48   control
+17         Q            60   control
+18         R            25 treatment
+19         S             3 treatment
+20         T            54   control
+21         U            95 treatment
+22         V            14   control
+23         W            84   control
+24         X            45 treatment
+25         Y             4   control
+26         Z            34   control
 ~~~
 {: .output}
 
@@ -103,7 +137,7 @@ table(df1$group)
 ~~~
 
   control treatment 
-       15        11 
+       14        12 
 ~~~
 {: .output}
 
@@ -129,32 +163,32 @@ df1_equal
 
 ~~~
    sample_id random_number treatment
-1          X             2   control
-2          V             8   control
-3          L            12   control
-4          Q            14   control
-5          B            16   control
-6          P            23   control
-7          C            26   control
-8          H            31   control
-9          E            32   control
-10         M            35   control
-11         I            36   control
-12         O            40   control
-13         D            43   control
-14         U            47 treatment
-15         T            48 treatment
-16         Z            51 treatment
-17         G            52 treatment
-18         A            70 treatment
-19         F            71 treatment
-20         N            81 treatment
-21         K            85 treatment
-22         R            86 treatment
-23         S            91 treatment
-24         J            98 treatment
-25         W            99 treatment
-26         Y           100 treatment
+1          S             3   control
+2          Y             4   control
+3          A             8   control
+4          V            14   control
+5          L            20   control
+6          I            23   control
+7          R            25   control
+8          Z            34   control
+9          M            39   control
+10         J            43   control
+11         X            45   control
+12         D            46   control
+13         C            47   control
+14         P            48 treatment
+15         T            54 treatment
+16         Q            60 treatment
+17         E            69 treatment
+18         F            71 treatment
+19         G            76 treatment
+20         W            84 treatment
+21         O            86 treatment
+22         K            88 treatment
+23         H            89 treatment
+24         B            91 treatment
+25         U            95 treatment
+26         N            98 treatment
 ~~~
 {: .output}
 
@@ -237,26 +271,26 @@ df2
 
 ~~~
    exp_unit_id random_number  treatment
-20           T             3    control
-12           L             6    control
-14           N            15    control
-6            F            16    control
-16           P            17    control
-15           O            18 treatment1
-17           Q            21 treatment1
-18           R            25 treatment1
-3            C            30 treatment1
-4            D            36 treatment1
-8            H            40 treatment2
-11           K            55 treatment2
-10           J            63 treatment2
-2            B            66 treatment2
-9            I            67 treatment2
-19           S            80 treatment3
-13           M            83 treatment3
-1            A            85 treatment3
-7            G            92 treatment3
-5            E            97 treatment3
+5            E            18    control
+17           Q            26    control
+10           J            33    control
+6            F            42    control
+19           S            43    control
+9            I            52 treatment1
+3            C            61 treatment1
+18           R            62 treatment1
+12           L            64 treatment1
+2            B            68 treatment1
+14           N            71 treatment2
+7            G            72 treatment2
+13           M            73 treatment2
+15           O            80 treatment2
+8            H            83 treatment2
+11           K            86 treatment3
+1            A            88 treatment3
+4            D            91 treatment3
+16           P            92 treatment3
+20           T            93 treatment3
 ~~~
 {: .output}
 

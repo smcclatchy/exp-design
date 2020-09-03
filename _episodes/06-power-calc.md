@@ -22,13 +22,7 @@ source: Rmd
 
 
 
-
-## Motivator: A retraction
-Re-analyses of published works have become much more common, resulting in more paper retractions. Harvard stem cell biologist Douglas Melton [retracted a 2013 paper in Cell](https://retractionwatch.com/2016/12/27/harvard-biologist-retracts-diabetes-breakthrough-cell/) that had garnered significant attention after other researchers attempted and failed to replicate his results. Dr. Melton said that “more attention to the statistical strength is a lesson that I’ve learned ... when we repeated our original experiments with a larger number of mice, we also failed to observe β-cell expansion." Attention to sample size and power analysis in general is especially important for people who are early in their careers.
-
-Statistical power analysis is critical in experimental design. Underpowered studies, such as in the previous example, don't provide accurate insight. Statistical power refers to the ability to avoid type II (false negative) errors, or rejection of an experimental hypothesis when it is actually true. 
-
-Before doing an experiment, it is important to calculate statistical power to estimate the sample size needed to detect an effect of a certain size with a specific degree of confidence. Underpowered studies are extremely common, which has led one of the most-cited scientists in medicine to claim that [most published research findings are false](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124).
+Statistical power analysis is critical in experimental design. Before doing an experiment, it is important to calculate statistical power to estimate the sample size needed to detect an effect of a certain size with a specific degree of confidence. Underpowered studies are extremely common, which has led one of the most-cited scientists in medicine to claim that [most published research findings are false](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124).
 
 ## Introduction
 

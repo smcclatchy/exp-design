@@ -31,6 +31,9 @@ controlled experiment
 deviation
 :
 
+effects
+:
+
 experimental error
 :
 
@@ -63,6 +66,12 @@ reproducibility
 :   Other researchers duplicate results and can draw the same conclusions as the original study did using
     the same materials and methods (i.e. specific measurement devices, original data, software, statistical method).
 
+sensitivity
+:
+
+specificity
+:
+
 systematic error
 :
 
@@ -79,6 +88,8 @@ variability
 variance
 : a measure of statistical variability or dispersion
 
+variation
+: 
 
 ## External references
 
@@ -107,7 +118,7 @@ Yong, E. [Replication studies: Bad copy](https://www.nature.com/news/replication
 
 
 ### Experimental design
-Altman N, Krzywinski M. [Simple linear regression.](https://www.nature.com/articles/nmeth.3627) Nat Methods. 2015 Nov;12(11):999-1000.
+Krzywinski M, Altman N. [Designing comparative experiments.](https://www.nature.com/articles/nmeth.2974) Nat Methods. 2014 June;11(6):597-598.
 
 Blainey P, Krzywinski M, Altman N. [Points of significance: replication.](https://www.nature.com/articles/nmeth.3091) Nat Methods. 2014 Sep;11(9):879-80.
 

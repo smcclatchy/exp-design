@@ -52,6 +52,12 @@ The remainder of this course will address the features of experimental design, i
  hypothesis testing
  
 ## Observational experiments
+Observational studies are employed when controlled studies are not feasible. In observational experiments, assignment of treatment to
+subjects is outside of the control of the investigator. For example,
+a study of lung cancer in smokers versus non-smokers would be an observational experiment since the researcher has no control over the treatment.  
+
+Observational studies can infer causality, such as the [1956 study establishing that smoking causes lung cancer](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2035864/pdf/brmedj03180-0019.pdf). More often, though, observational experiments suffer from confounding or reverse causation. Hidden variables or factors can confound associations between treatment and outcome. For example, a study examining the relationship between obesity and heart disease could be confounded by age, gender, or diet. The direction of cause and effect can be difficult to determine as well. For example, an association between smoking and anxiety would be difficult to interpret. Does smoking cause anxiety? Does anxiety cause smoking? Discriminating between cause and effect is challenging in observational studies.
+
 
 > ## Discussion
 > Identify the type of experiment in each of the following.

@@ -6,16 +6,13 @@ teaching: 20
 exercises: 10
 questions:
 - "Why does good experimental design matter?"
-- "What are some of the consequences of poor experimental design?"
+- "What are some of the features of good experimental design?"
 objectives:
-- "To give examples of the positive effects of well designed experiments."
-- "To give examples of the negative effects of poorly designed experiments."
-- "To explain the concept of random variation and how it is central to experimental design."
-- "Define confounding factors are and their impact on a study."
+- "Provide examples of the positive effects of well designed experiments."
+- "Explain the concept of random variation and how it is central to experimental design."
 keypoints:
-- "Good study design is efficient and can lead to meaningful results."
+- "Solid experimental designs reduce both the impact of variability and the need for larger sample sizes."
 - "Good study design anticipates analysis of the experiment."
-- "Poor study design can lead to waste and insignificant results."
 source: Rmd
 ---
 
@@ -29,7 +26,7 @@ Experimental design has three basic purposes:
 1. to reduce variability within treatment groups, making differences in treatment outcomes easier to detect.
 1. to provide answers to questions by testing causal hypotheses.
 
-We design experiments to help answer questions by comparing the outcome of different treatments. We can design experiments such that bias and error in the comparison of different treatments is minimized. We control experiments so that we can make stronger inferences about the nature of the differences that we see. Specifically, we try to make inferences about causation.  
+We design experiments to help answer questions by comparing the effects of different treatments or conditions on the response variable, as well as any interactions between treatments. Experimental design can determine which data-gathering strategies will meet goals for sensitivity and specificity, while also minimizing time and resource costs. We can design experiments such that bias and error in the comparison of different treatments is minimized. We control experiments so that we can make stronger inferences about the nature of the differences that we see. Specifically, we try to make inferences about causation.  
 
 > *To consult the statistician after an experiment is finished is often merely to ask him to
 > conduct a post mortem examination. He can perhaps say what the experiment died of.*
@@ -42,20 +39,12 @@ We can visualize the foundational steps in experimentation as design, data gathe
 
 ![Sound design makes sound interpretation possibile.](../fig/sound-design.png)
 
-If we start with a sound experimental design, we can end up with sound interpretations as one alternative, or with flawed ones as another. If we start with a flawed design, however, we can only end up with flawed interpretations. We could consult a statistician for help, and he or she could perhaps tell us what the experiment died of. There would be no way of fixing the problem short of re-designing and re-doing the experiment.
+If we start with a sound experimental design, we can end up with sound interpretations as one alternative, or with flawed ones as another. If we start with a flawed design, however, we can only end up with flawed interpretations. We could consult a statistician for help, and she could perhaps tell us what the experiment died of. There would be no way of fixing the problem short of re-designing and re-doing the experiment.
 
 ![Flawed design equals flawed interpretation.](../fig/flawed-design.png)
 
 The design of a study governs its analysis. Knowing how a design can be analyzed is critical before embarking on experimentation. It's important to forecast possible outcomes from an experiment, and to consider how each outcome will be interpreted. The statistical test and the analysis must be determined in the planning stages of an experiment. Thoughtful planning and design gives us the greatest chance to produce meaningful and robust evidence.
 
-## Costs of poor design
-Scientific research advances when scientists can corroborate others' results instead of pursuing false leads. Too often, though, published studies can't be reproduced or replicated, and the self-correcting nature of science falters. Some of these problems are entirely preventable through thoughtful and well-informed study design. 
-
-### Time and money
-According to [Chalmers and Glasziou](https://www.thelancet.com/journals/lancet/article/PIIS0140673609603299/fulltext?rss=yes), more than 85% of the dollars invested in research are lost annually to avoidable problems. Poorly designed studies are responsible for some of this waste. Given limited research funding it is imperative that experimental design, study quality, and reproducibility be prioritized so that research findings help to build stable and reliable scientific knowledge. 
-
-### Ethical considerations
-In animal studies, poor design often uses too many animals and is wasteful, or uses too few animals to obtain meaningful results. Poorly designed preclinical trials can lead to clinical trials involving humans with a shaky foundation of research findings. This is related to statistical power and inadequate sample sizes.
 
 ## Why good design matters
 Good experimental design seeks to balance statistical power, generalizability of findings, validity, practicality, and cost. It should be noted that improving one of the aforementioned often denigrates one or more of the others. For example, decreasing the cost of experimentation often negatively affects statistical power and validity.
@@ -66,11 +55,6 @@ Random variation, also called random error or "noise", exists in the measurement
 For example, the mass of one kilogram is defined by the International Prototype Kilogram, a cylinder composed of platinum and iridium. Copies of this prototype kilogram are distributed worldwide and are regularly compared to the prototype to ensure the standard of a kilogram. None of the copies of the prototype measure precisely the same despite careful storage and handling. The reasons for this variation in measurements is not known. 
 
 Systematic error or bias, in contrast, does not center around the mean. Larger sample sizes don't affect or correct for systematic bias. As an example, a bathroom scale might be calibrated so that measurements are consistently too high or too low. 
-
-### Confounding factors
-Confounding factors, or confounders, are a third factor influencing the relationship between independent and dependent variables. A confounder is a variable not unaccounted for, yet one that exerts either a small or large effect on a dependent (response) variable.  Such variables increase variance and bias in the study.
-For example, one design for the Salk polio vaccine trials considered vaccinating only those children whose parents consented to the vaccination, and leaving children from non-consenting parents as an unvaccinated control group. However, wealthier parents were more likely to consent to vaccinating their children, so socioeconomic status would have been introduced as a confounding factor. The effect of socioeconomic status would have confounded or "mixed up" the effect of the treatment (the vaccination).  
-In another example, a study that only investigates the effect of activity level (active versus sedentary) on weight of mice excludes several factors that are known to affect weight.  These missing factors (such as, age and sex) are confounding variables.  Age and sex both have an effect on weight that is unaccounted for by the study; thus, the variation attributed to activity level cannot be accurately measured because of the lack of accounting for the variance known to be associated with the missing (confounding) variables.
 
 > ## Discussion
 > Think about the following questions and perhaps jot down some notes. Pair up with a
@@ -83,7 +67,7 @@ In another example, a study that only investigates the effect of activity level 
 {: .challenge}
 
 > ## Discussion
-> Watch [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4).  
+> Watch [A Biologist Talks to a Statistician](https://www.youtube.com/watch?v=Hz1fyhVOjr4) (3:33).  
 > 1). Why do the two find it difficult to communicate with one another?  
 > 2). Which of the two do you empathize or identify with the most?  
 > 

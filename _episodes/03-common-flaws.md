@@ -10,16 +10,34 @@ questions:
 objectives:
 - "Differentiate between technical and biological replicates."
 - "Describe what could happen to an experiment if technical replicates are used in place of biological replicates."
+- "Define confounding factors are and their impact on a study."
 keypoints:
 - "When designing an experiment, use biological replicates."
 - "Choose a single representative value (the mean, median, or mode) for technical replicates."
+- "Poor study design can lead to waste and insignificant results."
 source: Rmd
 ---
 
 
 
-### Selective publication of positive results
-Publication bias favors studies producing positive results over those that do not, regardless of the quality or design of the study. In clinical trials, one estimate finds that studies with statistically significant results are published at three times the rate of those with null results (Dickersin et al, 1987). As a consequence, much of published clinical research consists of false positives. This can have real impact on people's lives, given that published literature serves in medical decision-making. In one meta-analysis, 94% of published literature from clinical trials in antidepressants reported positive results (Turner et al, 2008). Medical decisions based on selective publication of positive results may lead to suboptimal outcomes for patients. Different scientific research domains tend to [accentuate the positive](https://www.nature.com/news/485298a-i2-0-jpg-7.4428?article=1.10634) at different rates, with psychiatry and psychology reporting the highest rates of publication of only positive studies, and earth and space sciences reporting the lowest rates (Yong, 2012).
+## Costs of poor design
+Scientific research advances when scientists can corroborate others' results instead of pursuing false leads. Too often, though, published studies can't be reproduced or replicated, and the self-correcting nature of science falters. Some of these problems are entirely preventable through thoughtful and well-informed study design. 
+
+### Time and money
+According to [Chalmers and Glasziou](https://www.thelancet.com/journals/lancet/article/PIIS0140673609603299/fulltext?rss=yes), more than 85% of the dollars invested in research are lost annually to avoidable problems. Poorly designed studies are responsible for some of this waste. Given limited research funding it is imperative that experimental design, study quality, and reproducibility be prioritized so that research findings help to build stable and reliable scientific knowledge. 
+
+### Ethical considerations
+In animal studies, poor design often uses too many animals and is wasteful, or uses too few animals to obtain meaningful results. Poorly designed preclinical trials can lead to clinical trials involving humans with a shaky foundation of research findings. This is related to statistical power and inadequate sample sizes.
+
+## Common flaws
+
+### Underpowered studies
+Studies that lack power (sensitivity) lack the ability to detect experimental effects. The lowest power we should accept is an 80% chance of detecting an effect.
+
+### Confounding factors
+Confounding factors, or confounders, are a third factor influencing the relationship between independent and dependent variables. A confounder is a variable not unaccounted for, yet one that exerts either a small or large effect on a dependent (response) variable.  Such variables increase variance and bias in the study.
+For example, one design for the Salk polio vaccine trials considered vaccinating only those children whose parents consented to the vaccination, and leaving children from non-consenting parents as an unvaccinated control group. However, wealthier parents were more likely to consent to vaccinating their children, so socioeconomic status would have been introduced as a confounding factor. The effect of socioeconomic status would have confounded or "mixed up" the effect of the treatment (the vaccination).  
+In another example, a study that only investigates the effect of activity level (active versus sedentary) on weight of mice excludes several factors that are known to affect weight.  These missing factors (such as, age and sex) are confounding variables.  Age and sex both have an effect on weight that is unaccounted for by the study; thus, the variation attributed to activity level cannot be accurately measured because of the lack of accounting for the variance known to be associated with the missing (confounding) variables.
 
 ### Incorrect randomization
 A well-designed experiment avoids confounding from known and unknown influences. Randomization creates comparable groups, which are alike in all characteristics except for the treatment under study. Randomization eliminates selection bias, balances the groups, and forms the basis for statistical tests. Poor randomization introduces confounding variables and frustrates attempts to quantify the effect of a treatment. If treatment groups differ with respect to factors other than the treatment under study, the results will be biased. In a clinical trial, for example, if younger participants were assigned the treatment and older participants were in the control group, there would be no way to determine whether the treatment had an effect or if the participants' age had an effect. In a study involving mice, if all the males were treated by one technician and all the females by another, it would be difficult to disambiguate the effect of the treatment from the effect of sex or the effect of the technician.

@@ -95,32 +95,32 @@ df1
 
 ~~~
    sample_id random_number     group
-1          A            59 treatment
-2          B            28   control
-3          C           100   control
-4          D            95 treatment
-5          E            54   control
-6          F            72   control
-7          G            26   control
-8          H             8   control
-9          I            37 treatment
-10         J             5 treatment
-11         K            18   control
-12         L            49 treatment
-13         M            56   control
-14         N            89 treatment
-15         O            84   control
-16         P            69 treatment
-17         Q            22   control
-18         R            94   control
-19         S            64   control
-20         T            38   control
-21         U            83 treatment
-22         V            32   control
-23         W            29 treatment
-24         X            96   control
-25         Y            46   control
-26         Z             3 treatment
+1          A            61 treatment
+2          B             9 treatment
+3          C            89 treatment
+4          D            88   control
+5          E            40   control
+6          F             8   control
+7          G            44   control
+8          H            75 treatment
+9          I            77 treatment
+10         J            52   control
+11         K            80   control
+12         L            84   control
+13         M            64   control
+14         N            17 treatment
+15         O            23 treatment
+16         P            27 treatment
+17         Q            85 treatment
+18         R            63 treatment
+19         S             6   control
+20         T            86   control
+21         U            20   control
+22         V            50   control
+23         W            51 treatment
+24         X            94   control
+25         Y            58   control
+26         Z            57 treatment
 ~~~
 {: .output}
 
@@ -137,7 +137,7 @@ table(df1$group)
 ~~~
 
   control treatment 
-       16        10 
+       14        12 
 ~~~
 {: .output}
 
@@ -163,32 +163,32 @@ df1_equal
 
 ~~~
    sample_id random_number treatment
-1          Z             3   control
-2          J             5   control
-3          H             8   control
-4          K            18   control
-5          Q            22   control
-6          G            26   control
-7          B            28   control
-8          W            29   control
-9          V            32   control
-10         I            37   control
-11         T            38   control
-12         Y            46   control
-13         L            49   control
-14         E            54 treatment
-15         M            56 treatment
-16         A            59 treatment
-17         S            64 treatment
-18         P            69 treatment
-19         F            72 treatment
-20         U            83 treatment
-21         O            84 treatment
-22         N            89 treatment
-23         R            94 treatment
-24         D            95 treatment
-25         X            96 treatment
-26         C           100 treatment
+1          S             6   control
+2          F             8   control
+3          B             9   control
+4          N            17   control
+5          U            20   control
+6          O            23   control
+7          P            27   control
+8          E            40   control
+9          G            44   control
+10         V            50   control
+11         W            51   control
+12         J            52   control
+13         Z            57   control
+14         Y            58 treatment
+15         A            61 treatment
+16         R            63 treatment
+17         M            64 treatment
+18         H            75 treatment
+19         I            77 treatment
+20         K            80 treatment
+21         L            84 treatment
+22         Q            85 treatment
+23         T            86 treatment
+24         D            88 treatment
+25         C            89 treatment
+26         X            94 treatment
 ~~~
 {: .output}
 
@@ -271,26 +271,26 @@ df2
 
 ~~~
    exp_unit_id random_number  treatment
-17           Q             3    control
-20           T             4    control
-2            B             6    control
-10           J             9    control
-3            C            10    control
-15           O            16 treatment1
-4            D            31 treatment1
-12           L            34 treatment1
-19           S            46 treatment1
-16           P            47 treatment1
-18           R            51 treatment2
-14           N            53 treatment2
-6            F            75 treatment2
-13           M            76 treatment2
-5            E            78 treatment2
-7            G            85 treatment3
-9            I            86 treatment3
-11           K            89 treatment3
-8            H            92 treatment3
-1            A           100 treatment3
+17           Q             4    control
+11           K             9    control
+20           T            17    control
+14           N            28    control
+5            E            30    control
+18           R            34 treatment1
+8            H            38 treatment1
+2            B            39 treatment1
+1            A            48 treatment1
+12           L            52 treatment1
+3            C            60 treatment2
+10           J            63 treatment2
+19           S            64 treatment2
+16           P            72 treatment2
+7            G            76 treatment2
+4            D            78 treatment3
+15           O            83 treatment3
+13           M            85 treatment3
+9            I            92 treatment3
+6            F           100 treatment3
 ~~~
 {: .output}
 
@@ -382,7 +382,3 @@ The Latin Square Design gets its name from the fact that we can write it as a sq
 > >
 > {: .solution}
 {: .challenge}
-
-#### Factorial Design
-
-A factorial design is often used by scientists wishing to understand the effect of two or more independent variables upon a single dependent variable.  The advantages of the factorial design are related to the fact that two or more factors may be assessed at the same time in the same population simultaneously, thus creating a more efficient trial in terms of resources including sample size compared with separate trials for assessment of each parameter.  Each factor has discrete possible values or "levels" (e.g., sex has two levels that are male and female), and whose experimental units take on all possible combinations of these levels across all such factors (e.g., an experiment with two factors sex and treatment will contain samples from all combinations of the two factors).  Factorial designs are named according to the number of factors and the levels of those factors.  For example, an experiment that evaluates the effects of sex (levels of male and female) and treatments (levels of drug and control) would be referred to as a 2 x 2 factorial design; where the first 2 refers to the number of levels of sex and the second 2 refers to the number of levels of the treatment.  If an additional factor was present (e.g., diet with # levels) another number representing the levels of that factor would be included in the name (e.g., 2 x 2 x # factorial design).  If the number of combinations of factor levels in a full factorial design is too high to be logistically feasible, a fractional factorial design may be done (not covered), in which some of the possible combinations (usually at least half) are omitted.  A factorial design has the added benefit of being able to evaluate the interaction of factors, when two (or more) factors interact with each other to affect the dependent variable.  Evaluation of this interaction effect is elucidated through various statistical analyses dependent on the data.

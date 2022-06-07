@@ -122,6 +122,8 @@ Krzywinski M, Altman N. [Designing comparative experiments.](https://www.nature.
 
 Blainey P, Krzywinski M, Altman N. [Points of significance: replication.](https://www.nature.com/articles/nmeth.3091) Nat Methods. 2014 Sep;11(9):879-80.
 
+Voelkl, B., Würbel, H., Krzywinski, M. et al. [The standardization fallacy.](https://www.nature.com/articles/s41592-020-01036-9) Nat Methods 18, 5–7 (2021). https://doi.org/10.1038/s41592-020-01036-9
+
 [ILAR Journal: Design & Statistical Analysis of Animal Experiments](https://academic.oup.com/ilarjournal/issue/55/3)
 
 Dickersin K, Chan SS, Chalmersx TC, Sacks HS, Smith Jr H. Publication bias and clinical trials. Controlled clinical trials. 1987 Dec 1;8(4):343-53.
